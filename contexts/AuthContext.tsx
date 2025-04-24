@@ -1,5 +1,6 @@
 import { Input } from '@/types/input';
 import React, { createContext, useContext, useState, ReactNode } from 'react';
+import axios from 'axios';
 
 type UserData = {
   email: Input;
@@ -106,12 +107,73 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const signIn = async() => {
 
     clearErrors();
+    let fieldErros:boolean = false;
+
     if(!userData.email.value){
         handleEmailError(true);
+        fieldErros = true;
     }
     if(!userData.password.value){
         handlePasswordError(true);
+        fieldErros = true;
     }
+
+    if(!fieldErros){
+
+        // const api = axios.create({
+        //     baseURL: 'https://mrpass.shop/api/',
+        //     timeout: 25000,
+        //     headers: {
+        //       'Content-Type': 'application/json',
+        //       'Accept': 'application/json'
+
+        //     },
+        // });
+
+        // try {
+        //     console.log({
+        //         username: userData.email.value,
+        //         password: userData.password.value
+        //     });
+
+        //     const response = await api.post('login.php', {
+        //       username: userData.email.value,
+        //       password: userData.password.value
+        //     });
+            
+        //     return response.data;
+            
+        // } catch (error) {
+        // console.log(error);
+        // throw error;
+        // }
+
+        const route = 'https://mrpass.shop/api/';
+
+        let formData = new FormData();
+        formData.append('username', userData.email.value);
+        formData.append('password', userData.password.value);
+
+        let myResponse = fetch(`${route}login.php`, {
+            method: 'POST',
+            body: formData,
+        })
+        .then((response) => {
+            response.json().then((data) => {
+                if(response.status === 200){
+                    console.log('logado com sucesso');
+                    
+                }
+                else{
+                    console.log('erro no login');
+                    
+                    console.log(data.message);
+                }
+            })
+        })
+    }
+
+
   }
 
 
