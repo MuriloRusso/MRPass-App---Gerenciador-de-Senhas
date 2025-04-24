@@ -1,39 +1,58 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
+// app/_layout.js
+import { AuthProvider } from '@/contexts/AuthContext';
 import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
-import 'react-native-reanimated';
-
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
+import { View, Text, StyleSheet } from 'react-native';
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
-
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
-
-  if (!loaded) {
-    return null;
-  }
-
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+    <AuthProvider>
+      <View style={styles.container}>
+        {/* Cabeçalho que aparecerá em todas as telas */}
+        <View style={styles.header}>
+          <Text style={styles.headerText}>MRPass</Text>
+        </View>
+
+        {/* Área de conteúdo dinâmico (as telas serão renderizadas aqui) */}
+        <Stack 
+          screenOptions={{
+            headerShown: false, // Oculta o cabeçalho padrão do Stack
+            contentStyle: { backgroundColor: '#f5f5f5' },
+          }}
+        />
+
+        {/* Rodapé que aparecerá em todas as telas */}
+        <View style={styles.footer}>
+          <Text style={styles.footerText}>© 2025 Murilo Russo Desenvolvimento</Text>
+        </View>
+      </View>
+    </AuthProvider>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  header: {
+    height: 60,
+    backgroundColor: '#FE715B',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingTop: 20,
+  },
+  headerText: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  footer: {
+    height: 50,
+    backgroundColor: '#FE715B',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  footerText: {
+    color: 'white',
+    fontSize: 12,
+  },
+});
