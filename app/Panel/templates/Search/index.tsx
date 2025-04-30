@@ -13,10 +13,13 @@ export default function Search(){
 
 const styles = StyleSheet.create({
     search: {
+        backgroundColor: "#fff",
         display: 'flex',
         flexDirection: "row",
         justifyContent: "space-between",
-        padding: 10
-        
+        padding: 10,
+        borderBottomWidth: 1,
+        borderColor: "#ccc",
+        marginTop: 10
     }
 })

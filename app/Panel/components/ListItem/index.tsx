@@ -1,12 +1,17 @@
 import ButtonEdit from "@/components/ButtonEdit";
 import { StyleSheet, Text, View } from "react-native";
+import FolderIcon from "../FolderIcon";
+
 
 export default function ListItem({title}:{title: string}){
     return (
         <View style={styles.item}>
-            <View>
-                <Text style={styles.title}>{title}</Text>
-                <Text style={styles.description}>{title}</Text>
+            <View style={{display: 'flex', flexDirection: "row", gap: 10, alignItems: "center"}}>
+                <FolderIcon size={35} />                
+                <View>
+                    <Text style={styles.title}>{title}</Text>
+                    <Text style={styles.description}>{title}</Text>
+                </View>
             </View>
             <View style={styles.containerAcoes}>
                 <ButtonEdit />
@@ -39,7 +44,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     // padding: 5,
-    marginVertical: 5,
-    gap: 5
+    marginVertical: 15,
+    gap: 15
   }
 });
