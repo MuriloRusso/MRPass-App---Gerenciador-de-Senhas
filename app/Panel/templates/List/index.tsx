@@ -23,9 +23,12 @@ export default function List(){
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: StatusBar.currentHeight || 0,
-    // backgroundColor: "#ccc",
-    minHeight: 500
+    // marginTop: StatusBar.currentHeight || 0,
+    marginTop: 0,
+    backgroundColor: "#fff",
+    minHeight: 500,
+    borderTopLeftRadius: 4,
+    borderTopRightRadius: 4
   },
 });
 
