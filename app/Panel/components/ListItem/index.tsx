@@ -2,6 +2,7 @@ import ButtonEdit from "@/components/ButtonEdit";
 import { StyleSheet, Text, View } from "react-native";
 import FolderIcon from "../FolderIcon";
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import ButtonDelete from "@/components/ButtonDelete";
 
 export default function ListItem({title}:{title: string}){
     return (
@@ -16,7 +17,7 @@ export default function ListItem({title}:{title: string}){
                 </View>
                 <View style={styles.containerAcoes}>
                     <ButtonEdit />
-                    <ButtonEdit />
+                    <ButtonDelete />
                 </View>
 
             </View>

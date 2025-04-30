@@ -7,5 +7,5 @@ function Icon(){
 }
 
 export default function ButtonNew(){
-    return <ButtonPrimaryIcon text="Novo" icon={Icon}/>
+    return <ButtonPrimaryIcon text="Nova Pasta" icon={Icon}/>
 }
