@@ -13,7 +13,7 @@ export default function ButtonPrimaryIcon({text, icon, onClick}: ButtonPrimaryIc
     return (
         <TouchableOpacity style={styles.button} onPress={onClick}>
             <ButtonIcon />
-            <Text style={styles.buttonText}>{text}</Text>
+            {text != "" && <Text style={styles.buttonText}>{text}</Text>}
         </TouchableOpacity>
     );
 }
@@ -25,7 +25,8 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         paddingVertical: 5,
-        paddingHorizontal: 15
+        paddingHorizontal: 15,
+        gap: 5
     },
     buttonText: {
         color: "#fff"
