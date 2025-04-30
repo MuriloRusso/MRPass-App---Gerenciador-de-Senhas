@@ -1,6 +1,8 @@
 import { Input } from '@/types/input';
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 import axios from 'axios';
+import Toast from 'react-native-toast-message';
+import { useRouter } from 'expo-router';
 
 type UserData = {
   email: Input;
@@ -22,6 +24,9 @@ export const AuthContext = createContext<AuthContextData>({} as AuthContextData)
 
 
 export function AuthProvider({ children }: { children: ReactNode }) {
+
+  const router = useRouter();
+
   const [userData, setUserData] = useState<UserData>({
     email: {
       value: '',
@@ -148,29 +153,46 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         // throw error;
         // }
 
-        const route = 'https://mrpass.shop/api/';
+        try {
+          const route = 'https://mrpass.shop/api/';
+  
+          let formData = new FormData();
+          formData.append('username', userData.email.value);
+          formData.append('password', userData.password.value);
+  
+          let myResponse = fetch(`${route}login.php`, {
+              method: 'POST',
+              body: formData,
+          })
+          .then((response) => {
+              response.json().then((data) => {
+                  if(response.status === 200){
+                      console.log('logado com sucesso');
+                      router.push('./Panel')
+                      Toast.show({
+                        type: 'success',
+                        text1: 'logado com sucesso!',
+                        text2: 'logado com sucesso',
+                      });
+                  }
+                  else{
+                      Toast.show({
+                        type: 'error',
+                        text1: 'erro no login!',
+                        text2: 'erro no login',
+                      });
+                      console.log('erro no login');
+                      
+                      console.log(data.message);
+                  }
+              })
+          })
+          
+        } catch (error) {
+          console.log(error);
+          
+        }
 
-        let formData = new FormData();
-        formData.append('username', userData.email.value);
-        formData.append('password', userData.password.value);
-
-        let myResponse = fetch(`${route}login.php`, {
-            method: 'POST',
-            body: formData,
-        })
-        .then((response) => {
-            response.json().then((data) => {
-                if(response.status === 200){
-                    console.log('logado com sucesso');
-                    
-                }
-                else{
-                    console.log('erro no login');
-                    
-                    console.log(data.message);
-                }
-            })
-        })
     }
 
 

@@ -1,31 +1,39 @@
 // app/_layout.js
 import { AuthProvider } from '@/contexts/AuthContext';
+import { LoadingProvider } from '@/contexts/LoadingContext';
 import { Stack } from 'expo-router';
 import { View, Text, StyleSheet } from 'react-native';
 
+import Toast from 'react-native-toast-message';
+
 export default function RootLayout() {
   return (
-    <AuthProvider>
-      <View style={styles.container}>
-        {/* Cabeçalho que aparecerá em todas as telas */}
-        <View style={styles.header}>
-          <Text style={styles.headerText}>MRPass</Text>
-        </View>
+    // <LoadingProvider>
+      <AuthProvider>
+        <Toast />
 
-        {/* Área de conteúdo dinâmico (as telas serão renderizadas aqui) */}
-        <Stack 
-          screenOptions={{
-            headerShown: false, // Oculta o cabeçalho padrão do Stack
-            contentStyle: { backgroundColor: '#f5f5f5' },
-          }}
-        />
+        <View style={styles.container}>
+          {/* Cabeçalho que aparecerá em todas as telas */}
+          <View style={styles.header}>
+            <Text style={styles.headerText}>MRPass</Text>
+          </View>
 
-        {/* Rodapé que aparecerá em todas as telas */}
-        <View style={styles.footer}>
-          <Text style={styles.footerText}>© 2025 Murilo Russo Desenvolvimento</Text>
+          {/* Área de conteúdo dinâmico (as telas serão renderizadas aqui) */}
+          <Stack 
+            screenOptions={{
+              headerShown: false, // Oculta o cabeçalho padrão do Stack
+              contentStyle: { backgroundColor: '#f5f5f5' },
+            }}
+          />
+
+          {/* Rodapé que aparecerá em todas as telas */}
+          <View style={styles.footer}>
+            <Text style={styles.footerText}>© 2025 Murilo Russo Desenvolvimento</Text>
+          </View>
         </View>
-      </View>
-    </AuthProvider>
+      </AuthProvider>
+    // {/* </LoadingProvider> */}
+
   );
 }
 
