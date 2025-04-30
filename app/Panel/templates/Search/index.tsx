@@ -5,7 +5,7 @@ import ButtonSearch from "../../components/ButtonSearch";
 export default function Search(){
     return (
         <View style={styles.search}>
-            <Input error={false} value="" errorText="" placeholder="Buscar..."/>
+            <Input error={false} value="" errorText="" placeholder="Buscar..." sx={{width: "auto", minWidth: 300}} />
             <ButtonSearch/>
         </View>
     )

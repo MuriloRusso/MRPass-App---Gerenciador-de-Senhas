@@ -1,24 +1,26 @@
 import ButtonEdit from "@/components/ButtonEdit";
 import { StyleSheet, Text, View } from "react-native";
 import FolderIcon from "../FolderIcon";
-
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 export default function ListItem({title}:{title: string}){
     return (
         <View style={styles.item}>
-            <View style={{display: 'flex', flexDirection: "row", gap: 10, alignItems: "center"}}>
-                <FolderIcon size={35} />                
-                <View>
-                    <Text style={styles.title}>{title}</Text>
-                    <Text style={styles.description}>{title}</Text>
+            <View>
+                <View style={{display: 'flex', flexDirection: "row", gap: 10, alignItems: "center"}}>
+                    <FolderIcon size={35} />                
+                    <View>
+                        <Text style={styles.title}>{title}</Text>
+                        <Text style={styles.description}>{title}</Text>
+                    </View>
                 </View>
-            </View>
-            <View style={styles.containerAcoes}>
-                <ButtonEdit />
-                <ButtonEdit />
-                <ButtonEdit />
+                <View style={styles.containerAcoes}>
+                    <ButtonEdit />
+                    <ButtonEdit />
+                </View>
 
             </View>
+            <MaterialIcons name="arrow-forward-ios" size={40} color="#777" />
         </View>
     )
 }
@@ -29,10 +31,11 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     marginHorizontal: 16,
     display: "flex",
-    // flexDirection: "row",
+    flexDirection: "row",
     justifyContent: 'space-between',
     borderBottomWidth: 1,
-    borderColor: "#ccc"
+    borderColor: "#ccc",
+    alignItems: 'center'
   },
   title: {
     fontSize: 25,

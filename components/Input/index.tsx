@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import { StyleProp, StyleSheet, Text, TextInput, TextStyle, View, ViewStyle } from "react-native";
 
 type InputProps = {
     onChange?: (value: string) => void,
@@ -8,16 +8,21 @@ type InputProps = {
     errorText: string,
     keyboardType?: "numeric"
     secureTextEntry?: boolean;
-
+    sx?: StyleProp<TextStyle>;
 }
 
-export default function Input({onChange, value, placeholder, error, errorText, keyboardType, secureTextEntry}:InputProps){
+export default function Input({onChange, value, placeholder, error, errorText, keyboardType, secureTextEntry, sx}:InputProps){
 
     return (
         <View>            
             <TextInput
                 // style={{...styles.input, ...styles.inputError}}
-                style={{...styles.input, borderWidth: error ? 1 : 0}}
+                // style={{...sx, ...styles.input, borderWidth: error ? 1 : 0}}
+                style={[
+                    styles.input,
+                    sx, // Pode ser um objeto ou array
+                    { borderWidth: error ? 1 : 0 },
+                ]}
                 placeholder={placeholder}
                 onChangeText={onChange}
                 value={value}
