@@ -1,9 +1,10 @@
-import { Text } from "react-native";
+import { Text, View } from "react-native";
+import Header from "./templates/Header";
 
 export default function Panel(){
     return (
-        <>
-            <Text>Painel</Text>
-        </>
+        <View>
+            <Header/>
+        </View>
     )
 }
