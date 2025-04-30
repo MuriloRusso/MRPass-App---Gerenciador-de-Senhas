@@ -1,4 +1,21 @@
 export default function useGetList() {
+
+    // try {
+    //   const route = 'https://mrpass.shop/api/';
+
+    //   let myResponse = fetch(`${route}folders/panel.php`, {
+    //       method: 'GET',
+    //   })
+    //   .then((response) => {
+    //       response.json().then((data) => {
+    //           console.log(data);
+    //       })
+    //   })
+    // } catch (error) {
+    //   console.log(error);
+    // }
+ 
+
     const rows = [
       {
         id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',

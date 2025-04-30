@@ -1,6 +1,6 @@
 // app/_layout.js
 import { AuthProvider } from '@/contexts/AuthContext';
-import { LoadingProvider } from '@/contexts/LoadingContext';
+// import { LoadingProvider } from '@/contexts/LoadingContext';
 import { Stack } from 'expo-router';
 import { View, Text, StyleSheet } from 'react-native';
 
