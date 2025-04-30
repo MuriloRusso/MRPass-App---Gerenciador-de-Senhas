@@ -1,6 +1,7 @@
 // LoadingContext.tsx
+import Loading from '@/app/components/Loading';
 import React, { createContext, ReactNode, useContext, useState } from 'react';
-import Loading from './../components/Loading'
+// import Loading from './../components/Loading'
 
 interface LoadingContextData {
   isLoading: boolean;

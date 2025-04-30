@@ -5,11 +5,13 @@ import { Stack } from 'expo-router';
 import { View, Text, StyleSheet } from 'react-native';
 
 import Toast from 'react-native-toast-message';
+import Loading from './components/Loading';
 
 export default function RootLayout() {
   return (
     // <LoadingProvider>
-      <AuthProvider>
+    <AuthProvider>
+        {/* <Loading/> */}
         <Toast />
 
         <View style={styles.container}>
