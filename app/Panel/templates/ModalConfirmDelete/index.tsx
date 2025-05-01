@@ -1,6 +1,9 @@
 import React, {useState} from 'react';
 import {Alert, Modal, StyleSheet, Text, Pressable, View} from 'react-native';
 import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
+import ButtonSearch from '../../components/ButtonSearch';
+import ButtonSecondary from '@/components/ButtonSecondary';
+import ButtonPrimary from '@/components/ButtonPrimary';
 
 type ModalProps = {
   isVisible: boolean;
@@ -22,12 +25,11 @@ const ModalConfirmDelete = ({isVisible, handleFunction}:ModalProps) => {
           }}>
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
-              <Text style={styles.modalText}>Hello World!</Text>
-              <Pressable
-                style={[styles.button, styles.buttonClose]}
-                onPress={() => handleFunction()}>
-                <Text style={styles.textStyle}>Hide Modal</Text>
-              </Pressable>
+              <Text style={styles.modalText}>Tem certeza de que deseja excluír essa pasta?</Text>
+              <View style={styles.containerBtns}>
+                <ButtonSecondary text='Cancelar' onClick={handleFunction} />
+                <ButtonPrimary text='Confirmar' />
+              </View>
             </View>
           </View>
         </Modal>
@@ -41,6 +43,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: "rgba(0,0,0,0.6)"
   },
   modalView: {
     margin: 20,
@@ -58,7 +61,7 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   button: {
-    borderRadius: 20,
+    borderRadius: 4,
     padding: 10,
     elevation: 2,
   },
@@ -77,6 +80,13 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     textAlign: 'center',
   },
+  containerBtns: {
+    display: 'flex',
+    flexDirection: "row",
+    // gap: 10,
+    justifyContent: "space-around",
+    width: "100%"
+  }
 });
 
 export default ModalConfirmDelete;
