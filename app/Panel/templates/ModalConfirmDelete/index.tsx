@@ -1,7 +1,5 @@
-import React, {useState} from 'react';
-import {Alert, Modal, StyleSheet, Text, Pressable, View} from 'react-native';
+import { Modal, StyleSheet, Text, View} from 'react-native';
 import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
-import ButtonSearch from '../../components/ButtonSearch';
 import ButtonSecondary from '@/components/ButtonSecondary';
 import ButtonPrimary from '@/components/ButtonPrimary';
 
@@ -9,8 +7,6 @@ type ModalProps = {
   isVisible: boolean;
   handleFunction: () => void;
 }
-
-
 const ModalConfirmDelete = ({isVisible, handleFunction}:ModalProps) => {
   return (
     <SafeAreaProvider>
@@ -20,7 +16,6 @@ const ModalConfirmDelete = ({isVisible, handleFunction}:ModalProps) => {
           transparent={true}
           visible={isVisible}
           onRequestClose={() => {
-            Alert.alert('Modal has been closed.');
             handleFunction();
           }}>
           <View style={styles.centeredView}>
@@ -41,6 +36,8 @@ const ModalConfirmDelete = ({isVisible, handleFunction}:ModalProps) => {
 const styles = StyleSheet.create({
   centeredView: {
     flex: 1,
+    // height: "100%",
+    // minHeight: "100%",
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: "rgba(0,0,0,0.6)"
@@ -48,7 +45,7 @@ const styles = StyleSheet.create({
   modalView: {
     margin: 20,
     backgroundColor: 'white',
-    borderRadius: 20,
+    borderRadius: 4,
     padding: 35,
     alignItems: 'center',
     shadowColor: '#000',
@@ -59,22 +56,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
-  },
-  button: {
-    borderRadius: 4,
-    padding: 10,
-    elevation: 2,
-  },
-  buttonOpen: {
-    backgroundColor: '#F194FF',
-  },
-  buttonClose: {
-    backgroundColor: '#2196F3',
-  },
-  textStyle: {
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center',
+    
   },
   modalText: {
     marginBottom: 15,

@@ -12,12 +12,18 @@ export default function Panel(){
 
 
     return (
-        <View style={{height: "100%"}}>
-            <Header/>
-            <Search/>
-            <List modalConfirmDeleteFunction={handleModalDelete}/>
-            {/* <ModalCreate/> */}
-            <ModalConfirmDelete isVisible={modalDeleteVisible} handleFunction={handleModalDelete} />
+        <View>
+
+
+            
+            <View style={{height: "100%"/* flex: 1*/}}>
+                <Header/>
+                <Search/>
+                <List modalConfirmDeleteFunction={handleModalDelete}/>
+                {/* <ModalCreate/> */}
+            </View>
+                <ModalConfirmDelete isVisible={modalDeleteVisible} handleFunction={handleModalDelete} />
+
         </View>
     )
 }
