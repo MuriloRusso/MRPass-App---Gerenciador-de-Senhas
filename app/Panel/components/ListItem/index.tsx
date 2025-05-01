@@ -3,8 +3,11 @@ import { StyleSheet, Text, View } from "react-native";
 import FolderIcon from "../FolderIcon";
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import ButtonDelete from "@/components/ButtonDelete";
+import useModals from "../../hooks/useModals";
 
-export default function ListItem({title}:{title: string}){
+export default function ListItem({title, modalConfirmDeleteFunction}:{title: string, modalConfirmDeleteFunction: () => void}){
+    // const {modalDeleteVisible, handleModalDelete} = useModals();
+    
     return (
         <View style={styles.item}>
             <View>
@@ -17,7 +20,7 @@ export default function ListItem({title}:{title: string}){
                 </View>
                 <View style={styles.containerAcoes}>
                     <ButtonEdit />
-                    <ButtonDelete />
+                    <ButtonDelete onClick={modalConfirmDeleteFunction}/>
                 </View>
 
             </View>

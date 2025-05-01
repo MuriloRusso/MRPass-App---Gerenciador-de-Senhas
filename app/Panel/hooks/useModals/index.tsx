@@ -9,6 +9,8 @@ export default function useModals(){
     // }
     const handleModalDelete = () => {
         setModalDeleteVisible(!modalDeleteVisible);
+        console.log('aaa', modalDeleteVisible);
+        
     }
     
     return {modalDeleteVisible, handleModalDelete}

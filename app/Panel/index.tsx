@@ -15,7 +15,7 @@ export default function Panel(){
         <View style={{height: "100%"}}>
             <Header/>
             <Search/>
-            <List/>
+            <List modalConfirmDeleteFunction={handleModalDelete}/>
             {/* <ModalCreate/> */}
             <ModalConfirmDelete isVisible={modalDeleteVisible} handleFunction={handleModalDelete} />
         </View>

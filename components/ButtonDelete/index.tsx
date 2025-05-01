@@ -8,8 +8,8 @@ function IconButtonDelete(){
 
 }
 
-export default function ButtonDelete(){
+export default function ButtonDelete({onClick}: {onClick: () => void}){
     // return <ButtonSecondaryIcon icon={IconButtonDelete} text="" />
-    return <ButtonGrayIcon icon={IconButtonDelete} text="" />
+    return <ButtonGrayIcon icon={IconButtonDelete} text="" onClick={onClick} />
 
 }

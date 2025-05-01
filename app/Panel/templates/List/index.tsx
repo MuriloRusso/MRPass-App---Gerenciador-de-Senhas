@@ -4,7 +4,7 @@ import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
 import ListItem from '../../components/ListItem';
 import useGetList from '../../hooks/useGetList';
 
-export default function List(){
+export default function List({modalConfirmDeleteFunction}: {modalConfirmDeleteFunction: () => void}){
     const { rows } = useGetList();
 
     return (
@@ -12,7 +12,7 @@ export default function List(){
             <SafeAreaView style={styles.container}>
             <FlatList
                 data={rows}
-                renderItem={({item}) => <ListItem title={item.title} />}
+                renderItem={({item}) => <ListItem title={item.title} modalConfirmDeleteFunction={modalConfirmDeleteFunction} />}
                 keyExtractor={item => item.id}
             />
             </SafeAreaView>
