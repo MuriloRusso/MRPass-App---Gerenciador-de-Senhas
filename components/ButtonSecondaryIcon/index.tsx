@@ -31,6 +31,6 @@ const styles = StyleSheet.create({
         borderColor: "#FE715B"
     },
     buttonText: {
-        color: "#fff"
+        color: "#FE715B"
     }
 })

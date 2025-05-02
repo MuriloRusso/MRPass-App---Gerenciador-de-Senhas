@@ -16,10 +16,11 @@ const styles = StyleSheet.create({
         backgroundColor: "#fff",
         display: 'flex',
         flexDirection: "row",
-        justifyContent: "space-between",
+        // justifyContent: "space-between",
         padding: 10,
         borderBottomWidth: 1,
         borderColor: "#ccc",
-        marginTop: 10
+        marginTop: 10,
+        gap: 10
     }
 })

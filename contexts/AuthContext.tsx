@@ -1,5 +1,5 @@
 import { Input } from '@/types/input';
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode, Dispatch, SetStateAction, useEffect } from 'react';
 import axios from 'axios';
 import Toast from 'react-native-toast-message';
 import { useRouter } from 'expo-router';
@@ -10,13 +10,16 @@ type UserData = {
 };
 
 type AuthContextData = {
+  isAuthenticated: boolean;
+  setIsAuthenticated: Dispatch<SetStateAction<boolean>>;
   userData: UserData;
   handleEmailChange: (value: string) => void;
   handleEmailError: (error: boolean, errorText?: string) => void;
   handlePasswordChange: (value: string) => void;
   handlePasswordError: (error: boolean, errorText?: string) => void;
   clearErrors: () => void;
-  signIn: ()=> void;
+  signIn: () => void;
+  signOut: () => void;
 };
 
 // const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -26,6 +29,8 @@ export const AuthContext = createContext<AuthContextData>({} as AuthContextData)
 export function AuthProvider({ children }: { children: ReactNode }) {
 
   const router = useRouter();
+
+  const [ isAuthenticated, setIsAuthenticated ] = useState<boolean>(false);
 
   const [userData, setUserData] = useState<UserData>({
     email: {
@@ -168,6 +173,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
               response.json().then((data) => {
                   if(response.status === 200){
                       console.log('logado com sucesso');
+                      setIsAuthenticated(true);
                       router.push('./Panel')
                       Toast.show({
                         type: 'success',
@@ -182,7 +188,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
                         text2: 'erro no login',
                       });
                       console.log('erro no login');
-                      
                       console.log(data.message);
                   }
               })
@@ -190,24 +195,33 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           
         } catch (error) {
           console.log(error);
-          
         }
-
     }
-
-
   }
 
+  const signOut = () => {
+    setIsAuthenticated(false);
+    router.push('/');
+  }
+
+  useEffect(()=>{
+    console.log('isAuthenticated');
+    console.log(isAuthenticated);
+    
+  },[isAuthenticated])
 
   return (
-    <AuthContext.Provider value={{ 
+    <AuthContext.Provider value={{
+      isAuthenticated,
+      setIsAuthenticated,
       userData, 
       handleEmailChange, 
       handleEmailError,
       handlePasswordChange,
       handlePasswordError,
       clearErrors,
-      signIn
+      signIn,
+      signOut
     }}>
       {children}
     </AuthContext.Provider>

@@ -1,13 +1,17 @@
 // app/_layout.js
-import { AuthProvider } from '@/contexts/AuthContext';
+import { AuthContext, AuthProvider } from '@/contexts/AuthContext';
 // import { LoadingProvider } from '@/contexts/LoadingContext';
 import { Stack } from 'expo-router';
 import { View, Text, StyleSheet } from 'react-native';
 
 import Toast from 'react-native-toast-message';
 import Loading from './components/Loading';
+import ButtonSecondary from '@/components/ButtonSecondary';
+import { useContext, useEffect } from 'react';
+import ButtonLogout from '@/components/ButtonLogout';
 
 export default function RootLayout() {
+
   return (
     // <LoadingProvider>
     <AuthProvider>
@@ -18,10 +22,11 @@ export default function RootLayout() {
           {/* Cabeçalho que aparecerá em todas as telas */}
           <View style={styles.header}>
             <Text style={styles.headerText}>MRPass</Text>
+            <ButtonLogout/>
           </View>
 
           {/* Área de conteúdo dinâmico (as telas serão renderizadas aqui) */}
-          <Stack 
+          <Stack
             screenOptions={{
               headerShown: false, // Oculta o cabeçalho padrão do Stack
               contentStyle: { backgroundColor: '#f5f5f5' },
@@ -46,9 +51,10 @@ const styles = StyleSheet.create({
   header: {
     height: 60,
     backgroundColor: '#FE715B',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    paddingTop: 20,
+    padding: 20,
+    flexDirection: 'row'
   },
   headerText: {
     color: 'white',
