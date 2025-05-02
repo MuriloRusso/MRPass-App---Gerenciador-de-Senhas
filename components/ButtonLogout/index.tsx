@@ -8,6 +8,6 @@ function ButtonLogoutIcon(){
 }
 
 export default function ButtonLogout() {
-    const { isAuthenticated } = useContext(AuthContext);
-    return isAuthenticated && <ButtonSecondaryIcon text="Sair" icon={ButtonLogoutIcon} />
+    const { isAuthenticated, signOut } = useContext(AuthContext);
+    return isAuthenticated && <ButtonSecondaryIcon text="Sair" icon={ButtonLogoutIcon} onClick={signOut} />
 }
