@@ -1,7 +1,7 @@
-import { Modal, StyleSheet, Text, View} from 'react-native';
-import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
-import ButtonSecondary from '@/components/ButtonSecondary';
 import ButtonPrimary from '@/components/ButtonPrimary';
+import ButtonSecondary from '@/components/ButtonSecondary';
+import { Modal, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 type ModalProps = {
   isVisible: boolean;
@@ -28,7 +28,7 @@ const ModalConfirmDelete = ({isVisible, handleFunction}:ModalProps) => {
             </View>
           </View>
         </Modal>
-      </SafeAreaView>
+      </SafeAreaView> 
     </SafeAreaProvider>
   );
 };

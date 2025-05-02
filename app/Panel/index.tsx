@@ -3,6 +3,7 @@ import { View } from "react-native";
 import useModals from "./hooks/useModals";
 import Header from "./templates/Header";
 import List from "./templates/List";
+import ModalConfirmDelete from "./templates/ModalConfirmDelete";
 import Search from "./templates/Search";
 
 export default function Panel(){
@@ -16,7 +17,7 @@ export default function Panel(){
                 <Search />
                 <List modalConfirmDeleteFunction={handleModalDelete}/>
             </View>
-            {/* <ModalConfirmDelete isVisible={modalDeleteVisible} handleFunction={handleModalDelete} /> */}
+            <ModalConfirmDelete isVisible={modalDeleteVisible} handleFunction={handleModalDelete} />
         </View>
     )
 }
