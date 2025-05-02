@@ -1,13 +1,11 @@
 // app/_layout.js
-import { AuthContext, AuthProvider } from '@/contexts/AuthContext';
+import { AuthProvider } from '@/contexts/AuthContext';
 // import { LoadingProvider } from '@/contexts/LoadingContext';
 import { Stack } from 'expo-router';
-import { View, Text, StyleSheet } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
-import Toast from 'react-native-toast-message';
-import Loading from './components/Loading';
-import ButtonSecondary from '@/components/ButtonSecondary';
-import { useContext, useEffect } from 'react';
+// import Toast from 'react-native-toast-message';
+// import Loading from './components/Loading';
 import ButtonLogout from '@/components/ButtonLogout';
 
 export default function RootLayout() {
@@ -16,7 +14,7 @@ export default function RootLayout() {
     // <LoadingProvider>
     <AuthProvider>
         {/* <Loading/> */}
-        <Toast />
+        {/* <Toast /> */}
 
         <View style={styles.container}>
           {/* Cabeçalho que aparecerá em todas as telas */}

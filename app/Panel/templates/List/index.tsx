@@ -1,22 +1,29 @@
 import React from 'react';
-import {FlatList, StyleSheet, StatusBar} from 'react-native';
-import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
+import { FlatList, SafeAreaView, StyleSheet } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import ListItem from '../../components/ListItem';
 import useGetList from '../../hooks/useGetList';
 
 export default function List({modalConfirmDeleteFunction}: {modalConfirmDeleteFunction: () => void}){
     const { rows } = useGetList();
 
+    // return (<></>)
+
     return (
-        <SafeAreaProvider>
-            <SafeAreaView style={styles.container}>
-            <FlatList
-                data={rows}
-                renderItem={({item}) => <ListItem title={item.title} modalConfirmDeleteFunction={modalConfirmDeleteFunction} />}
-                keyExtractor={item => item.id}
-            />
-            </SafeAreaView>
-        </SafeAreaProvider>
+      <SafeAreaProvider>
+        <SafeAreaView style={styles.container}>
+          <FlatList
+            data={rows}
+            renderItem={({ item }) => (
+              <ListItem
+                title={item?.title}
+                modalConfirmDeleteFunction={modalConfirmDeleteFunction}
+              />
+            )}
+            keyExtractor={item => item?.id?.toString()}
+          />
+        </SafeAreaView>
+      </SafeAreaProvider>
     )
 };
 

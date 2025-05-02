@@ -1,10 +1,9 @@
 import { View } from "react-native";
-import Header from "./templates/Header";
-import Search from "./templates/Search";
-import List from "./templates/List";
-import ModalCreate from "./templates/ModalCreate";
-import ModalConfirmDelete from "./templates/ModalConfirmDelete";
+// import ModalCreate from "./templates/ModalCreate";
 import useModals from "./hooks/useModals";
+import Header from "./templates/Header";
+import List from "./templates/List";
+import Search from "./templates/Search";
 
 export default function Panel(){
     
@@ -17,8 +16,13 @@ export default function Panel(){
                 <Search />
                 <List modalConfirmDeleteFunction={handleModalDelete}/>
             </View>
-            {/* <ModalCreate/> */}
-            <ModalConfirmDelete isVisible={modalDeleteVisible} handleFunction={handleModalDelete} />
+            {/* <ModalConfirmDelete isVisible={modalDeleteVisible} handleFunction={handleModalDelete} /> */}
         </View>
     )
 }
+
+// import { Text } from "react-native";
+
+// export default function Panel(){
+//     return <Text>Panel</Text>
+// }

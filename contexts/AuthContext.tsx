@@ -1,7 +1,7 @@
 import { Input } from '@/types/input';
-import React, { createContext, useContext, useState, ReactNode, Dispatch, SetStateAction, useEffect } from 'react';
-import axios from 'axios';
-import Toast from 'react-native-toast-message';
+import React, { createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState } from 'react';
+// import axios from 'axios';
+// import Toast from 'react-native-toast-message';
 import { useRouter } from 'expo-router';
 
 type UserData = {
@@ -175,18 +175,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
                       console.log('logado com sucesso');
                       setIsAuthenticated(true);
                       router.push('./Panel')
-                      Toast.show({
-                        type: 'success',
-                        text1: 'logado com sucesso!',
-                        text2: 'logado com sucesso',
-                      });
+                      // Toast.show({
+                      //   type: 'success',
+                      //   text1: 'logado com sucesso!',
+                      //   text2: 'logado com sucesso',
+                      // });
                   }
                   else{
-                      Toast.show({
-                        type: 'error',
-                        text1: 'erro no login!',
-                        text2: 'erro no login',
-                      });
+                      // Toast.show({
+                      //   type: 'error',
+                      //   text1: 'erro no login!',
+                      //   text2: 'erro no login',
+                      // });
                       console.log('erro no login');
                       console.log(data.message);
                   }
