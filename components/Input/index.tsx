@@ -1,4 +1,4 @@
-import { StyleProp, StyleSheet, Text, TextInput, TextStyle, View, ViewStyle } from "react-native";
+import { StyleProp, StyleSheet, Text, TextInput, TextStyle, View } from "react-native";
 
 type InputProps = {
     onChange?: (value: string) => void,
@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
         padding: 10,
         height: 50,
         borderColor: "#F00",
+        borderRadius: 4
     },
     textError: {
         height: 16,

@@ -15,7 +15,9 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
         borderColor: "#FE715B",
         borderWidth: 1,
-        backgroundColor: "#fff"
+        backgroundColor: "#fff",
+        borderRadius: 4
+
     },
     buttonText: {
         textAlign: 'center',
