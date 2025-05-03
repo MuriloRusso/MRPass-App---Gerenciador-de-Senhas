@@ -1,37 +1,40 @@
-import React, {useState} from 'react';
-import {Alert, Modal, StyleSheet, Text, Pressable, View} from 'react-native';
-import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
+import ButtonPrimary from '@/components/ButtonPrimary';
+import ButtonSecondary from '@/components/ButtonSecondary';
+import { Modal, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import FolderIcon from '../../components/FolderIcon';
+import Form from '../Form';
 
-const ModalCreate = () => {
-  const [modalVisible, setModalVisible] = useState(false);
+type ModalProps = {
+  isVisible: boolean;
+  handleFunction: () => void;
+}
+const ModalCreate = ({isVisible, handleFunction}:ModalProps) => {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.centeredView}>
         <Modal
           animationType="slide"
           transparent={true}
-          visible={modalVisible}
+          visible={isVisible}
           onRequestClose={() => {
-            Alert.alert('Modal has been closed.');
-            setModalVisible(!modalVisible);
+            handleFunction();
           }}>
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
-              <Text style={styles.modalText}>Hello World!</Text>
-              <Pressable
-                style={[styles.button, styles.buttonClose]}
-                onPress={() => setModalVisible(!modalVisible)}>
-                <Text style={styles.textStyle}>Hide Modal</Text>
-              </Pressable>
+              <View style={{flexDirection: "row", alignItems: "center", gap: 10, justifyContent: "flex-start", width: "100%"}}>
+                  <FolderIcon size={40}/>
+                  <Text>Criar Pasta</Text>
+              </View>
+              <Form/>
+              <View style={styles.containerBtns}>
+                <ButtonSecondary text='Cancelar' onClick={handleFunction} />
+                <ButtonPrimary text='Confirmar' />
+              </View>
             </View>
           </View>
         </Modal>
-        <Pressable
-          style={[styles.button, styles.buttonOpen]}
-          onPress={() => setModalVisible(true)}>
-          <Text style={styles.textStyle}>Show Modal</Text>
-        </Pressable>
-      </SafeAreaView>
+      </SafeAreaView> 
     </SafeAreaProvider>
   );
 };
@@ -39,13 +42,16 @@ const ModalCreate = () => {
 const styles = StyleSheet.create({
   centeredView: {
     flex: 1,
+    // height: "100%",
+    // minHeight: "100%",
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: "rgba(0,0,0,0.6)"
   },
   modalView: {
     margin: 20,
     backgroundColor: 'white',
-    borderRadius: 20,
+    borderRadius: 4,
     padding: 35,
     alignItems: 'center',
     shadowColor: '#000',
@@ -56,27 +62,19 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
-  },
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
-  },
-  buttonOpen: {
-    backgroundColor: '#F194FF',
-  },
-  buttonClose: {
-    backgroundColor: '#2196F3',
-  },
-  textStyle: {
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center',
+    
   },
   modalText: {
     marginBottom: 15,
     textAlign: 'center',
   },
+  containerBtns: {
+    display: 'flex',
+    flexDirection: "row",
+    // gap: 10,
+    justifyContent: "space-around",
+    width: "100%"
+  }
 });
 
 export default ModalCreate;
