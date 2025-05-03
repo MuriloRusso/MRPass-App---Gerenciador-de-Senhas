@@ -1,11 +1,10 @@
-import { StyleSheet, Text, TouchableOpacity } from "react-native";
-import Ionicons from '@expo/vector-icons/Ionicons';
 import ButtonPrimaryIcon from "@/components/ButtonPrimaryIcon";
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 function Icon(){
     return <Ionicons name="add-circle-outline" size={24} color="white" /> 
 }
 
-export default function ButtonNew(){
-    return <ButtonPrimaryIcon text="Nova Pasta" icon={Icon}/>
+export default function ButtonNew({onClick}:{onClick: () => void;}){
+    return <ButtonPrimaryIcon text="Nova Pasta" icon={Icon} onClick={onClick}/>
 }

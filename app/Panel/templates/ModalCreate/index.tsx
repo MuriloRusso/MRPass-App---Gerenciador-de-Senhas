@@ -22,7 +22,7 @@ const ModalCreate = ({isVisible, handleFunction}:ModalProps) => {
           }}>
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
-              <View style={{flexDirection: "row", alignItems: "center", gap: 10, justifyContent: "flex-start", width: "100%"}}>
+              <View style={styles.modalHeader}>
                   <FolderIcon size={40}/>
                   <Text>Criar Pasta</Text>
               </View>
@@ -42,8 +42,6 @@ const ModalCreate = ({isVisible, handleFunction}:ModalProps) => {
 const styles = StyleSheet.create({
   centeredView: {
     flex: 1,
-    // height: "100%",
-    // minHeight: "100%",
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: "rgba(0,0,0,0.6)"
@@ -62,11 +60,20 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
-    
   },
   modalText: {
     marginBottom: 15,
     textAlign: 'center',
+  },
+  modalHeader:{
+    marginBottom: 10, 
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 10,
+    justifyContent: "flex-start",
+    width: "100%",
+    borderColor: "#aaa",
+    borderBottomWidth: 1
   },
   containerBtns: {
     display: 'flex',

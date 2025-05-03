@@ -15,16 +15,17 @@ export default function Panel(){
 
     const [rows, setRows] = useState<Folder[]>([]);
     const { folders } = useGetList();
+    const { modalCreateVisible, handleModalCreate } = useModals();
 
     return (
         <View>
             <View style={{height: "100%"}}>
-                <Header/>
+                <Header handleModalCreate={handleModalCreate}/>
                 <Search onSearch={(results) => setRows(results)} setRows={setRows}/>
                 <List modalConfirmDeleteFunction={handleModalDelete} rows={rows}/>
             </View>
             <ModalConfirmDelete isVisible={modalDeleteVisible} handleFunction={handleModalDelete} />
-            <ModalCreate isVisible={true} handleFunction={()=>{}} />
+            <ModalCreate isVisible={modalCreateVisible} handleFunction={handleModalCreate} />
         </View>
     )
 }
