@@ -14,13 +14,13 @@ export default function useFields(){
     const [ folderData, setFolderData ] = useState<FolderDataProps>({
         name: {
             error: false,
-            placeholder: "Nome",
+            placeholder: "Nome da Pasta...",
             errorText: "* Campo obrigatório",
             value: ""            
         },
         description: {
             error: false,
-            placeholder: "Descrição",
+            placeholder: "Descrição...",
             errorText: "* Campo obrigatório",
             value: ""            
         }

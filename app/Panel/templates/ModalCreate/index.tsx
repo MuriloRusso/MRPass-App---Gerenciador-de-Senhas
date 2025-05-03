@@ -29,7 +29,7 @@ const ModalCreate = ({isVisible, handleFunction}:ModalProps) => {
               <Form/>
               <View style={styles.containerBtns}>
                 <ButtonSecondary text='Cancelar' onClick={handleFunction} />
-                <ButtonPrimary text='Confirmar' />
+                <ButtonPrimary text='Criar Pasta' />
               </View>
             </View>
           </View>
