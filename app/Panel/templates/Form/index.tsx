@@ -14,6 +14,7 @@ export default function Form(){
 const styles = StyleSheet.create({
     form:{
         flexDirection: "column",
-        gap: 20
+        gap: 20,
+        width: "100%"
     }
 })
