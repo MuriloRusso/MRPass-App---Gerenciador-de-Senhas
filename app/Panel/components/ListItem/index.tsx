@@ -1,10 +1,11 @@
 import ButtonDelete from "@/components/ButtonDelete";
 import ButtonEdit from "@/components/ButtonEdit";
+import { Folder } from "@/types/folder";
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { StyleSheet, Text, View } from "react-native";
 import FolderIcon from "../FolderIcon";
 
-export default function ListItem({title, modalConfirmDeleteFunction}:{title: string, modalConfirmDeleteFunction: () => void}){
+export default function ListItem({folder, modalConfirmDeleteFunction}:{folder: Folder, modalConfirmDeleteFunction: () => void}){
     // const {modalDeleteVisible, handleModalDelete} = useModals();
     
     return (
@@ -13,8 +14,8 @@ export default function ListItem({title, modalConfirmDeleteFunction}:{title: str
                 <View style={{display: 'flex', flexDirection: "row", gap: 10, alignItems: "center"}}>
                     <FolderIcon size={35} />                
                     <View>
-                        <Text style={styles.title}>{title}</Text>
-                        <Text style={styles.description}>{title}</Text>
+                        <Text style={styles.title}>{folder.nome}</Text>
+                        <Text style={styles.description}>{folder.descricao}</Text>
                     </View>
                 </View>
                 <View style={styles.containerAcoes}>

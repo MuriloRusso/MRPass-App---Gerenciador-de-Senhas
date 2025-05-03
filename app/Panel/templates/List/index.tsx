@@ -16,7 +16,7 @@ export default function List({modalConfirmDeleteFunction}: {modalConfirmDeleteFu
             data={rows}
             renderItem={({ item }) => (
               <ListItem
-                title={item?.title}
+                folder={item}
                 modalConfirmDeleteFunction={modalConfirmDeleteFunction}
               />
             )}
