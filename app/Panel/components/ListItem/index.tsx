@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   item: {
     padding: 20,
     marginVertical: 8,
-    marginHorizontal: 16,
+    // marginHorizontal: 16,
     display: "flex",
     flexDirection: "row",
     justifyContent: 'space-between',
