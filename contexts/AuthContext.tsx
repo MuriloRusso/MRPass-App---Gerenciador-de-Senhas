@@ -124,10 +124,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     if(!userData.email.value){
         handleEmailError(true);
+        handleAddToast({type: "error", message:"Preencha o campo E-mail"});
         fieldErros = true;
     }
     if(!userData.password.value){
         handlePasswordError(true);
+        handleAddToast({type: "error", message:"Preencha o campo Senha"});
         fieldErros = true;
     }
 
@@ -178,30 +180,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
                       console.log('logado com sucesso');
                       setIsAuthenticated(true);
                       router.push('./Panel');
-                      handleAddToast({
-                        // id: (alerts.length + 1).toString(),
-                        type: "success",
-                        message: "Logado"
-                      })
-                      // Toast.show({
-                      //   type: 'success',
-                      //   text1: 'logado com sucesso!',
-                      //   text2: 'logado com sucesso',
-                      // });
+                      handleAddToast({type: "success", message: "Logado"})
                   }
                   else{
-                      // Toast.show({
-                      //   type: 'error',
-                      //   text1: 'erro no login!',
-                      //   text2: 'erro no login',
-                      // });
-                      console.log('erro no login');
-                      console.log(data.message);
+                      handleAddToast({type: "error", message: data.message});
                   }
               })
           })
           
         } catch (error) {
+          handleAddToast({type: "error", message: "Erro na requisição"});
           console.log(error);
         }
     }
