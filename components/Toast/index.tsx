@@ -1,20 +1,19 @@
-import { StyleSheet, Text, View } from "react-native";
-
-type ToastProps = {
-    message: string;
-    type: "success | error | info | warning"
-}
+import { ToastProps } from "@/types/toast";
+import { StyleSheet, View } from "react-native";
 
 export default function Toast({alerts}:{alerts:ToastProps[]}){
-    <View>
-        {
-            alerts.map((alert)=>{
-                return(
-                    <Text>{alert.message}</Text>
-                )
-            })
-        }
-    </View>
+    return(
+        <View /*style={styles.alertsContainer}*/ className="alerts-container">
+            {/* {
+                alerts.map((alert, i)=>{
+                    return(
+                        <Text key={i}>{alert.message}</Text>
+                    )
+                })
+            } */}
+        </View>
+
+    )
 }
 
 const styles = StyleSheet.create({
@@ -24,6 +23,9 @@ const styles = StyleSheet.create({
         gap: 10,
         position: 'absolute',
         right: 20,
-        top: 20
+        top: 20,
+        backgroundColor: "#333",
+        width: 300,
+        minHeight: 200
     }
 })

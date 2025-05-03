@@ -7,14 +7,25 @@ import { StyleSheet, Text, View } from 'react-native';
 // import Toast from 'react-native-toast-message';
 // import Loading from './components/Loading';
 import ButtonLogout from '@/components/ButtonLogout';
+import Toast from '@/components/Toast';
+import { ToastProps } from '@/types/toast';
+import { useState } from 'react';
 
 export default function RootLayout() {
+
+  const [alerts, setAlerts ] = useState<ToastProps[]>([
+    {
+      message: "teste",
+      type: "info"
+    }
+  ]);
+
 
   return (
     // <LoadingProvider>
     <AuthProvider>
         {/* <Loading/> */}
-        {/* <Toast /> */}
+        <Toast alerts={alerts} />
 
         <View style={styles.container}>
           {/* Cabeçalho que aparecerá em todas as telas */}
