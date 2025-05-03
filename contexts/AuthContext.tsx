@@ -2,6 +2,7 @@ import { Input } from '@/types/input';
 import React, { createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState } from 'react';
 // import axios from 'axios';
 // import Toast from 'react-native-toast-message';
+import useToast from '@/hooks/useToast';
 import { useRouter } from 'expo-router';
 
 type UserData = {
@@ -31,6 +32,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const router = useRouter();
 
   const [ isAuthenticated, setIsAuthenticated ] = useState<boolean>(false);
+
+  const {handleAddToast, alerts} = useToast();
 
   const [userData, setUserData] = useState<UserData>({
     email: {
@@ -174,7 +177,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
                   if(response.status === 200){
                       console.log('logado com sucesso');
                       setIsAuthenticated(true);
-                      router.push('./Panel')
+                      router.push('./Panel');
+                      handleAddToast({
+                        // id: (alerts.length + 1).toString(),
+                        type: "success",
+                        message: "Logado"
+                      })
                       // Toast.show({
                       //   type: 'success',
                       //   text1: 'logado com sucesso!',
