@@ -1,11 +1,33 @@
 import Input from "@/components/Input";
+import { InputProps } from "@/types/input";
+import { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import ButtonSearch from "../../components/ButtonSearch";
 
 export default function Search(){
+    const [searchInput, setSearchInput] = useState<InputProps>({
+        value: "",
+        placeholder: "Buscar Pasta...",
+        error: false,
+        errorText: ""
+    });
+    const handleSearchInputChange = (value: string) => {
+        setSearchInput(prev => ({
+          ...prev,
+          value: value
+        }));
+    };
+
     return (
         <View style={styles.search}>
-            <Input error={false} value="" errorText="" placeholder="Buscar Pasta..." sx={{width: "auto", minWidth: 300}} />
+            <Input 
+                error={searchInput.error}
+                value={searchInput.value}
+                errorText={searchInput.errorText}
+                placeholder={searchInput.placeholder}
+                onChange={handleSearchInputChange}
+                sx={{width: "auto", minWidth: 300}}
+            />
             <ButtonSearch/>
         </View>
     )

@@ -1,4 +1,4 @@
-import { Input } from '@/types/input';
+import { InputProps } from '@/types/input';
 import React, { createContext, Dispatch, ReactNode, SetStateAction, useContext, useState } from 'react';
 // import axios from 'axios';
 // import Toast from 'react-native-toast-message';
@@ -6,8 +6,8 @@ import useToast from '@/hooks/useToast';
 import { useRouter } from 'expo-router';
 
 type UserData = {
-  email: Input;
-  password: Input;
+  email: InputProps;
+  password: InputProps ;
 };
 
 type AuthContextData = {
