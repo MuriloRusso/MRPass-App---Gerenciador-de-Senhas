@@ -24,7 +24,7 @@ const ModalCreate = ({isVisible, handleFunction}:ModalProps) => {
             <View style={styles.modalView}>
               <View style={styles.modalHeader}>
                   <FolderIcon size={40}/>
-                  <Text>Criar Pasta</Text>
+                  <Text style={{fontSize: 20}}>Criar Pasta</Text>
               </View>
               <Form/>
               <View style={styles.containerBtns}>
@@ -67,16 +67,18 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   modalHeader:{
-    marginBottom: 10, 
+    marginBottom: 20, 
     flexDirection: "row",
     alignItems: "center",
     gap: 10,
     justifyContent: "flex-start",
     width: "100%",
-    borderColor: "#aaa",
-    borderBottomWidth: 1
+    borderColor: "#ccc",
+    borderBottomWidth: 1,
+    paddingBottom: 10
   },
   containerBtns: {
+    marginTop: 20,
     display: 'flex',
     flexDirection: "row",
     // gap: 10,

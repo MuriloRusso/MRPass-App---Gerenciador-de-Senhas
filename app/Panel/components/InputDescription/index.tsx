@@ -1,12 +1,14 @@
 import Input from "@/components/Input";
+import { InputProps } from "@/types/input";
 
-export default function InputDescription() {
+export default function InputDescription({state, onChange}: {state:InputProps, onChange?: (value:string) => void;}) {
     return (
         <Input 
-            error={false}
-            errorText=""
-            value=""
-            placeholder=""
+            error={state.error}
+            errorText={state.errorText}
+            value={state.value}
+            placeholder={state.placeholder}
+            onChange={onChange}
         />
     )
 }

@@ -1,12 +1,14 @@
 import { StyleSheet, View } from "react-native";
 import InputDescription from "../../components/InputDescription";
 import InputName from "../../components/InputName";
+import useFields from "../../hooks/useFields";
 
 export default function Form(){
+    const {folderData, handleChangeNameValue, handleChangeDescriptionValue} = useFields();
     return(
         <View style={styles.form}>
-            <InputName/>
-            <InputDescription/>
+            <InputName state={folderData.name} onChange={handleChangeNameValue} />
+            <InputDescription state={folderData.description} onChange={handleChangeDescriptionValue}/>
         </View>
     )
 }
