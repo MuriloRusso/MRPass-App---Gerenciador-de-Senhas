@@ -1,5 +1,5 @@
 import { Input } from '@/types/input';
-import React, { createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState } from 'react';
+import React, { createContext, Dispatch, ReactNode, SetStateAction, useContext, useState } from 'react';
 // import axios from 'axios';
 // import Toast from 'react-native-toast-message';
 import useToast from '@/hooks/useToast';
@@ -177,10 +177,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           .then((response) => {
               response.json().then((data) => {
                   if(response.status === 200){
-                      console.log('logado com sucesso');
                       setIsAuthenticated(true);
                       router.push('./Panel');
-                      handleAddToast({type: "success", message: "Logado"})
+                      handleAddToast({type: "success", message: "Você entrou com sucesso!"})
                   }
                   else{
                       handleAddToast({type: "error", message: data.message});
@@ -197,14 +196,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const signOut = () => {
     setIsAuthenticated(false);
+    handleAddToast({type: "info", message: "Você saiu do sistema."});
+
     router.push('/');
   }
-
-  useEffect(()=>{
-    console.log('isAuthenticated');
-    console.log(isAuthenticated);
-    
-  },[isAuthenticated])
 
   return (
     <AuthContext.Provider value={{
