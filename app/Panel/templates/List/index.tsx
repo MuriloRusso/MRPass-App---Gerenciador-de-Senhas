@@ -1,11 +1,10 @@
+import { Folder } from '@/types/folder';
 import React from 'react';
 import { FlatList, SafeAreaView, StyleSheet } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import ListItem from '../../components/ListItem';
-import useGetList from '../../hooks/useGetList';
 
-export default function List({modalConfirmDeleteFunction}: {modalConfirmDeleteFunction: () => void}){
-    const { rows } = useGetList();
+export default function List({modalConfirmDeleteFunction, rows}: {modalConfirmDeleteFunction: () => void, rows:Folder[]}){
 
     // return (<></>)
 
@@ -20,7 +19,7 @@ export default function List({modalConfirmDeleteFunction}: {modalConfirmDeleteFu
                 modalConfirmDeleteFunction={modalConfirmDeleteFunction}
               />
             )}
-            keyExtractor={item => item?.id?.toString()}
+            keyExtractor={item => item.id.toString()}
           />
         </SafeAreaView>
       </SafeAreaProvider>

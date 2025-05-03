@@ -4,7 +4,7 @@ import { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import ButtonSearch from "../../components/ButtonSearch";
 
-export default function Search(){
+export default function Search({onSearch, setRows}: {onSearch: (results:any) => void, setRows: any}){
     const [searchInput, setSearchInput] = useState<InputProps>({
         value: "",
         placeholder: "Buscar Pasta...",
@@ -28,7 +28,7 @@ export default function Search(){
                 onChange={handleSearchInputChange}
                 sx={{width: "auto", minWidth: 300}}
             />
-            <ButtonSearch/>
+            <ButtonSearch searchText={searchInput.value} setRows={setRows}/>
         </View>
     )
 }
