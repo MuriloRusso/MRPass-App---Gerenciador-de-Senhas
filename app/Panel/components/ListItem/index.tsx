@@ -45,7 +45,8 @@ const styles = StyleSheet.create({
     fontSize: 25,
   },
   description: {
-    fontSize: 16
+    fontSize: 16,
+    maxWidth: '80%'
   },
   containerAcoes: {
     display: "flex",
