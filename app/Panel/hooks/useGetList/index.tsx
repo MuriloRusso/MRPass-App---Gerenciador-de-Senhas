@@ -1,8 +1,11 @@
-import { useEffect } from "react";
-import useFields from "../useFields";
+import { Folder } from "@/types/folder";
+import { useEffect, useState } from "react";
 
 export default function useGetList() {
-  const {rows, setRows} = useFields();
+  // const {folders, setFolders} = useFields();
+
+  const [folders, setFolders] = useState<Folder[]>([]);
+
   
   useEffect(() => {
     const fetchData = async () => {
@@ -16,19 +19,19 @@ export default function useGetList() {
         console.log("Dados recebidos:", data);
 
         if (data?.folders) {
-          setRows(data.folders);
+          setFolders(data.folders);
         } else {
           console.warn("Nenhuma pasta encontrada");
-          setRows([]); // garante um array mesmo se vazio
+          setFolders([]); // garante um array mesmo se vazio
         }
       } catch (error) {
         console.error("Erro ao buscar dados:", error);
-        setRows([]); // evita quebra da FlatList
+        setFolders([]); // evita quebra da FlatList
       }
     };
 
     fetchData();
   }, []);
 
-  return { rows, setRows };
+  return { folders, setFolders };
 }

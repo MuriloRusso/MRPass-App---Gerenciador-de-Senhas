@@ -1,7 +1,8 @@
 import { View } from "react-native";
 // import ModalCreate from "./templates/ModalCreate";
 import { Folder } from "@/types/folder";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import useGetList from "./hooks/useGetList";
 import useModals from "./hooks/useModals";
 import Header from "./templates/Header";
 import List from "./templates/List";
@@ -12,9 +13,12 @@ export default function Panel(){
     
     const {modalDeleteVisible, handleModalDelete} = useModals();
 
-    // const { rows } = useGetList();
-        const [rows, setRows] = useState<Folder[]>([]);
+    const [rows, setRows] = useState<Folder[]>([]);
+    const { folders } = useGetList();
     
+    useEffect(()=>{
+        setRows(folders);
+    }, [folders])
 
     // const [ serach ]
     return (
