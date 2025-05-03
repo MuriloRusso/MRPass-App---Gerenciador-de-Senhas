@@ -1,5 +1,5 @@
-import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import { ComponentType } from "react";
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
 type ButtonSecondaryIconProps = {
     text: string;
@@ -28,9 +28,9 @@ const styles = StyleSheet.create({
         gap: 5,
         borderRadius: 4,
         borderWidth: 1,
-        borderColor: "#FE715B"
+        borderColor: "#FE715B",
     },
     buttonText: {
-        color: "#FE715B"
+        color: "#FE715B",
     }
 })
