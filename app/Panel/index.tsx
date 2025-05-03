@@ -1,7 +1,7 @@
 import { View } from "react-native";
 // import ModalCreate from "./templates/ModalCreate";
 import { Folder } from "@/types/folder";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useGetList from "./hooks/useGetList";
 import useModals from "./hooks/useModals";
 import Header from "./templates/Header";
@@ -15,12 +15,7 @@ export default function Panel(){
 
     const [rows, setRows] = useState<Folder[]>([]);
     const { folders } = useGetList();
-    
-    useEffect(()=>{
-        setRows(folders);
-    }, [folders])
 
-    // const [ serach ]
     return (
         <View>            
             <View style={{height: "100%"}}>
@@ -32,9 +27,3 @@ export default function Panel(){
         </View>
     )
 }
-
-// import { Text } from "react-native";
-
-// export default function Panel(){
-//     return <Text>Panel</Text>
-// }
