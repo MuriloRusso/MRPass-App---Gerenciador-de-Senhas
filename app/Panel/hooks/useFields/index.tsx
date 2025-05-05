@@ -1,16 +1,13 @@
+import { FolderDataProps } from "@/types/folder";
 import { InputProps } from "@/types/input";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function useFields(){
     
     // const [rows, setRows] = useState<Folder[]>([]);
     // return {rows, setRows}
 
-    type FolderDataProps = {
-        name: InputProps;
-        description: InputProps;
-    }
-
+ 
     const [ folderData, setFolderData ] = useState<FolderDataProps>({
         name: {
             error: false,
@@ -65,6 +62,12 @@ export default function useFields(){
         }
         }));
     };
+
+    useEffect(()=>{
+        console.log('folderData');
+        console.log(folderData);
+        
+    }, [folderData])
 
     return {folderData, handleChangeNameValue, handleChangeNameError, handleChangeDescriptionValue, handleChangeDescriptionError}
 }

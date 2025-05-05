@@ -8,6 +8,7 @@ import List from "./templates/List";
 import ModalConfirmDelete from "./templates/ModalConfirmDelete";
 import ModalCreate from "./templates/ModalCreate";
 import Search from "./templates/Search";
+import useFields from "./hooks/useFields";
 
 export default function Panel(){
     
@@ -17,6 +18,8 @@ export default function Panel(){
     const { folders } = useGetList();
     const { modalCreateVisible, handleModalCreate } = useModals();
 
+    const {folderData, handleChangeNameValue, handleChangeDescriptionValue} = useFields();
+
     return (
         <View>
             <View style={{height: "100%"}}>
@@ -25,7 +28,13 @@ export default function Panel(){
                 <List modalConfirmDeleteFunction={handleModalDelete} rows={rows}/>
             </View>
             <ModalConfirmDelete isVisible={modalDeleteVisible} handleFunction={handleModalDelete} />
-            <ModalCreate isVisible={modalCreateVisible} handleFunction={handleModalCreate} />
+            <ModalCreate 
+                data={folderData}
+                handleChangeNameValue={handleChangeNameValue}
+                handleChangeDescriptionValue={handleChangeDescriptionValue}
+                isVisible={modalCreateVisible}
+                handleFunction={handleModalCreate}
+            />
         </View>
     )
 }

@@ -5,19 +5,38 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import FolderIcon from '../../components/FolderIcon';
 import Form from '../Form';
 import useCreate from '../../hooks/useCreate';
+import { FolderDataProps } from '@/types/folder';
+import { useEffect } from 'react';
+import useFields from '../../hooks/useFields';
 
 type ModalProps = {
   isVisible: boolean;
   handleFunction: () => void;
+  data: FolderDataProps;
+  handleChangeNameValue: any;
+  handleChangeDescriptionValue: any;
 }
-const ModalCreate = ({isVisible, handleFunction}:ModalProps) => {
+const ModalCreate = ({
+  isVisible,
+  handleFunction,
+  data,
+  handleChangeNameValue,
+  handleChangeDescriptionValue
+}:ModalProps) => {
 
   const {create} = useCreate();
 
+  const { folderData } = useFields();
+
   const handleCreate = () => {
     console.log('creating...');
-    
-    create();
+    // console.log(data);
+    // console.log('folderData');    
+    // console.log(folderData);    
+    create({nome: data.name.value, descricao: data.description.value});
+
+    // create({nome: folderData.name.value, descricao: folderData.description.value});
+
   }
 
   return (
@@ -36,9 +55,13 @@ const ModalCreate = ({isVisible, handleFunction}:ModalProps) => {
                   <FolderIcon size={40}/>
                   <Text style={{fontSize: 20}}>Criar Pasta</Text>
               </View>
-              <Form/>
+              <Form
+                data={data}
+                handleChangeNameValue={handleChangeNameValue}
+                handleChangeDescriptionValue={handleChangeDescriptionValue}
+                />
               <View style={styles.containerBtns}>
-                <ButtonSecondary text='Cancelar' onClick={handleFunction} />
+                <ButtonSecondary text='Cancelar' onClick={handleFunction}/>
                 <ButtonPrimary text='Criar Pasta' onClick={handleCreate}/>
               </View>
             </View>
