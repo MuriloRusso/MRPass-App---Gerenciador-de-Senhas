@@ -4,12 +4,22 @@ import { Modal, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import FolderIcon from '../../components/FolderIcon';
 import Form from '../Form';
+import useCreate from '../../hooks/useCreate';
 
 type ModalProps = {
   isVisible: boolean;
   handleFunction: () => void;
 }
 const ModalCreate = ({isVisible, handleFunction}:ModalProps) => {
+
+  const {create} = useCreate();
+
+  const handleCreate = () => {
+    console.log('creating...');
+    
+    create();
+  }
+
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.centeredView}>
@@ -29,7 +39,7 @@ const ModalCreate = ({isVisible, handleFunction}:ModalProps) => {
               <Form/>
               <View style={styles.containerBtns}>
                 <ButtonSecondary text='Cancelar' onClick={handleFunction} />
-                <ButtonPrimary text='Criar Pasta' />
+                <ButtonPrimary text='Criar Pasta' onClick={handleCreate}/>
               </View>
             </View>
           </View>
