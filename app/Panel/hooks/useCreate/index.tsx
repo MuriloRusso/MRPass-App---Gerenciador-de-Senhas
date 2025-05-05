@@ -2,6 +2,8 @@ import { AuthContext } from "@/contexts/AuthContext";
 import useToast from "@/hooks/useToast";
 import { useContext } from "react";
 import useFields from "../useFields";
+import useGetList from "../useGetList";
+import useModals from "../useModals";
 
 export default function useCreate(){
 
@@ -10,6 +12,10 @@ export default function useCreate(){
     const {handleAddToast} = useToast();
 
     const {folderData, handleChangeNameError, handleChangeDescriptionError} = useFields();
+
+    const { fetchData } = useGetList();
+
+    const {handleModalCreate} = useModals();
 
     const create = async ({nome, descricao}: {nome:string, descricao:string}) => {
 
@@ -40,14 +46,32 @@ export default function useCreate(){
                         Authorization: `Bearer ${user?.token}`,
                     },
                     body: formData,
-                }).then((data)=>{
+
+                    
+                    /*}).then((data)=>{
+                        console.log('data');
+                        console.log(data);
+                        
+                        
+                        handleAddToast({
+                            // message: data.message.toString(),
+                            message: 'data.message.toString()',
+                            type: "success"
+                            });
+                            
+                            */});
+                    const data = await response.json();
+                    console.log('data');
+                    console.log(data);
+
                     handleAddToast({
-                        // message: data.message.toString(),
-                        message: 'data.message.toString()',
+                        message: data.message,
                         type: "success"
                     });
-                    
-                });
+
+                    fetchData();
+                    handleModalCreate();
+
             } catch (error) {
             console.error("Erro ao buscar dados:", error);
             // setRows([]); // evita quebra da FlatList
