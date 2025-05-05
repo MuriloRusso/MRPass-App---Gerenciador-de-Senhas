@@ -1,5 +1,5 @@
 import { InputProps } from '@/types/input';
-import React, { createContext, Dispatch, ReactNode, SetStateAction, useContext, useState } from 'react';
+import React, { createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState } from 'react';
 // import axios from 'axios';
 // import Toast from 'react-native-toast-message';
 import useToast from '@/hooks/useToast';
@@ -21,7 +21,15 @@ type AuthContextData = {
   clearErrors: () => void;
   signIn: () => void;
   signOut: () => void;
+  user: User | null;
+  setUser: Dispatch<SetStateAction< User | null>>;
+
 };
+
+type User = {
+  token: string
+
+}
 
 // const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 export const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -32,6 +40,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const router = useRouter();
 
   const [ isAuthenticated, setIsAuthenticated ] = useState<boolean>(false);
+
+  const [ user, setUser ] = useState<User | null>(null);
+
+  useEffect(()=>{
+    console.log('user');
+    console.log(user);
+    
+  }, [user])
 
   const {handleAddToast, alerts} = useToast();
 
@@ -179,6 +195,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
                   if(response.status === 200){
                       setIsAuthenticated(true);
                       router.push('./Panel');
+                      setUser({
+                        token: data.token
+                      })
                       handleAddToast({type: "success", message: "Você entrou com sucesso!"})
                   }
                   else{
@@ -197,7 +216,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const signOut = () => {
     setIsAuthenticated(false);
     handleAddToast({type: "info", message: "Você saiu do sistema."});
-
+    setUser(null)
     router.push('/');
   }
 
@@ -212,7 +231,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       handlePasswordError,
       clearErrors,
       signIn,
-      signOut
+      signOut,
+      user,
+      setUser
     }}>
       {children}
     </AuthContext.Provider>

@@ -1,12 +1,14 @@
+import { AuthContext } from "@/contexts/AuthContext";
 import { Folder } from "@/types/folder";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 export default function useGetList() {
   // const {folders, setFolders} = useFields();
 
   const [folders, setFolders] = useState<Folder[]>([]);
 
-  
+  const {user} = useContext(AuthContext);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -14,7 +16,7 @@ export default function useGetList() {
         const response = await fetch(route, {
           method: "GET",
           headers: {
-            Authorization: `Bearer ${4}`,
+            Authorization: `Bearer ${user?.token}`,
           },
         });
 
