@@ -13,6 +13,9 @@ export default function useGetList() {
         const route = "https://mrpass.shop/api/folders/search.php";
         const response = await fetch(route, {
           method: "GET",
+          headers: {
+            Authorization: `Bearer ${4}`,
+          },
         });
 
         const data = await response.json();
