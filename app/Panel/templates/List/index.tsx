@@ -4,7 +4,13 @@ import { FlatList, SafeAreaView, StyleSheet } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import ListItem from '../../components/ListItem';
 
-export default function List({modalConfirmDeleteFunction, rows}: {modalConfirmDeleteFunction: () => void, rows:Folder[]}){
+type ListProps = {
+  modalConfirmDeleteFunction: () => void;
+  rows: Folder[];
+  selectItemFunction: (value: Folder | null) => void;
+}
+
+export default function List({modalConfirmDeleteFunction, rows, selectItemFunction}: ListProps){
 
     // return (<></>)
 
@@ -17,6 +23,7 @@ export default function List({modalConfirmDeleteFunction, rows}: {modalConfirmDe
               <ListItem
                 folder={item}
                 modalConfirmDeleteFunction={modalConfirmDeleteFunction}
+                selectItemFunction={selectItemFunction}
               />
             )}
             keyExtractor={item => item.id.toString()}

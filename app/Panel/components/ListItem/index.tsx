@@ -5,8 +5,19 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { StyleSheet, Text, View } from "react-native";
 import FolderIcon from "../FolderIcon";
 
-export default function ListItem({folder, modalConfirmDeleteFunction}:{folder: Folder, modalConfirmDeleteFunction: () => void}){
+type ListItemProps = {
+  folder: Folder;
+  modalConfirmDeleteFunction: () => void;
+  selectItemFunction: (value:Folder | null) => void
+}
+
+export default function ListItem({folder, modalConfirmDeleteFunction, selectItemFunction}:ListItemProps){
     // const {modalDeleteVisible, handleModalDelete} = useModals();
+
+    const handleDelete = () => {
+      selectItemFunction({id: folder.id, nome: folder.nome, descricao: folder.descricao, extensao: folder.extensao, file: folder.file});
+      modalConfirmDeleteFunction();
+    }
     
     return (
         <View style={styles.item}>
@@ -20,7 +31,7 @@ export default function ListItem({folder, modalConfirmDeleteFunction}:{folder: F
                 </View>
                 <View style={styles.containerAcoes}>
                     <ButtonEdit />
-                    <ButtonDelete onClick={modalConfirmDeleteFunction}/>
+                    <ButtonDelete onClick={handleDelete}/>
                 </View>
 
             </View>

@@ -1,6 +1,7 @@
 import { Folder } from "@/types/folder";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { View } from "react-native";
+import useFields from "./hooks/useFields";
 import useGetList from "./hooks/useGetList";
 import useModals from "./hooks/useModals";
 import Header from "./templates/Header";
@@ -8,7 +9,6 @@ import List from "./templates/List";
 import ModalConfirmDelete from "./templates/ModalConfirmDelete";
 import ModalCreate from "./templates/ModalCreate";
 import Search from "./templates/Search";
-import useFields from "./hooks/useFields";
 
 export default function Panel(){
     
@@ -20,12 +20,22 @@ export default function Panel(){
 
     const {folderData, handleChangeNameValue, handleChangeDescriptionValue} = useFields();
 
+    const [selectItem, setSelectedItem] = useState<Folder | null>(null);
+
+    const handleSelectedItemChange = (item:Folder | null) => {
+        setSelectedItem(item);
+    }
+    useEffect(()=>{
+        console.log('selectItem');
+        console.log(selectItem);
+    }, [selectItem])
+
     return (
         <View>
             <View style={{height: "100%"}}>
                 <Header handleModalCreate={handleModalCreate}/>
                 <Search onSearch={(results) => setRows(results)} setRows={setRows}/>
-                <List modalConfirmDeleteFunction={handleModalDelete} rows={rows}/>
+                <List modalConfirmDeleteFunction={handleModalDelete} rows={rows} selectItemFunction={handleSelectedItemChange} />
             </View>
             <ModalConfirmDelete isVisible={modalDeleteVisible} handleFunction={handleModalDelete} />
             <ModalCreate 
