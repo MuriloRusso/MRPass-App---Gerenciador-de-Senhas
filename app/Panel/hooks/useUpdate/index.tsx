@@ -1,7 +1,7 @@
 import { AuthContext } from "@/contexts/AuthContext";
 import { useContext } from "react";
 
-export default function useCreate(){
+export default function useUpdate(){
 
     const {user} = useContext(AuthContext);
 

@@ -4,7 +4,6 @@ import { Modal, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import ButtonSubmit from '../../components/ButtonSubmit';
 import FolderIcon from '../../components/FolderIcon';
-import useCreate from '../../hooks/useCreate';
 import useFields from '../../hooks/useFields';
 import Form from '../Form';
 
@@ -25,20 +24,10 @@ const ModalCreate = ({
   handleChangeDescriptionValue
 }:ModalProps) => {
 
-  const {create} = useCreate();
 
   const { folderData } = useFields();
 
-  const handleCreate = () => {
-    console.log('creating...');
-    // console.log(data);
-    // console.log('folderData');    
-    // console.log(folderData);    
-    create({nome: data.name.value, descricao: data.description.value});
 
-    // create({nome: folderData.name.value, descricao: folderData.description.value});
-
-  }
 
   return (
     <SafeAreaProvider>
@@ -63,9 +52,7 @@ const ModalCreate = ({
                 />
               <View style={styles.containerBtns}>
                 <ButtonSecondary text='Cancelar' onClick={handleFunction}/>
-                {/* <ButtonPrimary text='Criar Pasta' onClick={handleCreate}/> */}
-                <ButtonSubmit data={data} onClick={handleCreate} />
-
+                <ButtonSubmit data={data} />
               </View>
             </View>
           </View>
