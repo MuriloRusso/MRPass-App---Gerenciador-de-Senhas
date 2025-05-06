@@ -10,7 +10,6 @@ type FormProps = {
 }
 
 export default function Form({data, handleChangeDescriptionValue, handleChangeNameValue}:FormProps){
-    // const {folderData, handleChangeNameValue, handleChangeDescriptionValue} = useFields();
     return(
         <View style={styles.form}>
             <InputName state={data.name} onChange={handleChangeNameValue} />
