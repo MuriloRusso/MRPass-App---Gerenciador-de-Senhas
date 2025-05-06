@@ -3,15 +3,14 @@ import useToast from "@/hooks/useToast";
 import { useContext } from "react";
 import useFields from "../useFields";
 import useGetList from "../useGetList";
-import useModals from "../useModals";
 
-export default function useCreate(){
+export default function useCreate(handleModalCreate: () => void){
 
     const {user} = useContext(AuthContext);
     const {handleAddToast} = useToast();
     const {folderData, handleChangeNameError, handleChangeDescriptionError} = useFields();
     const { fetchData } = useGetList();
-    const {handleModalCreate} = useModals();
+    // const {handleModalCreate} = useModals();
 
     const create = async ({nome, descricao}: {nome:string, descricao:string}) => {
         let fieldsErros:boolean = false;
@@ -46,8 +45,8 @@ export default function useCreate(){
                         type: "success"
                     });
 
-                    fetchData();
                     handleModalCreate();
+                    fetchData();
 
             } catch (error) {
                 console.error("Erro ao buscar dados:", error);

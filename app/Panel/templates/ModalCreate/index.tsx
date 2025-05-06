@@ -15,20 +15,17 @@ type ModalProps = {
   handleChangeNameValue: (value:string) => void;
   // handleChangeDescriptionValue: any;
   handleChangeDescriptionValue: (value:string) => void;
+  handleModalCreate: () => void;
 }
 const ModalCreate = ({
   isVisible,
   handleFunction,
   data,
   handleChangeNameValue,
-  handleChangeDescriptionValue
+  handleChangeDescriptionValue,
+  handleModalCreate
 }:ModalProps) => {
-
-
   const { folderData } = useFields();
-
-
-
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.centeredView}>
@@ -52,7 +49,7 @@ const ModalCreate = ({
                 />
               <View style={styles.containerBtns}>
                 <ButtonSecondary text='Cancelar' onClick={handleFunction}/>
-                <ButtonSubmit data={data} />
+                <ButtonSubmit data={data} handleModalCreate={handleModalCreate} />
               </View>
             </View>
           </View>

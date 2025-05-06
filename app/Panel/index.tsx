@@ -28,7 +28,8 @@ export default function Panel(){
     useEffect(()=>{
         console.log('selectItem');
         console.log(selectedItem);
-    }, [selectedItem])
+    }, [selectedItem]);
+    
 
     return (
         <View>
@@ -37,13 +38,19 @@ export default function Panel(){
                 <Search onSearch={(results) => setRows(results)} setRows={setRows}/>
                 <List modalConfirmDeleteFunction={handleModalDelete} rows={rows} selectItemFunction={handleSelectedItemChange} />
             </View>
-            <ModalConfirmDelete isVisible={modalDeleteVisible} handleFunction={handleModalDelete} selectedItem={selectedItem} />
-            <ModalCreate 
+            <ModalConfirmDelete
+                isVisible={modalDeleteVisible}
+                handleFunction={handleModalDelete}
+                selectedItem={selectedItem} 
+            />
+            <ModalCreate
                 data={folderData}
                 handleChangeNameValue={handleChangeNameValue}
                 handleChangeDescriptionValue={handleChangeDescriptionValue}
                 isVisible={modalCreateVisible}
                 handleFunction={handleModalCreate}
+                handleModalCreate={handleModalCreate}
+
             />
         </View>
     )

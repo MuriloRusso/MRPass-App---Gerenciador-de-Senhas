@@ -1,11 +1,10 @@
 import { AuthContext } from "@/contexts/AuthContext";
 import useToast from "@/hooks/useToast";
 import { useContext } from "react";
-import useModals from "../useModals";
 
-export default function useDelete(){
+export default function useDelete(/*{closeModal}:{closeModal: () => void;}*/){
     const {handleAddToast} = useToast();
-    const {handleModalDelete} = useModals();
+    // const {handleModalDelete} = useModals();
     const {user} = useContext(AuthContext);
     const drop = async (id:number) => {
         try {
@@ -23,7 +22,7 @@ export default function useDelete(){
                     message: data.message,
                     type: "success"
                 });
-                handleModalDelete();
+                // closeModal();
 
         } catch (error) {
             console.error("Erro ao buscar dados:", error);

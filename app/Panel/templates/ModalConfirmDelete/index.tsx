@@ -26,7 +26,7 @@ const ModalConfirmDelete = ({isVisible, handleFunction, selectedItem}:ModalProps
               <View style={styles.containerBtns}>
                 <ButtonSecondary text='Cancelar' onClick={handleFunction} />
                 {/* <ButtonPrimary text='Confirmar' /> */}
-                <ButtonDelete selectedItem={selectedItem}/>
+                <ButtonDelete selectedItem={selectedItem} />
               </View>
             </View>
           </View>
