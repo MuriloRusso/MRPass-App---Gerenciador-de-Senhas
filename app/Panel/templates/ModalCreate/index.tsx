@@ -46,7 +46,7 @@ const ModalCreate = ({
                 data={data}
                 handleChangeNameValue={handleChangeNameValue}
                 handleChangeDescriptionValue={handleChangeDescriptionValue}
-                />
+              />
               <View style={styles.containerBtns}>
                 <ButtonSecondary text='Cancelar' onClick={handleFunction}/>
                 <ButtonSubmit data={data} handleModalCreate={handleModalCreate} />

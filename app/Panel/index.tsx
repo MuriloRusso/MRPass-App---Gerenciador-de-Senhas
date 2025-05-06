@@ -28,6 +28,9 @@ export default function Panel(){
     useEffect(()=>{
         console.log('selectItem');
         console.log(selectedItem);
+        selectedItem &&
+        handleChangeNameValue(selectedItem?.nome);
+        // handleChangeDescriptionValue(selectedItem?.descricao?.toString());
     }, [selectedItem]);
     
 
@@ -36,7 +39,12 @@ export default function Panel(){
             <View style={{height: "100%"}}>
                 <Header handleModalCreate={handleModalCreate}/>
                 <Search onSearch={(results) => setRows(results)} setRows={setRows}/>
-                <List modalConfirmDeleteFunction={handleModalDelete} rows={rows} selectItemFunction={handleSelectedItemChange} />
+                <List
+                    modalConfirmDeleteFunction={handleModalDelete}
+                    modalCreateFunction={handleModalCreate}
+                    rows={rows}
+                    selectItemFunction={handleSelectedItemChange}
+                />
             </View>
             <ModalConfirmDelete
                 isVisible={modalDeleteVisible}
@@ -50,7 +58,6 @@ export default function Panel(){
                 isVisible={modalCreateVisible}
                 handleFunction={handleModalCreate}
                 handleModalCreate={handleModalCreate}
-
             />
         </View>
     )

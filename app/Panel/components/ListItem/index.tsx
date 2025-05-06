@@ -8,13 +8,19 @@ import FolderIcon from "../FolderIcon";
 type ListItemProps = {
   folder: Folder;
   modalConfirmDeleteFunction: () => void;
+  modalCreateFunction: () => void;
   selectItemFunction: (value:Folder | null) => void
 }
 
-export default function ListItem({folder, modalConfirmDeleteFunction, selectItemFunction}:ListItemProps){
+export default function ListItem({folder, modalConfirmDeleteFunction, modalCreateFunction, selectItemFunction}:ListItemProps){
     const handleDelete = () => {      
       selectItemFunction({id: folder.id, nome: folder.nome, descricao: folder.descricao, extensao: folder.extensao, file: folder.file});
       modalConfirmDeleteFunction();
+    }
+
+    const handleUpdate = () => {      
+      selectItemFunction({id: folder.id, nome: folder.nome, descricao: folder.descricao, extensao: folder.extensao, file: folder.file});
+      modalCreateFunction();
     }
     
     return (
@@ -28,7 +34,7 @@ export default function ListItem({folder, modalConfirmDeleteFunction, selectItem
                     </View>
                 </View>
                 <View style={styles.containerAcoes}>
-                    <ButtonEdit />
+                    <ButtonEdit onClick={handleUpdate} />
                     <ButtonDelete onClick={handleDelete}/>
                 </View>
 

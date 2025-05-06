@@ -6,11 +6,12 @@ import ListItem from '../../components/ListItem';
 
 type ListProps = {
   modalConfirmDeleteFunction: () => void;
+  modalCreateFunction: () => void;
   rows: Folder[];
   selectItemFunction: (value: Folder | null) => void;
 }
 
-export default function List({modalConfirmDeleteFunction, rows, selectItemFunction}: ListProps){
+export default function List({modalConfirmDeleteFunction, modalCreateFunction, rows, selectItemFunction}: ListProps){
 
     // return (<></>)
 
@@ -23,6 +24,8 @@ export default function List({modalConfirmDeleteFunction, rows, selectItemFuncti
               <ListItem
                 folder={item}
                 modalConfirmDeleteFunction={modalConfirmDeleteFunction}
+                modalCreateFunction={modalCreateFunction}
+
                 selectItemFunction={selectItemFunction}
               />
             )}
