@@ -1,7 +1,7 @@
-import ButtonPrimary from '@/components/ButtonPrimary';
 import ButtonSecondary from '@/components/ButtonSecondary';
 import { Modal, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import ButtonDelete from '../../components/ButtonDelete';
 
 type ModalProps = {
   isVisible: boolean;
@@ -23,7 +23,8 @@ const ModalConfirmDelete = ({isVisible, handleFunction}:ModalProps) => {
               <Text style={styles.modalText}>Tem certeza de que deseja excluír essa pasta?</Text>
               <View style={styles.containerBtns}>
                 <ButtonSecondary text='Cancelar' onClick={handleFunction} />
-                <ButtonPrimary text='Confirmar' />
+                {/* <ButtonPrimary text='Confirmar' /> */}
+                <ButtonDelete/>
               </View>
             </View>
           </View>
