@@ -7,14 +7,7 @@ export default function ButtonSubmit({data}:{data:FolderDataProps}){
     const {create} = useCreate();
 
     const handleCreate = () => {
-    console.log('creating...');
-    // console.log(data);
-    // console.log('folderData');
-    // console.log(folderData);    
         create({nome: data.name.value, descricao: data.description.value});
-
-    // create({nome: folderData.name.value, descricao: folderData.description.value});
-
     }
 
     return(
