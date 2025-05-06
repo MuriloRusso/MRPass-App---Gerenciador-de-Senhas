@@ -1,8 +1,8 @@
-import ButtonPrimary from '@/components/ButtonPrimary';
 import ButtonSecondary from '@/components/ButtonSecondary';
 import { FolderDataProps } from '@/types/folder';
 import { Modal, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import ButtonSubmit from '../../components/ButtonSubmit';
 import FolderIcon from '../../components/FolderIcon';
 import useCreate from '../../hooks/useCreate';
 import useFields from '../../hooks/useFields';
@@ -63,7 +63,9 @@ const ModalCreate = ({
                 />
               <View style={styles.containerBtns}>
                 <ButtonSecondary text='Cancelar' onClick={handleFunction}/>
-                <ButtonPrimary text='Criar Pasta' onClick={handleCreate}/>
+                {/* <ButtonPrimary text='Criar Pasta' onClick={handleCreate}/> */}
+                <ButtonSubmit data={data} onClick={handleCreate} />
+
               </View>
             </View>
           </View>
