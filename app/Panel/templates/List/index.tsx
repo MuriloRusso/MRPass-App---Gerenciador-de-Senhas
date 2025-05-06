@@ -12,28 +12,25 @@ type ListProps = {
 }
 
 export default function List({modalConfirmDeleteFunction, modalCreateFunction, rows, selectItemFunction}: ListProps){
+  return (
+    <SafeAreaProvider>
+      <SafeAreaView style={styles.container}>
+        <FlatList
+          data={rows}
+          renderItem={({ item }) => (
+            <ListItem
+              folder={item}
+              modalConfirmDeleteFunction={modalConfirmDeleteFunction}
+              modalCreateFunction={modalCreateFunction}
 
-    // return (<></>)
-
-    return (
-      <SafeAreaProvider>
-        <SafeAreaView style={styles.container}>
-          <FlatList
-            data={rows}
-            renderItem={({ item }) => (
-              <ListItem
-                folder={item}
-                modalConfirmDeleteFunction={modalConfirmDeleteFunction}
-                modalCreateFunction={modalCreateFunction}
-
-                selectItemFunction={selectItemFunction}
-              />
-            )}
-            keyExtractor={item => item.id.toString()}
-          />
-        </SafeAreaView>
-      </SafeAreaProvider>
-    )
+              selectItemFunction={selectItemFunction}
+            />
+          )}
+          keyExtractor={item => item.id.toString()}
+        />
+      </SafeAreaView>
+    </SafeAreaProvider>
+  )
 };
 
 const styles = StyleSheet.create({
