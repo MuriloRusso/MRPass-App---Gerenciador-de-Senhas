@@ -1,4 +1,5 @@
 import ButtonSecondary from '@/components/ButtonSecondary';
+import { Folder } from '@/types/folder';
 import { Modal, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import ButtonDelete from '../../components/ButtonDelete';
@@ -6,8 +7,9 @@ import ButtonDelete from '../../components/ButtonDelete';
 type ModalProps = {
   isVisible: boolean;
   handleFunction: () => void;
+  selectedItem: Folder | null;
 }
-const ModalConfirmDelete = ({isVisible, handleFunction}:ModalProps) => {
+const ModalConfirmDelete = ({isVisible, handleFunction, selectedItem}:ModalProps) => {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.centeredView}>
@@ -24,7 +26,7 @@ const ModalConfirmDelete = ({isVisible, handleFunction}:ModalProps) => {
               <View style={styles.containerBtns}>
                 <ButtonSecondary text='Cancelar' onClick={handleFunction} />
                 {/* <ButtonPrimary text='Confirmar' /> */}
-                <ButtonDelete/>
+                <ButtonDelete selectedItem={selectedItem}/>
               </View>
             </View>
           </View>

@@ -12,9 +12,7 @@ type ListItemProps = {
 }
 
 export default function ListItem({folder, modalConfirmDeleteFunction, selectItemFunction}:ListItemProps){
-    // const {modalDeleteVisible, handleModalDelete} = useModals();
-
-    const handleDelete = () => {
+    const handleDelete = () => {      
       selectItemFunction({id: folder.id, nome: folder.nome, descricao: folder.descricao, extensao: folder.extensao, file: folder.file});
       modalConfirmDeleteFunction();
     }

@@ -20,15 +20,15 @@ export default function Panel(){
 
     const {folderData, handleChangeNameValue, handleChangeDescriptionValue} = useFields();
 
-    const [selectItem, setSelectedItem] = useState<Folder | null>(null);
+    const [selectedItem, setSelectedItem] = useState<Folder | null>(null);
 
     const handleSelectedItemChange = (item:Folder | null) => {
         setSelectedItem(item);
     }
     useEffect(()=>{
         console.log('selectItem');
-        console.log(selectItem);
-    }, [selectItem])
+        console.log(selectedItem);
+    }, [selectedItem])
 
     return (
         <View>
@@ -37,7 +37,7 @@ export default function Panel(){
                 <Search onSearch={(results) => setRows(results)} setRows={setRows}/>
                 <List modalConfirmDeleteFunction={handleModalDelete} rows={rows} selectItemFunction={handleSelectedItemChange} />
             </View>
-            <ModalConfirmDelete isVisible={modalDeleteVisible} handleFunction={handleModalDelete} />
+            <ModalConfirmDelete isVisible={modalDeleteVisible} handleFunction={handleModalDelete} selectedItem={selectedItem} />
             <ModalCreate 
                 data={folderData}
                 handleChangeNameValue={handleChangeNameValue}
