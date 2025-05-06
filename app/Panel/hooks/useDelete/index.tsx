@@ -4,13 +4,10 @@ import { useContext } from "react";
 import useModals from "../useModals";
 
 export default function useDelete(){
-
+    const {handleAddToast} = useToast();
+    const {handleModalDelete} = useModals();
+    const {user} = useContext(AuthContext);
     const drop = async (id:number) => {
-
-        const {handleAddToast} = useToast();
-        const {handleModalDelete} = useModals();
-        const {user} = useContext(AuthContext);
-
         try {
             const route = 'https://mrpass.shop/api/folders/delete.php';
             const response = await fetch(route, {
