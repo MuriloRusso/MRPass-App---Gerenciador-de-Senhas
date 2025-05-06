@@ -1,20 +1,21 @@
 import ButtonPrimary from '@/components/ButtonPrimary';
 import ButtonSecondary from '@/components/ButtonSecondary';
+import { FolderDataProps } from '@/types/folder';
 import { Modal, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import FolderIcon from '../../components/FolderIcon';
-import Form from '../Form';
 import useCreate from '../../hooks/useCreate';
-import { FolderDataProps } from '@/types/folder';
-import { useEffect } from 'react';
 import useFields from '../../hooks/useFields';
+import Form from '../Form';
 
 type ModalProps = {
   isVisible: boolean;
   handleFunction: () => void;
   data: FolderDataProps;
-  handleChangeNameValue: any;
-  handleChangeDescriptionValue: any;
+  // handleChangeNameValue: any;
+  handleChangeNameValue: (value:string) => void;
+  // handleChangeDescriptionValue: any;
+  handleChangeDescriptionValue: (value:string) => void;
 }
 const ModalCreate = ({
   isVisible,

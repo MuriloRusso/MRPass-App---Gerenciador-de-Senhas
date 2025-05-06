@@ -1,10 +1,15 @@
+import { FolderDataProps } from "@/types/folder";
 import { StyleSheet, View } from "react-native";
 import InputDescription from "../../components/InputDescription";
 import InputName from "../../components/InputName";
-import useFields from "../../hooks/useFields";
-import { FolderDataProps } from "@/types/folder";
 
-export default function Form({data, handleChangeDescriptionValue, handleChangeNameValue}:{data:FolderDataProps; handleChangeDescriptionValue: () => void; handleChangeNameValue: () => void;}){
+type FormProps = {
+    data:FolderDataProps;
+    handleChangeDescriptionValue: (value:string) => void;
+    handleChangeNameValue: (value:string) => void;
+}
+
+export default function Form({data, handleChangeDescriptionValue, handleChangeNameValue}:FormProps){
     // const {folderData, handleChangeNameValue, handleChangeDescriptionValue} = useFields();
     return(
         <View style={styles.form}>
