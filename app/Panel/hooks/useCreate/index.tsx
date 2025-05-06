@@ -8,22 +8,13 @@ import useModals from "../useModals";
 export default function useCreate(){
 
     const {user} = useContext(AuthContext);
-
     const {handleAddToast} = useToast();
-
     const {folderData, handleChangeNameError, handleChangeDescriptionError} = useFields();
-
     const { fetchData } = useGetList();
-
     const {handleModalCreate} = useModals();
 
     const create = async ({nome, descricao}: {nome:string, descricao:string}) => {
-
-        console.log(nome, descricao);
-        
-
         let fieldsErros:boolean = false;
-
         if(!nome){
             handleChangeNameError(true);
             fieldsErros = true;
@@ -31,7 +22,6 @@ export default function useCreate(){
         if(!descricao){
             handleChangeDescriptionError(true);
             fieldsErros = true;
-
         }
 
         if(!fieldsErros){    
@@ -41,25 +31,12 @@ export default function useCreate(){
             try {
                 const route = 'https://mrpass.shop/api/folders/create.php';
                 const response = await fetch(route, {
-                    method: "POST",                
-                    headers: {
-                        Authorization: `Bearer ${user?.token}`,
-                    },
-                    body: formData,
-
-                    
-                    /*}).then((data)=>{
-                        console.log('data');
-                        console.log(data);
-                        
-                        
-                        handleAddToast({
-                            // message: data.message.toString(),
-                            message: 'data.message.toString()',
-                            type: "success"
-                            });
-                            
-                            */});
+                        method: "POST",                
+                        headers: {
+                            Authorization: `Bearer ${user?.token}`,
+                        },
+                        body: formData,
+                    });
                     const data = await response.json();
                     console.log('data');
                     console.log(data);
@@ -73,8 +50,7 @@ export default function useCreate(){
                     handleModalCreate();
 
             } catch (error) {
-            console.error("Erro ao buscar dados:", error);
-            // setRows([]); // evita quebra da FlatList
+                console.error("Erro ao buscar dados:", error);
             }
         }
     };
