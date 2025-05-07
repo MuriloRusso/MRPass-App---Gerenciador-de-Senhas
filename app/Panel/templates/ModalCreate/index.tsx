@@ -1,5 +1,5 @@
 import ButtonSecondary from '@/components/ButtonSecondary';
-import { FolderDataProps } from '@/types/folder';
+import { Folder, FolderDataProps } from '@/types/folder';
 import { Modal, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import ButtonSubmit from '../../components/ButtonSubmit';
@@ -16,6 +16,7 @@ type ModalProps = {
   // handleChangeDescriptionValue: any;
   handleChangeDescriptionValue: (value:string) => void;
   handleModalCreate: () => void;
+  selectedItem: Folder | null;
 }
 const ModalCreate = ({
   isVisible,
@@ -23,7 +24,8 @@ const ModalCreate = ({
   data,
   handleChangeNameValue,
   handleChangeDescriptionValue,
-  handleModalCreate
+  handleModalCreate,
+  selectedItem
 }:ModalProps) => {
   const { folderData } = useFields();
   return (
@@ -49,7 +51,7 @@ const ModalCreate = ({
               />
               <View style={styles.containerBtns}>
                 <ButtonSecondary text='Cancelar' onClick={handleFunction}/>
-                <ButtonSubmit data={data} handleModalCreate={handleModalCreate} />
+                <ButtonSubmit data={data} handleModalCreate={handleModalCreate} selectedItem={selectedItem} />
               </View>
             </View>
           </View>

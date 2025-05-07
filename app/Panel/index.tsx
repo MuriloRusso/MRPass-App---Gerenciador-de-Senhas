@@ -54,7 +54,7 @@ export default function Panel(){
             <ModalConfirmDelete
                 isVisible={modalDeleteVisible}
                 handleFunction={handleModalDelete}
-                selectedItem={selectedItem} 
+                selectedItem={selectedItem}
             />
             <ModalCreate
                 data={folderData}
@@ -63,6 +63,8 @@ export default function Panel(){
                 isVisible={modalCreateVisible}
                 handleFunction={handleModalCreate}
                 handleModalCreate={handleModalCreate}
+                selectedItem={selectedItem}
+
             />
         </View>
     )
