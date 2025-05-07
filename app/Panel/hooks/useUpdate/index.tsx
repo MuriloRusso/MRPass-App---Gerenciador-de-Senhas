@@ -2,16 +2,12 @@ import { AuthContext } from "@/contexts/AuthContext";
 import useToast from "@/hooks/useToast";
 import { useContext } from "react";
 import useFields from "../useFields";
-import useGetList from "../useGetList";
 
-export default function useUpdate(handleModalCreate: () => void){
+export default function useUpdate(handleModalCreate: () => void, fetchData: () => void){
 
     const {user} = useContext(AuthContext);
     const {handleAddToast} = useToast();
     const {folderData, handleChangeNameError, handleChangeDescriptionError} = useFields();
-    const { fetchData } = useGetList();
-    // const {handleModalCreate} = useModals();
-
     const update = async ({id, nome, descricao}: {id:number; nome:string; descricao:string}) => {
         let fieldsErros:boolean = false;
         if(!nome){
@@ -46,8 +42,8 @@ export default function useUpdate(handleModalCreate: () => void){
                         type: "success"
                     });
 
-                    handleModalCreate();
                     fetchData();
+                    handleModalCreate();
 
             } catch (error) {
                 console.error("Erro ao buscar dados:", error);

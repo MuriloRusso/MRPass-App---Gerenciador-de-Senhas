@@ -12,7 +12,7 @@ type ButtonSubmitProps = {
 
 export default function ButtonSubmit({data,  handleModalCreate, selectedItem, fetchData}:ButtonSubmitProps){
     const {create} = useCreate(handleModalCreate, fetchData);
-    const {update} = useUpdate(handleModalCreate);
+    const {update} = useUpdate(handleModalCreate, fetchData);
 
     const handleSubmit = () => {
         selectedItem === null ?

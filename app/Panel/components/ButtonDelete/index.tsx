@@ -2,8 +2,14 @@ import ButtonPrimary from "@/components/ButtonPrimary";
 import { Folder } from "@/types/folder";
 import useDelete from "../../hooks/useDelete";
 
-export default function ButtonDelete({selectedItem, closeModalFunction}:{selectedItem:Folder | null; closeModalFunction: () => void;}){
-    const {drop} = useDelete(closeModalFunction);
+type ButtonDeleteProps = {
+    selectedItem:Folder | null;
+    closeModalFunction: () => void;
+    fetchData: () => void;
+}
+
+export default function ButtonDelete({selectedItem, closeModalFunction, fetchData}:ButtonDeleteProps){
+    const {drop} = useDelete(closeModalFunction, fetchData);
     const handleConfirm = () => {
         selectedItem && drop(Number(selectedItem.id))
     }

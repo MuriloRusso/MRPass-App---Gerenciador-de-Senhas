@@ -55,6 +55,7 @@ export default function Panel(){
                 isVisible={modalDeleteVisible}
                 handleFunction={handleModalDelete}
                 selectedItem={selectedItem}
+                fetchData={fetchData}
             />
             <ModalCreate
                 data={folderData}

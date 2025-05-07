@@ -2,9 +2,8 @@ import { AuthContext } from "@/contexts/AuthContext";
 import useToast from "@/hooks/useToast";
 import { useContext } from "react";
 
-export default function useDelete(closeModal: () => void){
+export default function useDelete(closeModal: () => void, fetchData: () => void){
     const {handleAddToast} = useToast();
-    // const {handleModalDelete} = useModals();
     const {user} = useContext(AuthContext);
     const drop = async (id:number) => {
         try {
@@ -22,6 +21,7 @@ export default function useDelete(closeModal: () => void){
                     message: data.message,
                     type: "success"
                 });
+                fetchData();
                 closeModal();
 
         } catch (error) {
