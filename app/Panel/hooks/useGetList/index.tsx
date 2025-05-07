@@ -1,6 +1,6 @@
 import { AuthContext } from "@/contexts/AuthContext";
 import { Folder } from "@/types/folder";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 
 export default function useGetList() {
   // const {folders, setFolders} = useFields();
@@ -34,9 +34,12 @@ export default function useGetList() {
     }
   };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   async ()=>{
+  //     await fetchData();
+
+  //   }
+  // }, []);
 
   return { folders, setFolders, fetchData };
 }

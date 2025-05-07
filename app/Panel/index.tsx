@@ -15,7 +15,7 @@ export default function Panel(){
     const {modalDeleteVisible, handleModalDelete} = useModals();
 
     const [rows, setRows] = useState<Folder[]>([]);
-    const { folders } = useGetList();
+    const { folders, fetchData } = useGetList();
     const { modalCreateVisible, handleModalCreate } = useModals();
 
     const {folderData, handleChangeNameValue, handleChangeDescriptionValue} = useFields();
@@ -25,14 +25,23 @@ export default function Panel(){
     const handleSelectedItemChange = (item:Folder | null) => {
         setSelectedItem(item);
     }
-    useEffect(()=>{
-        console.log('selectItem');
-        console.log(selectedItem);
+    useEffect(() => {
         selectedItem &&
         handleChangeNameValue(selectedItem?.nome);
-        // handleChangeDescriptionValue(selectedItem?.descricao?.toString());
+        selectedItem?.descricao &&
+        handleChangeDescriptionValue(selectedItem?.descricao?.toString());
     }, [selectedItem]);
-    
+
+    useEffect(() => {        
+        const fetch = async () => {
+           await fetchData();           
+        }
+        fetch();
+    }, []);
+      
+    useEffect(() => {
+        setRows(folders);
+    }, [folders]);    
 
     return (
         <View>
