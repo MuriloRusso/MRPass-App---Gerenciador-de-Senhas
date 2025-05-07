@@ -2,7 +2,7 @@ import { AuthContext } from "@/contexts/AuthContext";
 import useToast from "@/hooks/useToast";
 import { useContext } from "react";
 
-export default function useDelete(/*{closeModal}:{closeModal: () => void;}*/){
+export default function useDelete(closeModal: () => void){
     const {handleAddToast} = useToast();
     // const {handleModalDelete} = useModals();
     const {user} = useContext(AuthContext);
@@ -10,7 +10,7 @@ export default function useDelete(/*{closeModal}:{closeModal: () => void;}*/){
         try {
             const route = 'https://mrpass.shop/api/folders/delete.php';
             const response = await fetch(route, {
-                    method: "DELETE",                
+                    method: "POST",                
                     headers: {
                         Authorization: `Bearer ${user?.token}`,
                     },
@@ -22,7 +22,7 @@ export default function useDelete(/*{closeModal}:{closeModal: () => void;}*/){
                     message: data.message,
                     type: "success"
                 });
-                // closeModal();
+                closeModal();
 
         } catch (error) {
             console.error("Erro ao buscar dados:", error);

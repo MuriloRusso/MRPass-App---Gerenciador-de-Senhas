@@ -25,8 +25,7 @@ const ModalConfirmDelete = ({isVisible, handleFunction, selectedItem}:ModalProps
               <Text style={styles.modalText}>Tem certeza de que deseja excluír essa pasta?</Text>
               <View style={styles.containerBtns}>
                 <ButtonSecondary text='Cancelar' onClick={handleFunction} />
-                {/* <ButtonPrimary text='Confirmar' /> */}
-                <ButtonDelete selectedItem={selectedItem} />
+                <ButtonDelete selectedItem={selectedItem} closeModalFunction={handleFunction} />
               </View>
             </View>
           </View>
