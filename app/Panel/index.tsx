@@ -13,26 +13,22 @@ import Search from "./templates/Search";
 export default function Panel(){
     
     const {modalDeleteVisible, handleModalDelete} = useModals();
-
     const [rows, setRows] = useState<Folder[]>([]);
     const { folders, fetchData } = useGetList();
     const { modalCreateVisible, handleModalCreate } = useModals();
-
     const {folderData, handleChangeNameValue, handleChangeDescriptionValue} = useFields();
 
     const [selectedItem, setSelectedItem] = useState<Folder | null>(null);
-
     const handleSelectedItemChange = (item:Folder | null) => {
         setSelectedItem(item);
     }
+
     useEffect(() => {
-        selectedItem &&
-        handleChangeNameValue(selectedItem?.nome);
-        selectedItem?.descricao &&
-        handleChangeDescriptionValue(selectedItem?.descricao?.toString());
+        selectedItem && handleChangeNameValue(selectedItem?.nome);
+        selectedItem?.descricao && handleChangeDescriptionValue(selectedItem?.descricao?.toString());
     }, [selectedItem]);
 
-    useEffect(() => {        
+    useEffect(() => {
         const fetch = async () => {
            await fetchData();           
         }
