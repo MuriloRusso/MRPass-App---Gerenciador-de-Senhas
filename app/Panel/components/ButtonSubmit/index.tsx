@@ -19,5 +19,5 @@ export default function ButtonSubmit({data,  handleModalCreate, selectedItem}:Bu
         update({id: Number(selectedItem.id), nome: data.name.value, descricao: data.description.value});
     }
 
-    return <ButtonPrimary text='Criar Pasta' onClick={handleSubmit}/>
+    return <ButtonPrimary text={selectedItem === null ? 'Criar Pasta' : 'Atualizar Pasta'} onClick={handleSubmit}/>
 }
