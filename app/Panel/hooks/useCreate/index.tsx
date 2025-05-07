@@ -2,14 +2,14 @@ import { AuthContext } from "@/contexts/AuthContext";
 import useToast from "@/hooks/useToast";
 import { useContext } from "react";
 import useFields from "../useFields";
-import useGetList from "../useGetList";
+// import useGetList from "../useGetList";
 
-export default function useCreate(handleModalCreate: () => void){
+export default function useCreate(handleModalCreate: () => void, fetchData: () => void){
 
     const {user} = useContext(AuthContext);
     const {handleAddToast} = useToast();
     const {folderData, handleChangeNameError, handleChangeDescriptionError} = useFields();
-    const { fetchData } = useGetList();
+    // const { fetchData } = useGetList();
     // const {handleModalCreate} = useModals();
 
     const create = async ({nome, descricao}: {nome:string, descricao:string}) => {

@@ -64,7 +64,7 @@ export default function Panel(){
                 handleFunction={handleModalCreate}
                 handleModalCreate={handleModalCreate}
                 selectedItem={selectedItem}
-
+                fetchData={fetchData}
             />
         </View>
     )

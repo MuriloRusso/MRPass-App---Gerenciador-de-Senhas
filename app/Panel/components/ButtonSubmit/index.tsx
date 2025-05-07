@@ -6,11 +6,12 @@ import useUpdate from "../../hooks/useUpdate";
 type ButtonSubmitProps = {
     data:FolderDataProps;
     handleModalCreate: () => void;
-    selectedItem: Folder | null
+    selectedItem: Folder | null;
+    fetchData: () => void;
 }
 
-export default function ButtonSubmit({data,  handleModalCreate, selectedItem}:ButtonSubmitProps){
-    const {create} = useCreate(handleModalCreate);
+export default function ButtonSubmit({data,  handleModalCreate, selectedItem, fetchData}:ButtonSubmitProps){
+    const {create} = useCreate(handleModalCreate, fetchData);
     const {update} = useUpdate(handleModalCreate);
 
     const handleSubmit = () => {
