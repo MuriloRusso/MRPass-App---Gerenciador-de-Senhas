@@ -4,6 +4,8 @@ import React, { createContext, Dispatch, ReactNode, SetStateAction, useState } f
 type GlobalContextData = {
     alerts: ToastProps[];
     setAlerts: Dispatch<SetStateAction<ToastProps[]>>;
+    loading: boolean;
+    setLoading: Dispatch<SetStateAction<boolean>>;
 };
 
 export const GlobalContext = createContext<GlobalContextData>({} as GlobalContextData);
@@ -11,8 +13,10 @@ export const GlobalContext = createContext<GlobalContextData>({} as GlobalContex
 export function GlobalProvider({ children }: { children: ReactNode }) {
 
   const [alerts, setAlerts ] = useState<ToastProps[]>([]);
+  const [loading, setLoading ] = useState<boolean>(false);
+
   return (
-    <GlobalContext.Provider value={{alerts, setAlerts}}>
+    <GlobalContext.Provider value={{alerts, setAlerts, loading, setLoading }}>
       {children}
     </GlobalContext.Provider>
   );
