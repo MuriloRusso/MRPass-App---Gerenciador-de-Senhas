@@ -9,19 +9,19 @@ import { StyleSheet, Text, View } from 'react-native';
 import ButtonLogout from '@/components/ButtonLogout';
 import Toast from '@/components/Toast';
 import { GlobalProvider } from '@/contexts/GlobalContext';
+import Loading from './components/Loading';
 
 export default function RootLayout() {
-
-  
 
 
   return (
     <GlobalProvider>
     {/* // <LoadingProvider> */}
     <AuthProvider>
-        {/* <Loading/> */}
+        <Loading visible={true}/>
         {/* <Toast alerts={alerts} /> */}
         <Toast/>
+        
 
         <View style={styles.container}>
           {/* Cabeçalho que aparecerá em todas as telas */}
