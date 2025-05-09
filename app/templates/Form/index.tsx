@@ -3,9 +3,13 @@ import Input from "@/components/Input";
 import { useContext } from "react";
 import { StyleSheet, View } from "react-native";
 import { useAuth } from "@/contexts/AuthContext";
+import Loading from "@/components/Loading";
+import { GlobalContext } from "@/contexts/GlobalContext";
 
 export default function Form(){
     // const { userData } = useContext(AuthContext);
+    const { loading } = useContext(GlobalContext);
+
     const { userData, handleEmailChange, handlePasswordChange, signIn } = useAuth();
     return (
         <View style={styles.form}>
@@ -25,6 +29,8 @@ export default function Form(){
                 secureTextEntry={true}
             />
             <ButtonPrimary text="Entrar" onClick={signIn}/>
+            <Loading visible={loading}/>
+
         </View>
     )
 }

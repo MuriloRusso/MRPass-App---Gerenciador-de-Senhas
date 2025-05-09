@@ -5,6 +5,7 @@ import React, { createContext, Dispatch, ReactNode, SetStateAction, useContext, 
 import useLoading from '@/hooks/useLoading';
 import useToast from '@/hooks/useToast';
 import { useRouter } from 'expo-router';
+import { GlobalContext } from './GlobalContext';
 
 type UserData = {
   email: InputProps;
@@ -45,8 +46,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [ user, setUser ] = useState<User | null>(null);
 
   // const { setLoading } = useContext(GlobalContext);
+  const { handleVisibleLoading } = useContext(GlobalContext);
 
-  const { handleVisibleLoading } = useLoading();
+  // const { handleVisibleLoading } = useLoading();
 
   const {handleAddToast, alerts} = useToast();
 
@@ -134,7 +136,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const signIn = async() => {
     handleVisibleLoading(true);
-    clearErrors();
+    /*clearErrors();
     let fieldErros:boolean = false;
 
     if(!userData.email.value){
@@ -209,7 +211,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           handleAddToast({type: "error", message: "Erro na requisição"});
           console.log(error);
         }
-    }
+    }*/
     // setLoading(false);
 
   }

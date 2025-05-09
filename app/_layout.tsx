@@ -9,16 +9,28 @@ import { StyleSheet, Text, View } from 'react-native';
 import ButtonLogout from '@/components/ButtonLogout';
 import Toast from '@/components/Toast';
 import { GlobalProvider } from '@/contexts/GlobalContext';
-import Loading from './components/Loading';
+import Loading from '@/components/Loading';
+import useLoading from '@/hooks/useLoading';
+import { useEffect } from 'react';
+// import Loading from './components/Loading';
 
 export default function RootLayout() {
 
+
+  const { loading } = useLoading();
+
+  
+   useEffect(()=>{
+          console.log('lay***');
+          console.log(loading);
+          
+      }, [loading])
 
   return (
     <GlobalProvider>
     {/* // <LoadingProvider> */}
       <AuthProvider>
-        <Loading/>
+        {/* <Loading visible={loading}/> */}
         <Toast/>
         <View style={styles.container}>
           {/* Cabeçalho que aparecerá em todas as telas */}
