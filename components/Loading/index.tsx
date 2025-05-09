@@ -29,21 +29,12 @@
 // });
 
 // export default Loading;
-import { GlobalContext } from '@/contexts/GlobalContext';
-import useLoading from '@/hooks/useLoading';
-import React, { useContext, useEffect } from 'react';
+import React from 'react';
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
-type LoadingProps = {
-
-}
-
-const { loading } = useContext(GlobalContext);
-
 export default function Loading({visible}: {visible:boolean}){ 
     return(
-        // loading &&
         visible &&
         <View style={{backgroundColor: "#fff", width: "100%", height: "100%", position: 'absolute', left: 0, top: 0, zIndex: 9}}>
             <SafeAreaProvider>

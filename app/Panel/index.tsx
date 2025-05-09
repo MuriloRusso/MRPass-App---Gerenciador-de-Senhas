@@ -1,5 +1,5 @@
 import { Folder } from "@/types/folder";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { View } from "react-native";
 import useFields from "./hooks/useFields";
 import useGetList from "./hooks/useGetList";
@@ -9,14 +9,17 @@ import List from "./templates/List";
 import ModalConfirmDelete from "./templates/ModalConfirmDelete";
 import ModalCreate from "./templates/ModalCreate";
 import Search from "./templates/Search";
+import Loading from "@/components/Loading";
+import { GlobalContext } from "@/contexts/GlobalContext";
 
 export default function Panel(){
     
     const {modalDeleteVisible, handleModalDelete} = useModals();
-    const [rows, setRows] = useState<Folder[]>([]);
+    const [ rows, setRows ] = useState<Folder[]>([]);
     const { folders, fetchData } = useGetList();
     const { modalCreateVisible, handleModalCreate } = useModals();
-    const {folderData, handleChangeNameValue, handleChangeDescriptionValue} = useFields();
+    const { folderData, handleChangeNameValue, handleChangeDescriptionValue } = useFields();
+    const { loading } = useContext(GlobalContext);
 
     const [selectedItem, setSelectedItem] = useState<Folder | null>(null);
     const handleSelectedItemChange = (item:Folder | null) => {
@@ -67,6 +70,7 @@ export default function Panel(){
                 selectedItem={selectedItem}
                 fetchData={fetchData}
             />
+            <Loading visible={loading}/>
         </View>
     )
 }

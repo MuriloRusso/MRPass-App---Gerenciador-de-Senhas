@@ -38,19 +38,11 @@ export const AuthContext = createContext<AuthContextData>({} as AuthContextData)
 
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-
   const router = useRouter();
-
   const [ isAuthenticated, setIsAuthenticated ] = useState<boolean>(false);
-
   const [ user, setUser ] = useState<User | null>(null);
-
-  // const { setLoading } = useContext(GlobalContext);
   const { handleVisibleLoading } = useContext(GlobalContext);
-
-  // const { handleVisibleLoading } = useLoading();
-
-  const {handleAddToast, alerts} = useToast();
+  const { handleAddToast } = useToast();
 
   const [userData, setUserData] = useState<UserData>({
     email: {
@@ -168,6 +160,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           setIsAuthenticated(true);
           router.push('./Panel');
           setUser({ token: data.token });
+          handleVisibleLoading(false);
           handleAddToast({ type: "success", message: "Você entrou com sucesso!" });
         } else {
           handleAddToast({ type: "error", message: data.message });
@@ -187,10 +180,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }
 
   const signOut = () => {
+    handleVisibleLoading(true);
     setIsAuthenticated(false);
     handleAddToast({type: "info", message: "Você saiu do sistema."});
     setUser(null)
     router.push('/');
+    handleVisibleLoading(false);
   }
 
   return (

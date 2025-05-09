@@ -1,14 +1,9 @@
 import ButtonPrimary from "@/components/ButtonPrimary";
 import Input from "@/components/Input";
-import { useContext } from "react";
 import { StyleSheet, View } from "react-native";
 import { useAuth } from "@/contexts/AuthContext";
-import Loading from "@/components/Loading";
-import { GlobalContext } from "@/contexts/GlobalContext";
 
 export default function Form(){
-    // const { userData } = useContext(AuthContext);
-
     const { userData, handleEmailChange, handlePasswordChange, signIn } = useAuth();
     return (
         <View style={styles.form}>
