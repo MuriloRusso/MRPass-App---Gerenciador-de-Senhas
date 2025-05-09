@@ -1,36 +1,15 @@
-// app/_layout.js
 import { AuthProvider } from '@/contexts/AuthContext';
-// import { LoadingProvider } from '@/contexts/LoadingContext';
 import { Stack } from 'expo-router';
 import { StyleSheet, Text, View } from 'react-native';
-
-// import Toast from 'react-native-toast-message';
-// import Loading from './components/Loading';
 import ButtonLogout from '@/components/ButtonLogout';
 import Toast from '@/components/Toast';
 import { GlobalProvider } from '@/contexts/GlobalContext';
-import Loading from '@/components/Loading';
-import useLoading from '@/hooks/useLoading';
-import { useEffect } from 'react';
-// import Loading from './components/Loading';
 
 export default function RootLayout() {
 
-
-  const { loading } = useLoading();
-
-  
-   useEffect(()=>{
-          console.log('lay***');
-          console.log(loading);
-          
-      }, [loading])
-
   return (
     <GlobalProvider>
-    {/* // <LoadingProvider> */}
       <AuthProvider>
-        {/* <Loading visible={loading}/> */}
         <Toast/>
         <View style={styles.container}>
           {/* Cabeçalho que aparecerá em todas as telas */}
@@ -53,7 +32,6 @@ export default function RootLayout() {
           </View>
         </View>
       </AuthProvider>
-    {/* // </LoadingProvider> */}
     </GlobalProvider>
 
   );
