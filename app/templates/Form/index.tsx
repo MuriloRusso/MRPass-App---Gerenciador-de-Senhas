@@ -8,7 +8,6 @@ import { GlobalContext } from "@/contexts/GlobalContext";
 
 export default function Form(){
     // const { userData } = useContext(AuthContext);
-    const { loading } = useContext(GlobalContext);
 
     const { userData, handleEmailChange, handlePasswordChange, signIn } = useAuth();
     return (
@@ -29,8 +28,6 @@ export default function Form(){
                 secureTextEntry={true}
             />
             <ButtonPrimary text="Entrar" onClick={signIn}/>
-            <Loading visible={loading}/>
-
         </View>
     )
 }
