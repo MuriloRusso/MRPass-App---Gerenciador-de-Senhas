@@ -9,8 +9,7 @@ export default function useCreate(handleModalCreate: () => void, fetchData: () =
     const {user} = useContext(AuthContext);
     const {handleAddToast} = useToast();
     const {handleChangeNameError, handleChangeDescriptionError} = useFields();
-    const { handleVisibleLoading } = useContext(GlobalContext);
-    
+    const { handleVisibleLoading } = useContext(GlobalContext);    
 
     const fetchCreate = async ({nome, descricao}: {nome:string, descricao:string}) => {
         let fieldsErros:boolean = false;
