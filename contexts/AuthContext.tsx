@@ -1,7 +1,8 @@
 import { InputProps } from '@/types/input';
-import React, { createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState } from 'react';
+import React, { createContext, Dispatch, ReactNode, SetStateAction, useContext, useState } from 'react';
 // import axios from 'axios';
 // import Toast from 'react-native-toast-message';
+import useLoading from '@/hooks/useLoading';
 import useToast from '@/hooks/useToast';
 import { useRouter } from 'expo-router';
 
@@ -43,11 +44,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const [ user, setUser ] = useState<User | null>(null);
 
-  useEffect(()=>{
-    console.log('user');
-    console.log(user);
-    
-  }, [user])
+  // const { setLoading } = useContext(GlobalContext);
+
+  const { handleVisibleLoading } = useLoading();
 
   const {handleAddToast, alerts} = useToast();
 
@@ -134,7 +133,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
 
   const signIn = async() => {
-
+    handleVisibleLoading(true);
     clearErrors();
     let fieldErros:boolean = false;
 
@@ -211,6 +210,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           console.log(error);
         }
     }
+    // setLoading(false);
+
   }
 
   const signOut = () => {

@@ -17,12 +17,9 @@ export default function RootLayout() {
   return (
     <GlobalProvider>
     {/* // <LoadingProvider> */}
-    <AuthProvider>
-        <Loading visible={true}/>
-        {/* <Toast alerts={alerts} /> */}
+      <AuthProvider>
+        <Loading/>
         <Toast/>
-        
-
         <View style={styles.container}>
           {/* Cabeçalho que aparecerá em todas as telas */}
           <View style={styles.header}>
