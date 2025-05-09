@@ -10,13 +10,14 @@ export default function useLoading () {
     }
 
     useEffect(()=>{
-
         console.log('-----loading-----');
         console.log(loading);
         console.log('----------');
-        
-
     }, [loading])
+
+    // useEffect(()=>{
+    //     handleVisibleLoading(false);
+    // }, [])
 
     return{loading, handleVisibleLoading}
 }

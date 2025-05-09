@@ -134,86 +134,56 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
 
-  const signIn = async() => {
-    handleVisibleLoading(true);
-    /*clearErrors();
-    let fieldErros:boolean = false;
+  const fetchLogin = async () => {
+    clearErrors();
+    let fieldErros: boolean = false;
 
-    if(!userData.email.value){
-        handleEmailError(true);
-        handleAddToast({type: "error", message:"Preencha o campo E-mail"});
-        fieldErros = true;
-    }
-    if(!userData.password.value){
-        handlePasswordError(true);
-        handleAddToast({type: "error", message:"Preencha o campo Senha"});
-        fieldErros = true;
+    if (!userData.email.value) {
+      handleEmailError(true);
+      handleAddToast({ type: "error", message: "Preencha o campo E-mail" });
+      fieldErros = true;
     }
 
-    if(!fieldErros){
+    if (!userData.password.value) {
+      handlePasswordError(true);
+      handleAddToast({ type: "error", message: "Preencha o campo Senha" });
+      fieldErros = true;
+    }
 
-        // const api = axios.create({
-        //     baseURL: 'https://mrpass.shop/api/',
-        //     timeout: 25000,
-        //     headers: {
-        //       'Content-Type': 'application/json',
-        //       'Accept': 'application/json'
+    if (!fieldErros) {
+      try {
+        const route = 'https://mrpass.shop/api/';
+        let formData = new FormData();
+        formData.append('username', userData.email.value);
+        formData.append('password', userData.password.value);
 
-        //     },
-        // });
+        const response = await fetch(`${route}login.php`, {
+          method: 'POST',
+          body: formData,
+        });
 
-        // try {
-        //     console.log({
-        //         username: userData.email.value,
-        //         password: userData.password.value
-        //     });
+        const data = await response.json();
 
-        //     const response = await api.post('login.php', {
-        //       username: userData.email.value,
-        //       password: userData.password.value
-        //     });
-            
-        //     return response.data;
-            
-        // } catch (error) {
-        // console.log(error);
-        // throw error;
-        // }
-
-        try {
-          const route = 'https://mrpass.shop/api/';
-  
-          let formData = new FormData();
-          formData.append('username', userData.email.value);
-          formData.append('password', userData.password.value);
-  
-          let myResponse = fetch(`${route}login.php`, {
-              method: 'POST',
-              body: formData,
-          })
-          .then((response) => {
-              response.json().then((data) => {
-                  if(response.status === 200){
-                      setIsAuthenticated(true);
-                      router.push('./Panel');
-                      setUser({
-                        token: data.token
-                      })
-                      handleAddToast({type: "success", message: "Você entrou com sucesso!"})
-                  }
-                  else{
-                      handleAddToast({type: "error", message: data.message});
-                  }
-              })
-          })
-          
-        } catch (error) {
-          handleAddToast({type: "error", message: "Erro na requisição"});
-          console.log(error);
+        if (response.status === 200) {
+          setIsAuthenticated(true);
+          router.push('./Panel');
+          setUser({ token: data.token });
+          handleAddToast({ type: "success", message: "Você entrou com sucesso!" });
+        } else {
+          handleAddToast({ type: "error", message: data.message });
         }
-    }*/
-    // setLoading(false);
+      } catch (error) {
+        handleAddToast({ type: "error", message: "Erro na requisição" });
+        console.error(error);
+      }
+    }
+  };
 
+  const signIn = async () => {
+    handleVisibleLoading(true);
+    await fetchLogin().then(()=>{
+      handleVisibleLoading(false);
+    })
   }
 
   const signOut = () => {
