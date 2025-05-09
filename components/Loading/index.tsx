@@ -1,60 +1,21 @@
-// import React from 'react';
-// import { View, StyleSheet } from 'react-native';
-// import LottieView from 'lottie-react-native';
-
-// const Loading = () => {
-//   return (
-//     <View style={styles.container}>
-//       <LottieView
-//         source={require('./assets/loading-animation.json')}
-//         autoPlay
-//         loop
-//         style={styles.animation}
-//       />
-//     </View>
-//   );
-// };
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     backgroundColor: '#fff',
-//   },
-//   animation: {
-//     width: 200,
-//     height: 200,
-//   },
-// });
-
-// export default Loading;
 import React from 'react';
-import { ActivityIndicator, StyleSheet, View } from 'react-native';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { ActivityIndicator, StyleSheet, View, Modal } from 'react-native';
 
 export default function Loading({visible}: {visible:boolean}){ 
-    return(
-        visible &&
-        <View style={{backgroundColor: "#fff", width: "100%", height: "100%", position: 'absolute', left: 0, top: 0, zIndex: 9}}>
-            <SafeAreaProvider>
-                <SafeAreaView style={[styles.container, styles.horizontal]}>
-                    <ActivityIndicator size="large" color="#FE715B" />
-                </SafeAreaView>
-            </SafeAreaProvider>
-        </View>
+    return (
+        <Modal visible={visible} transparent animationType="none">
+            <View style={styles.wrapper}>
+                <ActivityIndicator size="large" color="#FE715B" />
+            </View>
+        </Modal>
     );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  wrapper: {
     flex: 1,
+    backgroundColor: 'rgba(255,255,255,0.8)',
     justifyContent: 'center',
-  },
-  horizontal: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    padding: 10,
+    alignItems: 'center',
   },
 });
-
