@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function useModals(){
 
@@ -11,11 +11,6 @@ export default function useModals(){
     const handleModalCreate = () => {
         setModalCreateVisible(!modalCreateVisible);
     }
-    useEffect(()=>{
-        console.log('modalCreateVisible');
-        console.log(modalCreateVisible);
-        
-    }, [modalCreateVisible])
 
     return {modalDeleteVisible, handleModalDelete, modalCreateVisible, handleModalCreate}
 }

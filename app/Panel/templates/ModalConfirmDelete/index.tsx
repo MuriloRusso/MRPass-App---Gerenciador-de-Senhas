@@ -9,8 +9,16 @@ type ModalProps = {
   handleFunction: () => void;
   selectedItem: Folder | null;
   fetchData: () => void;
+  selectItemFunction: (value:Folder | null) => void;
 }
-const ModalConfirmDelete = ({isVisible, handleFunction, selectedItem, fetchData}:ModalProps) => {
+const ModalConfirmDelete = ({isVisible, handleFunction, selectedItem, fetchData, selectItemFunction}:ModalProps) => {
+
+  const handleClose = () => {
+    selectItemFunction(null);
+    console.log(selectedItem);
+    handleFunction();
+  }
+
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.centeredView}>
@@ -19,13 +27,13 @@ const ModalConfirmDelete = ({isVisible, handleFunction, selectedItem, fetchData}
           transparent={true}
           visible={isVisible}
           onRequestClose={() => {
-            handleFunction();
+            handleClose
           }}>
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
               <Text style={styles.modalText}>Tem certeza de que deseja excluír essa pasta?</Text>
               <View style={styles.containerBtns}>
-                <ButtonSecondary text='Cancelar' onClick={handleFunction} />
+                <ButtonSecondary text='Cancelar' onClick={handleClose} />
                 <ButtonDelete selectedItem={selectedItem} closeModalFunction={handleFunction} fetchData={fetchData} />
               </View>
             </View>

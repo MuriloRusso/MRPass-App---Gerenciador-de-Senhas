@@ -1,3 +1,5 @@
+import Loading from "@/components/Loading";
+import { GlobalContext } from "@/contexts/GlobalContext";
 import { Folder } from "@/types/folder";
 import { useContext, useEffect, useState } from "react";
 import { View } from "react-native";
@@ -9,8 +11,6 @@ import List from "./templates/List";
 import ModalConfirmDelete from "./templates/ModalConfirmDelete";
 import ModalCreate from "./templates/ModalCreate";
 import Search from "./templates/Search";
-import Loading from "@/components/Loading";
-import { GlobalContext } from "@/contexts/GlobalContext";
 
 export default function Panel(){
     
@@ -59,6 +59,8 @@ export default function Panel(){
                 handleFunction={handleModalDelete}
                 selectedItem={selectedItem}
                 fetchData={fetchData}
+                selectItemFunction={handleSelectedItemChange}
+
             />
             <ModalCreate
                 data={folderData}
