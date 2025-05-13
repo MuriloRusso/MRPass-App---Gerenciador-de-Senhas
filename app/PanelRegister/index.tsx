@@ -4,6 +4,7 @@ import { Folder } from "@/types/folder";
 import { useContext, useState } from "react";
 import { View } from "react-native";
 import Header from "./templates/Header";
+import Search from "./templates/Search";
 // import useFields from "./hooks/useFields";
 // import useGetList from "./hooks/useGetList";
 // import useModals from "./hooks/useModals";
@@ -16,7 +17,7 @@ import Header from "./templates/Header";
 export default function Panel(){
     
     // const {modalDeleteVisible, handleModalDelete} = useModals();
-    // const [ rows, setRows ] = useState<Folder[]>([]);
+    const [ rows, setRows ] = useState<Folder[]>([]);
     // const { folders, fetchData } = useGetList();
     // const { modalCreateVisible, handleModalCreate } = useModals();
     // const { folderData, handleChangeNameValue, handleChangeDescriptionValue } = useFields();
@@ -52,8 +53,9 @@ export default function Panel(){
                     // handleChangeNameValue={handleChangeNameValue}
                     // handleChangeDescriptionValue={handleChangeDescriptionValue}
                 />
-                {/*}
+                
                 <Search onSearch={(results) => setRows(results)} setRows={setRows}/>
+                {/*
                 <List
                     modalConfirmDeleteFunction={handleModalDelete}
                     modalCreateFunction={handleModalCreate}
