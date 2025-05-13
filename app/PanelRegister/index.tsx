@@ -4,6 +4,7 @@ import { Folder } from "@/types/folder";
 import { useContext, useState } from "react";
 import { View } from "react-native";
 import Header from "./templates/Header";
+import List from "./templates/List";
 import Search from "./templates/Search";
 // import useFields from "./hooks/useFields";
 // import useGetList from "./hooks/useGetList";
@@ -55,13 +56,13 @@ export default function Panel(){
                 />
                 
                 <Search onSearch={(results) => setRows(results)} setRows={setRows}/>
-                {/*
+                
                 <List
-                    modalConfirmDeleteFunction={handleModalDelete}
-                    modalCreateFunction={handleModalCreate}
+                    // modalConfirmDeleteFunction={handleModalDelete}
+                    // modalCreateFunction={handleModalCreate}
                     rows={rows}
                     selectItemFunction={handleSelectedItemChange}
-                /> */}
+                />
             </View>
             {/* <ModalConfirmDelete
                 isVisible={modalDeleteVisible}
