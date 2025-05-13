@@ -24,7 +24,6 @@ export default function List({modalConfirmDeleteFunction, modalCreateFunction, r
               modalCreateFunction={modalCreateFunction}
               selectItemFunction={selectItemFunction}
             />
-
           )}
           keyExtractor={item => item.id.toString()}
           ListEmptyComponent={() => (
