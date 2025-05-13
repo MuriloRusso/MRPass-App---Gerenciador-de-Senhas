@@ -3,6 +3,7 @@ import { GlobalContext } from "@/contexts/GlobalContext";
 import { Folder } from "@/types/folder";
 import { useContext, useState } from "react";
 import { View } from "react-native";
+import Header from "./templates/Header";
 // import useFields from "./hooks/useFields";
 // import useGetList from "./hooks/useGetList";
 // import useModals from "./hooks/useModals";
@@ -45,12 +46,13 @@ export default function Panel(){
     return (
         <View>
             <View style={{height: "100%"}}>
-                {/* <Header
-                    handleModalCreate={handleModalCreate}
-                    setSelectedItem={setSelectedItem}
-                    handleChangeNameValue={handleChangeNameValue}
-                    handleChangeDescriptionValue={handleChangeDescriptionValue}
+                <Header
+                    // handleModalCreate={handleModalCreate}
+                    // setSelectedItem={setSelectedItem}
+                    // handleChangeNameValue={handleChangeNameValue}
+                    // handleChangeDescriptionValue={handleChangeDescriptionValue}
                 />
+                {/*}
                 <Search onSearch={(results) => setRows(results)} setRows={setRows}/>
                 <List
                     modalConfirmDeleteFunction={handleModalDelete}

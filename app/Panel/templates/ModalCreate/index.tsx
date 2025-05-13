@@ -2,8 +2,8 @@ import ButtonSecondary from '@/components/ButtonSecondary';
 import { Folder, FolderDataProps } from '@/types/folder';
 import { Modal, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import FolderIcon from '../../../../components/FolderIcon';
 import ButtonSubmit from '../../components/ButtonSubmit';
-import FolderIcon from '../../components/FolderIcon';
 import useFields from '../../hooks/useFields';
 import Form from '../Form';
 

@@ -3,7 +3,7 @@ import ButtonEdit from "@/components/ButtonEdit";
 import { Folder } from "@/types/folder";
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { StyleSheet, Text, View } from "react-native";
-import FolderIcon from "../FolderIcon";
+import FolderIcon from "../../../../components/FolderIcon";
 
 type ListItemProps = {
   folder: Folder;
