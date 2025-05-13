@@ -1,6 +1,6 @@
 import { Folder } from '@/types/folder';
 import React from 'react';
-import { FlatList, SafeAreaView, StyleSheet } from 'react-native';
+import { FlatList, SafeAreaView, StyleSheet, Text } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import ListItem from '../../components/ListItem';
 
@@ -22,11 +22,16 @@ export default function List({modalConfirmDeleteFunction, modalCreateFunction, r
               folder={item}
               modalConfirmDeleteFunction={modalConfirmDeleteFunction}
               modalCreateFunction={modalCreateFunction}
-
               selectItemFunction={selectItemFunction}
             />
+
           )}
           keyExtractor={item => item.id.toString()}
+          ListEmptyComponent={() => (
+            <Text style={{ textAlign: 'center', marginTop: 20, color: '#999' }}>
+              Nenhum item encontrado.
+            </Text>
+          )}
         />
       </SafeAreaView>
     </SafeAreaProvider>
