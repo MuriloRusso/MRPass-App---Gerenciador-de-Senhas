@@ -1,8 +1,9 @@
 import Loading from "@/components/Loading";
 import { GlobalContext } from "@/contexts/GlobalContext";
 import { Folder } from "@/types/folder";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { View } from "react-native";
+import useGetList from "./hooks/useGetList";
 import Header from "./templates/Header";
 import List from "./templates/List";
 import Search from "./templates/Search";
@@ -19,7 +20,7 @@ export default function Panel(){
     
     // const {modalDeleteVisible, handleModalDelete} = useModals();
     const [ rows, setRows ] = useState<Folder[]>([]);
-    // const { folders, fetchData } = useGetList();
+    const { folders, fetchData } = useGetList();
     // const { modalCreateVisible, handleModalCreate } = useModals();
     // const { folderData, handleChangeNameValue, handleChangeDescriptionValue } = useFields();
     const { loading } = useContext(GlobalContext);
@@ -34,16 +35,16 @@ export default function Panel(){
     //     selectedItem?.descricao && handleChangeDescriptionValue(selectedItem?.descricao?.toString());
     // }, [selectedItem]);
 
-    // useEffect(() => {
-    //     const fetch = async () => {
-    //        await fetchData();           
-    //     }
-    //     fetch();
-    // }, []);
+    useEffect(() => {
+        const fetch = async () => {
+           await fetchData();           
+        }
+        fetch();
+    }, []);
       
-    // useEffect(() => {
-    //     setRows(folders);
-    // }, [folders]);    
+    useEffect(() => {
+        setRows(folders);
+    }, [folders]);
 
     return (
         <View>

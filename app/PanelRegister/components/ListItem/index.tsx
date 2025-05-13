@@ -29,8 +29,24 @@ export default function ListItem({folder, /*modalConfirmDeleteFunction, modalCre
                 <View style={{display: 'flex', flexDirection: "row", gap: 10, alignItems: "center"}}>
                     <FolderIcon size={35} />                
                     <View>
-                        <Text style={styles.title}>{folder.nome}</Text>
-                        <Text style={styles.description}>{folder.descricao}</Text>
+                      <Text style={styles.title}>{folder.nome}</Text>
+                      <Text>{folder.descricao}</Text>
+
+                      <View style={styles.itemRegister}>
+                        <Text>Usuário:</Text>
+                        <Text>{folder.nome}</Text>
+                      </View>
+
+                      <View style={styles.itemRegister}>
+                        <Text>Senha:</Text>
+                        <Text>{folder.nome}</Text>
+                      </View>
+                      
+                      <View style={styles.itemRegister}>
+                        <Text>Link:</Text>
+                        <Text>{folder.nome}</Text>
+                      </View>
+
                     </View>
                 </View>
                 <View style={styles.containerAcoes}>
@@ -69,5 +85,8 @@ const styles = StyleSheet.create({
     // padding: 5,
     marginVertical: 15,
     gap: 15
+  },
+  itemRegister: {
+    marginVertical: 20
   }
 });

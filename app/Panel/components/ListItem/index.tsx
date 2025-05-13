@@ -2,6 +2,7 @@ import ButtonDelete from "@/components/ButtonDelete";
 import ButtonEdit from "@/components/ButtonEdit";
 import { Folder } from "@/types/folder";
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import { useRouter } from "expo-router";
 import { StyleSheet, Text, View } from "react-native";
 import FolderIcon from "../../../../components/FolderIcon";
 
@@ -13,6 +14,8 @@ type ListItemProps = {
 }
 
 export default function ListItem({folder, modalConfirmDeleteFunction, modalCreateFunction, selectItemFunction}:ListItemProps){
+    const router = useRouter();
+
     const handleDelete = () => {      
       selectItemFunction({id: folder.id, nome: folder.nome, descricao: folder.descricao, extensao: folder.extensao, file: folder.file});
       modalConfirmDeleteFunction();
@@ -21,6 +24,10 @@ export default function ListItem({folder, modalConfirmDeleteFunction, modalCreat
     const handleUpdate = () => {      
       selectItemFunction({id: folder.id, nome: folder.nome, descricao: folder.descricao, extensao: folder.extensao, file: folder.file});
       modalCreateFunction();
+    }
+
+    const handleItem = () => {
+      router.push('/PanelRegister')
     }
     
     return (
@@ -39,7 +46,7 @@ export default function ListItem({folder, modalConfirmDeleteFunction, modalCreat
                 </View>
 
             </View>
-            <MaterialIcons name="arrow-forward-ios" size={40} color="#777" />
+            <MaterialIcons name="arrow-forward-ios" size={40} color="#777" onPress={handleItem} />
         </View>
     )
 }
