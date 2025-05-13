@@ -9,13 +9,15 @@ type ModalProps = {
   handleFunction: () => void;
   selectedItem: Folder | null;
   fetchData: () => void;
-  selectItemFunction: (value:Folder | null) => void;
 }
-const ModalConfirmDelete = ({isVisible, handleFunction, selectedItem, fetchData, selectItemFunction}:ModalProps) => {
+const ModalConfirmDelete = ({
+  isVisible,
+  handleFunction,
+  selectedItem,
+  fetchData,
+}:ModalProps) => {
 
   const handleClose = () => {
-    selectItemFunction(null);
-    console.log(selectedItem);
     handleFunction();
   }
 

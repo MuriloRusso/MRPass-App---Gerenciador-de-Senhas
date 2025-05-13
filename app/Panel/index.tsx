@@ -45,7 +45,12 @@ export default function Panel(){
     return (
         <View>
             <View style={{height: "100%"}}>
-                <Header handleModalCreate={handleModalCreate}/>
+                <Header
+                    handleModalCreate={handleModalCreate}
+                    setSelectedItem={setSelectedItem}
+                    handleChangeNameValue={handleChangeNameValue}
+                    handleChangeDescriptionValue={handleChangeDescriptionValue}
+                />
                 <Search onSearch={(results) => setRows(results)} setRows={setRows}/>
                 <List
                     modalConfirmDeleteFunction={handleModalDelete}
@@ -59,7 +64,6 @@ export default function Panel(){
                 handleFunction={handleModalDelete}
                 selectedItem={selectedItem}
                 fetchData={fetchData}
-                selectItemFunction={handleSelectedItemChange}
 
             />
             <ModalCreate
