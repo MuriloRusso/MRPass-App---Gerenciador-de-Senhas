@@ -1,6 +1,6 @@
 import useLoading from '@/hooks/useLoading';
 import { ToastProps } from '@/types/toast';
-import React, { createContext, Dispatch, ReactNode, SetStateAction, useEffect, useState } from 'react';
+import React, { createContext, Dispatch, ReactNode, SetStateAction, useState } from 'react';
 
 type GlobalContextData = {
     alerts: ToastProps[];
@@ -17,14 +17,6 @@ export function GlobalProvider({ children }: { children: ReactNode }) {
   const [alerts, setAlerts ] = useState<ToastProps[]>([]);
 
   const {loading, handleVisibleLoading} = useLoading();
-
-  // const [loading, setLoading ] = useState<boolean>(true);
-
-  useEffect(()=>{
-    console.log('context');
-    console.log(loading);
-    
-  }, [loading])
 
   return (
     <GlobalContext.Provider value={{alerts, setAlerts, loading, handleVisibleLoading }}>
