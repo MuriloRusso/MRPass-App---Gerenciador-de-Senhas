@@ -2,7 +2,7 @@ import ButtonDelete from "@/components/ButtonDelete";
 import ButtonEdit from "@/components/ButtonEdit";
 import { Folder } from "@/types/folder";
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import { StyleSheet, Text, View } from "react-native";
+import { Linking, StyleSheet, Text, View } from "react-native";
 import FolderIcon from "../../../../components/FolderIcon";
 
 type ListItemProps = {
@@ -23,10 +23,15 @@ export default function ListItem({folder, /*modalConfirmDeleteFunction, modalCre
       // modalCreateFunction();
     }
     
+    const handleLink = () => {
+      Linking.openURL('https://www.google.com');
+
+    }
+
     return (
         <View style={styles.item}>
             <View>
-                <View style={{display: 'flex', flexDirection: "row", gap: 10, alignItems: "center"}}>
+                <View style={{display: 'flex', gap: 10}}>
                     <FolderIcon size={35} />                
                     <View>
                       <Text style={styles.title}>{folder.nome}</Text>
@@ -41,10 +46,10 @@ export default function ListItem({folder, /*modalConfirmDeleteFunction, modalCre
                         <Text>Senha:</Text>
                         <Text>{folder.nome}</Text>
                       </View>
-                      
+
                       <View style={styles.itemRegister}>
                         <Text>Link:</Text>
-                        <Text>{folder.nome}</Text>
+                        <Text onPress={handleLink}>{folder.nome}</Text>
                       </View>
 
                     </View>
