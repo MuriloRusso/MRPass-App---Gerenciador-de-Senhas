@@ -1,9 +1,8 @@
 import ButtonDelete from "@/components/ButtonDelete";
 import ButtonEdit from "@/components/ButtonEdit";
 import { Folder } from "@/types/folder";
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { Linking, StyleSheet, Text, View } from "react-native";
-import FolderIcon from "../../../../components/FolderIcon";
+import RegisterIcon from "../RegisterIcon";
 
 type ListItemProps = {
   folder: Folder;
@@ -23,8 +22,8 @@ export default function ListItem({folder, /*modalConfirmDeleteFunction, modalCre
       // modalCreateFunction();
     }
     
-    const handleLink = () => {
-      Linking.openURL('https://www.google.com');
+    const handleLink = (link: string) => {
+      Linking.openURL(link);
 
     }
 
@@ -32,24 +31,27 @@ export default function ListItem({folder, /*modalConfirmDeleteFunction, modalCre
         <View style={styles.item}>
             <View>
                 <View style={{display: 'flex', gap: 10}}>
-                    <FolderIcon size={35} />                
                     <View>
-                      <Text style={styles.title}>{folder.nome}</Text>
+                      <View style={{display: "flex", flexDirection: "row", gap: 10}}>
+
+                        <RegisterIcon size={35}/>
+                        <Text style={styles.title}>{folder.nome}</Text>
+                      </View>
                       <Text>{folder.descricao}</Text>
 
                       <View style={styles.itemRegister}>
-                        <Text>Usuário:</Text>
-                        <Text>{folder.nome}</Text>
+                        <Text style={styles.itemRegisterText}>Usuário:</Text>
+                        <Text style={styles.itemRegisterText}>{folder.nome}</Text>
                       </View>
 
                       <View style={styles.itemRegister}>
-                        <Text>Senha:</Text>
-                        <Text>{folder.nome}</Text>
+                        <Text style={styles.itemRegisterText}>Senha:</Text>
+                        <Text style={styles.itemRegisterText}>{folder.nome}</Text>
                       </View>
 
                       <View style={styles.itemRegister}>
-                        <Text>Link:</Text>
-                        <Text onPress={handleLink}>{folder.nome}</Text>
+                        <Text style={styles.itemRegisterText}>Link:</Text>
+                        <Text style={{...styles.itemRegisterText, ...styles.itemRegisterLink}} onPress={() => handleLink(folder.nome)}>{folder.nome}</Text>
                       </View>
 
                     </View>
@@ -60,7 +62,6 @@ export default function ListItem({folder, /*modalConfirmDeleteFunction, modalCre
                 </View>
 
             </View>
-            <MaterialIcons name="arrow-forward-ios" size={40} color="#777" />
         </View>
     )
 }
@@ -92,6 +93,13 @@ const styles = StyleSheet.create({
     gap: 15
   },
   itemRegister: {
-    marginVertical: 20
+    marginVertical: 20,
+  },
+  itemRegisterText: {
+    fontSize: 20
+  },
+  itemRegisterLink: {
+    color: "#0000ff",
+    textDecorationLine: "underline"
   }
 });
