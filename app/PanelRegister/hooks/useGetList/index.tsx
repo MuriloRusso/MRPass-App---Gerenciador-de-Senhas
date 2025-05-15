@@ -20,8 +20,8 @@ export default function useGetList() {
       });
 
       const data = await response.json();
-      if (data?.folders) {
-        setRegisters(data.folders);
+      if (data?.itens) {
+        setRegisters(data.itens);
       } else {
         setRegisters([]);
       }
