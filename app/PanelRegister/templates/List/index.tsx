@@ -5,13 +5,13 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import ListItem from '../../components/ListItem';
 
 type ListProps = {
-  // modalConfirmDeleteFunction: () => void;
-  // modalCreateFunction: () => void;
+  modalConfirmDeleteFunction: () => void;
+  modalCreateFunction: () => void;
   rows: Folder[];
   selectItemFunction: (value: Folder | null) => void;
 }
 
-export default function List({/*modalConfirmDeleteFunction, modalCreateFunction,*/ rows, selectItemFunction}: ListProps){
+export default function List({modalConfirmDeleteFunction, modalCreateFunction, rows, selectItemFunction}: ListProps){
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.container}>
@@ -20,8 +20,8 @@ export default function List({/*modalConfirmDeleteFunction, modalCreateFunction,
           renderItem={({ item }) => (
             <ListItem
               folder={item}
-              // modalConfirmDeleteFunction={modalConfirmDeleteFunction}
-              // modalCreateFunction={modalCreateFunction}
+              modalConfirmDeleteFunction={modalConfirmDeleteFunction}
+              modalCreateFunction={modalCreateFunction}
               selectItemFunction={selectItemFunction}
             />
           )}

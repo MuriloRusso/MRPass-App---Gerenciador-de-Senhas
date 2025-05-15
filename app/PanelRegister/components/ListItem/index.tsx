@@ -6,20 +6,20 @@ import RegisterIcon from "../RegisterIcon";
 
 type ListItemProps = {
   folder: Folder;
-  // modalConfirmDeleteFunction: () => void;
-  // modalCreateFunction: () => void;
+  modalConfirmDeleteFunction: () => void;
+  modalCreateFunction: () => void;
   selectItemFunction: (value:Folder | null) => void
 }
 
-export default function ListItem({folder, /*modalConfirmDeleteFunction, modalCreateFunction,*/ selectItemFunction}:ListItemProps){
+export default function ListItem({folder, modalConfirmDeleteFunction, modalCreateFunction, selectItemFunction}:ListItemProps){
     const handleDelete = () => {      
       selectItemFunction({id: folder.id, nome: folder.nome, descricao: folder.descricao, extensao: folder.extensao, file: folder.file});
-      // modalConfirmDeleteFunction();
+      modalConfirmDeleteFunction();
     }
 
     const handleUpdate = () => {      
       selectItemFunction({id: folder.id, nome: folder.nome, descricao: folder.descricao, extensao: folder.extensao, file: folder.file});
-      // modalCreateFunction();
+      modalCreateFunction();
     }
     
     const handleLink = (link: string) => {
