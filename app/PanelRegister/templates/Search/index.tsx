@@ -7,7 +7,7 @@ import ButtonSearch from "../../components/ButtonSearch";
 export default function Search({onSearch, setRows}: {onSearch: (results:any) => void, setRows: any}){
     const [searchInput, setSearchInput] = useState<InputProps>({
         value: "",
-        placeholder: "Buscar Pasta...",
+        placeholder: "Buscar Registro...",
         error: false,
         errorText: ""
     });

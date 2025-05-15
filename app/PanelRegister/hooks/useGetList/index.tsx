@@ -6,12 +6,12 @@ import { useContext, useState } from "react";
 export default function useGetList() {
   const [registers, setRegisters] = useState<Register[]>([]);
   const { user } = useContext(AuthContext);
-  const { handleVisibleLoading } = useContext(GlobalContext);
+  const { handleVisibleLoading, selectFolder } = useContext(GlobalContext);
 
   const fetchData = async () => {
     handleVisibleLoading(true);
     try {
-      const route = "https://mrpass.shop/api/register/search.php?id=10&search=";
+      const route = `https://mrpass.shop/api/register/search.php?id=${selectFolder?.id}`;
       const response = await fetch(route, {
         method: "GET",
         headers: {

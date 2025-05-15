@@ -1,8 +1,10 @@
 import ButtonDelete from "@/components/ButtonDelete";
 import ButtonEdit from "@/components/ButtonEdit";
+import { GlobalContext } from "@/contexts/GlobalContext";
 import { Folder } from "@/types/folder";
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { useRouter } from "expo-router";
+import { useContext } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import FolderIcon from "../../../../components/FolderIcon";
 
@@ -16,6 +18,8 @@ type ListItemProps = {
 export default function ListItem({folder, modalConfirmDeleteFunction, modalCreateFunction, selectItemFunction}:ListItemProps){
     const router = useRouter();
 
+    const { setSelectedFolder } = useContext(GlobalContext);
+
     const handleDelete = () => {      
       selectItemFunction({id: folder.id, nome: folder.nome, descricao: folder.descricao, extensao: folder.extensao, file: folder.file});
       modalConfirmDeleteFunction();
@@ -27,6 +31,7 @@ export default function ListItem({folder, modalConfirmDeleteFunction, modalCreat
     }
 
     const handleItem = () => {
+      setSelectedFolder(folder);
       router.push('/PanelRegister')
     }
     
