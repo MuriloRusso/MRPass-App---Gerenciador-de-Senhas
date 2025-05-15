@@ -15,7 +15,7 @@ export default function ButtonSearch({searchText, setRows}:{searchText:string, s
 
     const search = async (searchText:string) => {
         try {
-            const route = 'https://mrpass.shop/api/folders/search.php?search=' + encodeURIComponent(searchText);
+            const route = 'https://mrpass.shop/api/register/search.php?id=10&search=' + encodeURIComponent(searchText);
             const response = await fetch(route, {
             method: "GET",
             headers: {
@@ -26,8 +26,8 @@ export default function ButtonSearch({searchText, setRows}:{searchText:string, s
         const data = await response.json();
         console.log("Dados recebidos:", data);
 
-        if (data?.folders) {
-            setRows(data.folders);
+        if (data?.itens) {
+            setRows(data.itens);
         } else {
             console.warn("Nenhuma pasta encontrada");
             setRows([]); // garante um array mesmo se vazio

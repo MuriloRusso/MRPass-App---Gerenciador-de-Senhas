@@ -6,7 +6,7 @@ export default function useGetBySearch() {
 
   const search = async (searchText: string) => {
     try {
-      const route = 'https://mrpass.shop/api/folders/search.php?search=' + encodeURIComponent(searchText);
+      const route = 'https://mrpass.shop/api/register/search.php?id=10&search=' + encodeURIComponent(searchText);
       const response = await fetch(route, { method: 'GET' });
       const data = await response.json();
 

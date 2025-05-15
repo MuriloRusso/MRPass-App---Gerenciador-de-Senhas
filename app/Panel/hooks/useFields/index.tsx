@@ -1,13 +1,8 @@
 import { FolderDataProps } from "@/types/folder";
-import { InputProps } from "@/types/input";
 import { useEffect, useState } from "react";
 
 export default function useFields(){
     
-    // const [rows, setRows] = useState<Folder[]>([]);
-    // return {rows, setRows}
-
- 
     const [ folderData, setFolderData ] = useState<FolderDataProps>({
         name: {
             error: false,
