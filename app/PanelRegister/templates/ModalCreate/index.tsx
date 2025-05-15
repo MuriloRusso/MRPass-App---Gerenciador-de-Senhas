@@ -1,5 +1,6 @@
 import ButtonSecondary from '@/components/ButtonSecondary';
-import { Folder, FolderDataProps } from '@/types/folder';
+import { Folder } from '@/types/folder';
+import { RegisterDataProps } from '@/types/register';
 import { Modal, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import FolderIcon from '../../../../components/FolderIcon';
@@ -10,24 +11,42 @@ import Form from '../Form';
 type ModalProps = {
   isVisible: boolean;
   handleFunction: () => void;
-  data: FolderDataProps;
-  handleChangeNameValue: (value:string) => void;
-  handleChangeDescriptionValue: (value:string) => void;
+  data: RegisterDataProps;
+  handleChangePlataformValue: (value: string) => void;
+  handleChangeLinkValue: (value: string) => void;
+  handleChangeUserValue: (value: string) => void;
+  handleChangePasswordValue: (value: string) => void;
+  handleChangeDescriptionValue: (value: string) => void;
+  handleChangePlataformError: (error: boolean) => void;
+  handleChangeLinkError: (error: boolean) => void;
+  handleChangeUserError: (error: boolean) => void;
+  handleChangePasswordError: (error: boolean) => void;
+  handleChangeDescriptionError: (error: boolean) => void;
   handleModalCreate: () => void;
   selectedItem: Folder | null;
   fetchData: () => void;
-}
+};
+
 const ModalCreate = ({
   isVisible,
   handleFunction,
   data,
-  handleChangeNameValue,
+  handleChangePlataformValue,
+  handleChangeLinkValue,
+  handleChangeUserValue,
+  handleChangePasswordValue,
   handleChangeDescriptionValue,
+  handleChangePlataformError,
+  handleChangeLinkError,
+  handleChangeUserError,
+  handleChangePasswordError,
+  handleChangeDescriptionError,
   handleModalCreate,
   selectedItem,
-  fetchData
-}:ModalProps) => {
-  const { folderData } = useFields();
+  fetchData,
+}: ModalProps) => {
+
+  const { registerData } = useFields();
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.centeredView}>
@@ -46,8 +65,16 @@ const ModalCreate = ({
               </View>
               <Form
                 data={data}
-                handleChangeNameValue={handleChangeNameValue}
+                handleChangePlataformValue={handleChangePlataformValue}
+                handleChangeLinkValue={handleChangeLinkValue}
+                handleChangeUserValue={handleChangeUserValue}
+                handleChangePasswordValue={handleChangePasswordValue}
                 handleChangeDescriptionValue={handleChangeDescriptionValue}
+                handleChangePlataformError={handleChangePlataformError}
+                handleChangeLinkError={handleChangeLinkError}
+                handleChangeUserError={handleChangeUserError}
+                handleChangePasswordError={handleChangePasswordError}
+                handleChangeDescriptionError={handleChangeDescriptionError}
               />
               <View style={styles.containerBtns}>
                 <ButtonSecondary text='Cancelar' onClick={handleFunction}/>

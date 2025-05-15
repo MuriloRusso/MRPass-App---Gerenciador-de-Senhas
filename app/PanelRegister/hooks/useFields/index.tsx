@@ -1,73 +1,161 @@
-import { FolderDataProps } from "@/types/folder";
-import { InputProps } from "@/types/input";
+import { RegisterDataProps } from "@/types/register";
 import { useEffect, useState } from "react";
 
-export default function useFields(){
-    
-    // const [rows, setRows] = useState<Folder[]>([]);
-    // return {rows, setRows}
+export default function useFields() {
+  const [registerData, setRegisterData] = useState<RegisterDataProps>({
+    plataform: {
+      error: false,
+      placeholder: "Nome da Plataforma...",
+      errorText: "* Campo obrigatório",
+      value: "",
+    },
+    link: {
+      error: false,
+      placeholder: "Link...",
+      errorText: "* Campo obrigatório",
+      value: "",
+    },
+    user: {
+      error: false,
+      placeholder: "Usuário...",
+      errorText: "* Campo obrigatório",
+      value: "",
+    },
+    password: {
+      error: false,
+      placeholder: "Senha...",
+      errorText: "* Campo obrigatório",
+      value: "",
+    },
+    description: {
+      error: false,
+      placeholder: "Descrição...",
+      errorText: "* Campo obrigatório",
+      value: "",
+    },
+  });
 
- 
-    const [ folderData, setFolderData ] = useState<FolderDataProps>({
-        name: {
-            error: false,
-            placeholder: "Nome da Pasta...",
-            errorText: "* Campo obrigatório",
-            value: ""            
-        },
-        description: {
-            error: false,
-            placeholder: "Descrição...",
-            errorText: "* Campo obrigatório",
-            value: ""            
-        }
-    });
+  // PLATAFORM
+  const handleChangePlataformValue = (newValue: string) => {
+    setRegisterData((prev) => ({
+      ...prev,
+      plataform: {
+        ...prev.plataform,
+        value: newValue,
+      },
+    }));
+  };
 
-    const handleChangeNameValue = (newValue: string) => {
-        setFolderData(prev => ({
-        ...prev,
-        name: {
-            ...prev.name,
-            value: newValue
-        }
-        }));
-    };
-    
-    const handleChangeNameError = (hasError: boolean) => {
-        setFolderData(prev => ({
-        ...prev,
-        name: {
-            ...prev.name,
-            error: hasError
-        }
-        }));
-    };
-    
-    const handleChangeDescriptionValue = (newValue: string) => {
-        setFolderData(prev => ({
-        ...prev,
-        description: {
-            ...prev.description,
-            value: newValue
-        }
-        }));
-    };
-    
-    const handleChangeDescriptionError = (hasError: boolean) => {
-        setFolderData(prev => ({
-        ...prev,
-        description: {
-            ...prev.description,
-            error: hasError
-        }
-        }));
-    };
+  const handleChangePlataformError = (hasError: boolean) => {
+    setRegisterData((prev) => ({
+      ...prev,
+      plataform: {
+        ...prev.plataform,
+        error: hasError,
+      },
+    }));
+  };
 
-    useEffect(()=>{
-        console.log('folderData');
-        console.log(folderData);
-        
-    }, [folderData])
+  // LINK
+  const handleChangeLinkValue = (newValue: string) => {
+    setRegisterData((prev) => ({
+      ...prev,
+      link: {
+        ...prev.link,
+        value: newValue,
+      },
+    }));
+  };
 
-    return {folderData, handleChangeNameValue, handleChangeNameError, handleChangeDescriptionValue, handleChangeDescriptionError}
+  const handleChangeLinkError = (hasError: boolean) => {
+    setRegisterData((prev) => ({
+      ...prev,
+      link: {
+        ...prev.link,
+        error: hasError,
+      },
+    }));
+  };
+
+  // USER
+  const handleChangeUserValue = (newValue: string) => {
+    setRegisterData((prev) => ({
+      ...prev,
+      user: {
+        ...prev.user,
+        value: newValue,
+      },
+    }));
+  };
+
+  const handleChangeUserError = (hasError: boolean) => {
+    setRegisterData((prev) => ({
+      ...prev,
+      user: {
+        ...prev.user,
+        error: hasError,
+      },
+    }));
+  };
+
+  // PASSWORD
+  const handleChangePasswordValue = (newValue: string) => {
+    setRegisterData((prev) => ({
+      ...prev,
+      password: {
+        ...prev.password,
+        value: newValue,
+      },
+    }));
+  };
+
+  const handleChangePasswordError = (hasError: boolean) => {
+    setRegisterData((prev) => ({
+      ...prev,
+      password: {
+        ...prev.password,
+        error: hasError,
+      },
+    }));
+  };
+
+  // DESCRIPTION
+  const handleChangeDescriptionValue = (newValue: string) => {
+    setRegisterData((prev) => ({
+      ...prev,
+      description: {
+        ...prev.description,
+        value: newValue,
+      },
+    }));
+  };
+
+  const handleChangeDescriptionError = (hasError: boolean) => {
+    setRegisterData((prev) => ({
+      ...prev,
+      description: {
+        ...prev.description,
+        error: hasError,
+      },
+    }));
+  };
+
+  useEffect(() => {
+    console.log("registerData");
+    console.log(registerData);
+  }, [registerData]);
+
+  return {
+    registerData,
+    handleChangePlataformValue,
+    handleChangePlataformError,
+    handleChangeLinkValue,
+    handleChangeLinkError,
+    handleChangeUserValue,
+    handleChangeUserError,
+    handleChangePasswordValue,
+    handleChangePasswordError,
+    handleChangeDescriptionValue,
+    handleChangeDescriptionError,
+  };
 }
