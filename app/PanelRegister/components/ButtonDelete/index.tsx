@@ -1,9 +1,9 @@
 import ButtonPrimary from "@/components/ButtonPrimary";
-import { Folder } from "@/types/folder";
+import { Register } from "@/types/register";
 import useDelete from "../../hooks/useDelete";
 
 type ButtonDeleteProps = {
-    selectedItem:Folder | null;
+    selectedItem: Register | null;
     closeModalFunction: () => void;
     fetchData: () => void;
 }

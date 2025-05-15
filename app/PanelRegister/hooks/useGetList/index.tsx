@@ -1,17 +1,17 @@
 import { AuthContext } from "@/contexts/AuthContext";
-import { Folder } from "@/types/folder";
-import { useContext, useState } from "react";
 import { GlobalContext } from "@/contexts/GlobalContext";
+import { Register } from "@/types/register";
+import { useContext, useState } from "react";
 
 export default function useGetList() {
-  const [folders, setFolders] = useState<Folder[]>([]);
+  const [registers, setRegisters] = useState<Register[]>([]);
   const { user } = useContext(AuthContext);
   const { handleVisibleLoading } = useContext(GlobalContext);
 
   const fetchData = async () => {
     handleVisibleLoading(true);
     try {
-      const route = "https://mrpass.shop/api/folders/search.php";
+      const route = "https://mrpass.shop/api/register/search.php?id=10&search=";
       const response = await fetch(route, {
         method: "GET",
         headers: {
@@ -21,16 +21,16 @@ export default function useGetList() {
 
       const data = await response.json();
       if (data?.folders) {
-        setFolders(data.folders);
+        setRegisters(data.folders);
       } else {
-        setFolders([]);
+        setRegisters([]);
       }
     } catch (error) {
       console.error("Erro ao buscar pastas:", error);
-      setFolders([]);
+      setRegisters([]);
     }
     handleVisibleLoading(false);
   };
 
-  return { folders, setFolders, fetchData };
+  return { registers, setRegisters, fetchData };
 }

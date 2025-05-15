@@ -1,24 +1,24 @@
 import ButtonDelete from "@/components/ButtonDelete";
 import ButtonEdit from "@/components/ButtonEdit";
-import { Folder } from "@/types/folder";
+import { Register } from "@/types/register";
 import { Linking, StyleSheet, Text, View } from "react-native";
 import RegisterIcon from "../RegisterIcon";
 
 type ListItemProps = {
-  folder: Folder;
+  register: Register;
   modalConfirmDeleteFunction: () => void;
   modalCreateFunction: () => void;
-  selectItemFunction: (value:Folder | null) => void
+  selectItemFunction: (value:Register | null) => void
 }
 
-export default function ListItem({folder, modalConfirmDeleteFunction, modalCreateFunction, selectItemFunction}:ListItemProps){
+export default function ListItem({register, modalConfirmDeleteFunction, modalCreateFunction, selectItemFunction}:ListItemProps){
     const handleDelete = () => {      
-      selectItemFunction({id: folder.id, nome: folder.nome, descricao: folder.descricao, extensao: folder.extensao, file: folder.file});
+      selectItemFunction({id: register.id, plataforma: register.plataforma, descricao: register.descricao, link: register.link, usuario: register.usuario, senha: register.senha});
       modalConfirmDeleteFunction();
     }
 
     const handleUpdate = () => {      
-      selectItemFunction({id: folder.id, nome: folder.nome, descricao: folder.descricao, extensao: folder.extensao, file: folder.file});
+      selectItemFunction({id: register.id, plataforma: register.plataforma, descricao: register.descricao, link: register.link, usuario: register.usuario, senha: register.senha});
       modalCreateFunction();
     }
     
@@ -35,23 +35,23 @@ export default function ListItem({folder, modalConfirmDeleteFunction, modalCreat
                       <View style={{display: "flex", flexDirection: "row", gap: 10}}>
 
                         <RegisterIcon size={35}/>
-                        <Text style={styles.title}>{folder.nome}</Text>
+                        <Text style={styles.title}>{register.plataforma}</Text>
                       </View>
-                      <Text>{folder.descricao}</Text>
+                      <Text>{register.descricao}</Text>
 
                       <View style={styles.itemRegister}>
                         <Text style={styles.itemRegisterText}>Usuário:</Text>
-                        <Text style={styles.itemRegisterText}>{folder.nome}</Text>
+                        <Text style={styles.itemRegisterText}>{register.usuario}</Text>
                       </View>
 
                       <View style={styles.itemRegister}>
                         <Text style={styles.itemRegisterText}>Senha:</Text>
-                        <Text style={styles.itemRegisterText}>{folder.nome}</Text>
+                        <Text style={styles.itemRegisterText}>{register.senha}</Text>
                       </View>
 
                       <View style={styles.itemRegister}>
                         <Text style={styles.itemRegisterText}>Link:</Text>
-                        <Text style={{...styles.itemRegisterText, ...styles.itemRegisterLink}} onPress={() => handleLink(folder.nome)}>{folder.nome}</Text>
+                        <Text style={{...styles.itemRegisterText, ...styles.itemRegisterLink}} onPress={() => handleLink(register.link)}>{register.link}</Text>
                       </View>
 
                     </View>

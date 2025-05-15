@@ -1,13 +1,12 @@
 import ButtonPrimary from "@/components/ButtonPrimary";
-import { Folder } from "@/types/folder";
-import { RegisterDataProps } from "@/types/register";
+import { Register, RegisterDataProps } from "@/types/register";
 import useCreate from "../../hooks/useCreate";
 import useUpdate from "../../hooks/useUpdate";
 
 type ButtonSubmitProps = {
     data: RegisterDataProps;
     handleModalCreate: () => void;
-    selectedItem: Folder | null;
+    selectedItem: Register | null;
     fetchData: () => void;
 }
 

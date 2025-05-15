@@ -1,4 +1,4 @@
-import { Folder } from '@/types/folder';
+import { Register } from '@/types/register';
 import React from 'react';
 import { FlatList, SafeAreaView, StyleSheet, Text } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -7,8 +7,8 @@ import ListItem from '../../components/ListItem';
 type ListProps = {
   modalConfirmDeleteFunction: () => void;
   modalCreateFunction: () => void;
-  rows: Folder[];
-  selectItemFunction: (value: Folder | null) => void;
+  rows: Register[];
+  selectItemFunction: (value: Register | null) => void;
 }
 
 export default function List({modalConfirmDeleteFunction, modalCreateFunction, rows, selectItemFunction}: ListProps){
@@ -19,7 +19,7 @@ export default function List({modalConfirmDeleteFunction, modalCreateFunction, r
           data={rows}
           renderItem={({ item }) => (
             <ListItem
-              folder={item}
+              register={item}
               modalConfirmDeleteFunction={modalConfirmDeleteFunction}
               modalCreateFunction={modalCreateFunction}
               selectItemFunction={selectItemFunction}

@@ -1,6 +1,6 @@
 import Loading from "@/components/Loading";
 import { GlobalContext } from "@/contexts/GlobalContext";
-import { Folder } from "@/types/folder";
+import { Register } from "@/types/register";
 import { useContext, useEffect, useState } from "react";
 import { View } from "react-native";
 import useFields from "./hooks/useFields";
@@ -13,8 +13,8 @@ import ModalCreate from "./templates/ModalCreate";
 import Search from "./templates/Search";
 
 export default function Panel() {
-  const [rows, setRows] = useState<Folder[]>([]);
-  const { folders, fetchData } = useGetList();
+  const [rows, setRows] = useState<Register[]>([]);
+  const { registers, fetchData } = useGetList();
   const {
     modalCreateVisible,
     handleModalCreate,
@@ -38,14 +38,17 @@ export default function Panel() {
 
   const { loading } = useContext(GlobalContext);
 
-  const [selectedItem, setSelectedItem] = useState<Folder | null>(null);
-  const handleSelectedItemChange = (item: Folder | null) => {
+  const [selectedItem, setSelectedItem] = useState<Register | null>(null);
+  const handleSelectedItemChange = (item: Register | null) => {
     setSelectedItem(item);
   };
 
   useEffect(() => {
     if (selectedItem) {
-      handleChangePlataformValue(selectedItem.nome);
+      handleChangePlataformValue(selectedItem.plataforma);
+      handleChangeLinkValue(selectedItem.link);
+      handleChangeUserValue(selectedItem.usuario);
+      handleChangePasswordValue(selectedItem.senha);
       handleChangeDescriptionValue(selectedItem?.descricao?.toString() ?? "");
     }
   }, [selectedItem]);
@@ -58,8 +61,8 @@ export default function Panel() {
   }, []);
 
   useEffect(() => {
-    setRows(folders);
-  }, [folders]);
+    setRows(registers);
+  }, [registers]);
 
   return (
     <View>

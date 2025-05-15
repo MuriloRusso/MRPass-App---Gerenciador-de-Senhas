@@ -1,11 +1,11 @@
 import FolderIcon from '@/components/FolderIcon';
-import { Folder } from '@/types/folder';
+import { Register } from '@/types/register';
 import { StyleSheet, Text, View } from 'react-native';
 import ButtonNew from '../../components/ButtonNew';
 
 type HeaderProps = {
   handleModalCreate: () => void;
-  setSelectedItem: (value: Folder | null) => void;
+  setSelectedItem: (value: Register | null) => void;
   handleChangePlataformValue: (value: string) => void;
   handleChangeLinkValue: (value: string) => void;
   handleChangeUserValue: (value: string) => void;

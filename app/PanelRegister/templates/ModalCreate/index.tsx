@@ -1,6 +1,5 @@
 import ButtonSecondary from '@/components/ButtonSecondary';
-import { Folder } from '@/types/folder';
-import { RegisterDataProps } from '@/types/register';
+import { Register, RegisterDataProps } from '@/types/register';
 import { Modal, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import FolderIcon from '../../../../components/FolderIcon';
@@ -23,7 +22,7 @@ type ModalProps = {
   handleChangePasswordError: (error: boolean) => void;
   handleChangeDescriptionError: (error: boolean) => void;
   handleModalCreate: () => void;
-  selectedItem: Folder | null;
+  selectedItem: Register | null;
   fetchData: () => void;
 };
 

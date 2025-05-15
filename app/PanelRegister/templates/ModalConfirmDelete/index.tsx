@@ -1,5 +1,5 @@
 import ButtonSecondary from '@/components/ButtonSecondary';
-import { Folder } from '@/types/folder';
+import { Register } from '@/types/register';
 import { Modal, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import ButtonDelete from '../../components/ButtonDelete';
@@ -7,7 +7,7 @@ import ButtonDelete from '../../components/ButtonDelete';
 type ModalProps = {
   isVisible: boolean;
   handleFunction: () => void;
-  selectedItem: Folder | null;
+  selectedItem: Register | null;
   fetchData: () => void;
 }
 const ModalConfirmDelete = ({
@@ -33,7 +33,7 @@ const ModalConfirmDelete = ({
           }}>
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
-              <Text style={styles.modalText}>Tem certeza de que deseja excluir a pasta {selectedItem?.nome}?</Text>
+              <Text style={styles.modalText}>Tem certeza de que deseja excluir a pasta {selectedItem?.plataforma}?</Text>
               <View style={styles.containerBtns}>
                 <ButtonSecondary text='Cancelar' onClick={handleClose} />
                 <ButtonDelete selectedItem={selectedItem} closeModalFunction={handleFunction} fetchData={fetchData} />
