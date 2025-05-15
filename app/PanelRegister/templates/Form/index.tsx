@@ -1,7 +1,10 @@
 import { FolderDataProps } from "@/types/folder";
 import { StyleSheet, View } from "react-native";
 import InputDescription from "../../components/InputDescription";
+import InputLink from "../../components/InputLink";
+import InputPassword from "../../components/InputPassword";
 import InputPlataform from "../../components/InputPlataform";
+import InputUser from "../../components/InputUser";
 
 type FormProps = {
     data:FolderDataProps;
@@ -13,6 +16,9 @@ export default function Form({data, handleChangeDescriptionValue, handleChangeNa
     return(
         <View style={styles.form}>
             <InputPlataform state={data.name} onChange={handleChangeNameValue} />
+            <InputLink state={data.name} onChange={handleChangeNameValue} />
+            <InputUser state={data.name} onChange={handleChangeNameValue} />
+            <InputPassword state={data.name} onChange={handleChangeNameValue} />
             <InputDescription state={data.description} onChange={handleChangeDescriptionValue}/>
         </View>
     )
