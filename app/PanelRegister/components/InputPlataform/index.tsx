@@ -1,7 +1,7 @@
 import Input from "@/components/Input";
 import { InputProps } from "@/types/input";
 
-export default function InputName({state, onChange}: {state:InputProps, onChange?: (value:string) => void;}) {
+export default function InputPlataform({state, onChange}: {state:InputProps, onChange?: (value:string) => void;}) {
     return (
         <Input 
             error={state.error}
