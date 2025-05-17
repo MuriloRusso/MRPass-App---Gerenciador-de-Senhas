@@ -24,37 +24,41 @@ export default function useCreate(handleModalCreate: () => void, fetchData: () =
   } = useFields();
   const { handleVisibleLoading } = useContext(GlobalContext);
 
-  const fetchCreate = async ({ plataform, descricao, link, /*user,*/ password }: CreateProps) => {
+  // const fetchCreate = async ({ plataform, descricao, link, user, password }: CreateProps) => {
+
+  const fetchCreate = async (data: CreateProps) => {
+
     let fieldsErrors = false;
 
-    if (!plataform) {
+    if (!data.plataform) {
       handleChangePlataformError(true);
       fieldsErrors = true;
     }
-    if (!descricao) {
+    if (!data.descricao) {
       handleChangeDescriptionError(true);
       fieldsErrors = true;
     }
-    if (!link) {
+    if (!data.link) {
       handleChangeLinkError(true);
       fieldsErrors = true;
     }
-    if (!user) {
+    if (!data.user) {
       handleChangeUserError(true);
       fieldsErrors = true;
     }
-    if (!password) {
+    if (!data.password) {
       handleChangePasswordError(true);
       fieldsErrors = true;
     }
 
     if (!fieldsErrors) {
       const formData = new FormData();
-      formData.append("nome", plataform); // API ainda espera "nome"
-      formData.append("descricao", descricao);
-      formData.append("link", link);
-    //   formData.append("user", user);
-      formData.append("password", password);
+      formData.append("id", data.plataform); // API ainda espera "nome"
+      formData.append("title", data.plataform); // API ainda espera "nome"
+      formData.append("descricao", data.descricao);
+      formData.append("link", data.link);
+      formData.append("user", data.user);
+      formData.append("password", data.password);
 
       try {
         const route = "https://mrpass.shop/api/register/create.php";
