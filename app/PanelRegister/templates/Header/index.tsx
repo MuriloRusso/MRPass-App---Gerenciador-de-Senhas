@@ -1,5 +1,7 @@
 import FolderIcon from '@/components/FolderIcon';
+import { GlobalContext } from '@/contexts/GlobalContext';
 import { Register } from '@/types/register';
+import { useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import ButtonNew from '../../components/ButtonNew';
 
@@ -32,11 +34,13 @@ export default function Header({
     handleModalCreate();
   };
 
+  const { selectFolder } = useContext(GlobalContext);
+
   return (
     <View style={styles.header}>
       <View style={{ display: 'flex', flexDirection: 'row', gap: 5, alignItems: 'center' }}>
         <FolderIcon size={40} />
-        <Text style={{ fontSize: 30 }}>Nome da Pasta</Text>
+        <Text style={{ fontSize: 30 }}>{selectFolder?.nome}</Text>
       </View>
       <ButtonNew onClick={handleModal} />
     </View>
