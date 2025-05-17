@@ -16,6 +16,7 @@ type ModalProps = {
   handleModalCreate: () => void;
   selectedItem: Folder | null;
   fetchData: () => void;
+  handleChangeError: (field: keyof FolderDataProps, hasError: boolean) => void;
 }
 const ModalCreate = ({
   isVisible,
@@ -25,7 +26,8 @@ const ModalCreate = ({
   handleChangeDescriptionValue,
   handleModalCreate,
   selectedItem,
-  fetchData
+  fetchData,
+  handleChangeError
 }:ModalProps) => {
   const { folderData } = useFields();
   return (
@@ -51,7 +53,13 @@ const ModalCreate = ({
               />
               <View style={styles.containerBtns}>
                 <ButtonSecondary text='Cancelar' onClick={handleFunction}/>
-                <ButtonSubmit data={data} handleModalCreate={handleModalCreate} selectedItem={selectedItem} fetchData={fetchData}/>
+                <ButtonSubmit
+                  data={data}
+                  handleModalCreate={handleModalCreate}
+                  selectedItem={selectedItem}
+                  fetchData={fetchData}
+                  handleChangeError={handleChangeError}
+                />
               </View>
             </View>
           </View>

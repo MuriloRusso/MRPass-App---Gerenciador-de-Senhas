@@ -8,11 +8,12 @@ type ButtonSubmitProps = {
     handleModalCreate: () => void;
     selectedItem: Folder | null;
     fetchData: () => void;
+    handleChangeError: (field: keyof FolderDataProps, hasError: boolean) => void;
 }
 
-export default function ButtonSubmit({data,  handleModalCreate, selectedItem, fetchData}:ButtonSubmitProps){
-    const {create} = useCreate(handleModalCreate, fetchData);
-    const {update} = useUpdate(handleModalCreate, fetchData);
+export default function ButtonSubmit({data,  handleModalCreate, selectedItem, fetchData, handleChangeError}:ButtonSubmitProps){
+    const {create} = useCreate(handleModalCreate, fetchData, handleChangeError);
+    const {update} = useUpdate(handleModalCreate, fetchData/*, handleChangeError*/);
 
     const handleSubmit = () => {
         selectedItem === null ?

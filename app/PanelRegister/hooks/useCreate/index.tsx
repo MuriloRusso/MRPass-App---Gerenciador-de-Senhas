@@ -57,7 +57,7 @@ export default function useCreate(handleModalCreate: () => void, fetchData: () =
       formData.append("password", password);
 
       try {
-        const route = "https://mrpass.shop/api/folders/create.php";
+        const route = "https://mrpass.shop/api/register/create.php";
         const response = await fetch(route, {
           method: "POST",
           headers: {

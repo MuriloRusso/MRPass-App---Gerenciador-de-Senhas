@@ -18,7 +18,7 @@ export default function Panel(){
     const [ rows, setRows ] = useState<Folder[]>([]);
     const { folders, fetchData } = useGetList();
     const { modalCreateVisible, handleModalCreate } = useModals();
-    const { folderData, handleChangeNameValue, handleChangeDescriptionValue } = useFields();
+    const { folderData, handleChangeNameValue, handleChangeDescriptionValue, handleChangeError } = useFields();
     const { loading } = useContext(GlobalContext);
 
     const [selectedItem, setSelectedItem] = useState<Folder | null>(null);
@@ -75,6 +75,7 @@ export default function Panel(){
                 handleModalCreate={handleModalCreate}
                 selectedItem={selectedItem}
                 fetchData={fetchData}
+                handleChangeError={handleChangeError}
             />
             <Loading visible={loading}/>
         </View>

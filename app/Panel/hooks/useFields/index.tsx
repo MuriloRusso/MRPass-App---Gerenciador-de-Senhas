@@ -58,11 +58,21 @@ export default function useFields(){
         }));
     };
 
+    const handleChangeError = (field: string, hasError: boolean) => {
+        setFolderData(prev => ({
+            ...prev,
+            [field]: {
+                ...prev[field as keyof FolderDataProps],
+                error: hasError,
+            },
+        }));
+    };
+
     useEffect(()=>{
         console.log('folderData');
         console.log(folderData);
         
     }, [folderData])
 
-    return {folderData, handleChangeNameValue, handleChangeNameError, handleChangeDescriptionValue, handleChangeDescriptionError}
+    return {folderData, handleChangeNameValue, handleChangeNameError, handleChangeDescriptionValue, handleChangeDescriptionError, handleChangeError}
 }
