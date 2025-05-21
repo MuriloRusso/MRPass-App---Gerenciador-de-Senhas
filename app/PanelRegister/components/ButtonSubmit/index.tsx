@@ -36,5 +36,5 @@ export default function ButtonSubmit({data,  handleModalCreate, selectedItem, fe
     };
 
 
-    return <ButtonPrimary text={selectedItem === null ? 'Criar Pasta' : 'Atualizar Pasta'} onClick={handleSubmit}/>
+    return <ButtonPrimary text={selectedItem === null ? 'Criar Registro' : 'Atualizar Registro'} onClick={handleSubmit}/>
 }

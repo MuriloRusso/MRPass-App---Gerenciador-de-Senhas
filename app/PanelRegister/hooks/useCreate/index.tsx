@@ -13,8 +13,11 @@ type CreateProps = {
 };
 
 export default function useCreate(handleModalCreate: () => void, fetchData: () => void) {
+
   const { user } = useContext(AuthContext);
+
   const { handleAddToast } = useToast();
+
   const {
     handleChangePlataformError,
     handleChangeDescriptionError,
@@ -22,11 +25,15 @@ export default function useCreate(handleModalCreate: () => void, fetchData: () =
     handleChangeUserError,
     handleChangePasswordError,
   } = useFields();
-  const { handleVisibleLoading } = useContext(GlobalContext);
 
-  // const fetchCreate = async ({ plataform, descricao, link, user, password }: CreateProps) => {
 
+  const { handleVisibleLoading, selectFolder } = useContext(GlobalContext);
+  
   const fetchCreate = async (data: CreateProps) => {
+
+    if(selectFolder === null){
+      return
+    }
 
     let fieldsErrors = false;
 
@@ -53,7 +60,7 @@ export default function useCreate(handleModalCreate: () => void, fetchData: () =
 
     if (!fieldsErrors) {
       const formData = new FormData();
-      formData.append("id", data.plataform); // API ainda espera "nome"
+      formData.append("id", selectFolder.id); // API ainda espera "nome"
       formData.append("title", data.plataform); // API ainda espera "nome"
       formData.append("descricao", data.descricao);
       formData.append("link", data.link);
