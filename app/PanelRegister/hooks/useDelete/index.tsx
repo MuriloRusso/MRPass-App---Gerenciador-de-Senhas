@@ -1,8 +1,8 @@
 // useDelete.ts
 import { AuthContext } from "@/contexts/AuthContext";
+import { GlobalContext } from "@/contexts/GlobalContext";
 import useToast from "@/hooks/useToast";
 import { useContext } from "react";
-import { GlobalContext } from "@/contexts/GlobalContext";
 
 export default function useDelete(closeModal: () => void, fetchData: () => void) {
   const { handleAddToast } = useToast();
@@ -12,7 +12,7 @@ export default function useDelete(closeModal: () => void, fetchData: () => void)
   const drop = async (id: number) => {
     handleVisibleLoading(true);
     try {
-      const route = "https://mrpass.shop/api/folders/delete.php";
+      const route = "https://mrpass.shop/api/register/delete.php";
       const response = await fetch(route, {
         method: "POST",
         headers: {
