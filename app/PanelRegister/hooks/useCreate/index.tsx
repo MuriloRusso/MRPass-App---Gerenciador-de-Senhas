@@ -62,7 +62,7 @@ export default function useCreate(handleModalCreate: () => void, fetchData: () =
       const formData = new FormData();
       formData.append("id", selectFolder.id); // API ainda espera "nome"
       formData.append("title", data.plataform); // API ainda espera "nome"
-      formData.append("descricao", data.descricao);
+      formData.append("description", data.descricao);
       formData.append("link", data.link);
       formData.append("user", data.user);
       formData.append("password", data.password);

@@ -65,7 +65,7 @@ export default function useUpdate(handleModalCreate: () => void, fetchData: () =
       formData.append("password", password);
 
       try {
-        const route = "https://mrpass.shop/api/folders/update.php";
+        const route = "https://mrpass.shop/api/register/update.php";
         const response = await fetch(route, {
           method: "POST",
           headers: {

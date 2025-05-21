@@ -30,7 +30,7 @@ export default function ButtonSubmit({data,  handleModalCreate, selectedItem, fe
         } else {
             update({
             id: Number(selectedItem.id),
-            plataform: data.plataform.value, // aqui você pode querer mudar 'nome' para 'plataform' se desejar
+            plataform: data.plataform.value,
             descricao: data.description.value,
             link: data.link.value,
             user: data.user.value,
