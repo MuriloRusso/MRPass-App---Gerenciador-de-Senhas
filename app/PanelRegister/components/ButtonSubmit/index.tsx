@@ -16,6 +16,10 @@ export default function ButtonSubmit({data,  handleModalCreate, selectedItem, fe
 
     const handleSubmit = () => {
         if (selectedItem === null) {
+
+            console.log(data);
+            
+
             create({
             plataform: data.plataform.value,
             descricao: data.description.value,
