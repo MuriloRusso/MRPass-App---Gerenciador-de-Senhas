@@ -26,7 +26,7 @@ export default function useDelete(closeModal: () => void, fetchData: () => void)
       fetchData();
       closeModal();
     } catch (error) {
-      console.error("Erro ao deletar pasta:", error);
+      console.error("Erro ao deletar registro:", error);
     }
     handleVisibleLoading(false);
   };

@@ -60,8 +60,8 @@ export default function useCreate(handleModalCreate: () => void, fetchData: () =
 
     if (!fieldsErrors) {
       const formData = new FormData();
-      formData.append("id", selectFolder.id); // API ainda espera "nome"
-      formData.append("title", data.plataform); // API ainda espera "nome"
+      formData.append("id", selectFolder.id);
+      formData.append("title", data.plataform);
       formData.append("description", data.descricao);
       formData.append("link", data.link);
       formData.append("user", data.user);
@@ -88,9 +88,9 @@ export default function useCreate(handleModalCreate: () => void, fetchData: () =
         fetchData();
         handleModalCreate();
       } catch (error) {
-        console.error("Erro ao criar pasta:", error);
+        console.error("Erro ao criar registro:", error);
         handleAddToast({
-          message: "Erro ao criar pasta. Tente novamente.",
+          message: "Erro ao criar registro. Tente novamente.",
           type: "error",
         });
       }

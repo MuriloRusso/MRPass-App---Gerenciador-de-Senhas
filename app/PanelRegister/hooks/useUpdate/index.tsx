@@ -80,7 +80,7 @@ export default function useUpdate(handleModalCreate: () => void, fetchData: () =
         fetchData();
         handleModalCreate();
       } catch (error) {
-        console.error("Erro ao atualizar pasta:", error);
+        console.error("Erro ao atualizar registro:", error);
       }
     }
 
