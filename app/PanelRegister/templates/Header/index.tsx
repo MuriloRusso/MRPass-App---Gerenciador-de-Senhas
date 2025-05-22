@@ -55,5 +55,6 @@ const styles = StyleSheet.create({
     gap: 5,
     padding: 10,
     justifyContent: 'space-between',
+    flexWrap: 'wrap'
   },
 });

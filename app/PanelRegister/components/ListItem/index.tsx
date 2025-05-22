@@ -105,10 +105,15 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 25,
+    flexShrink: 1,         // <- isso ajuda o texto a se adaptar ao espaço
+    flexWrap: 'wrap',
+    maxWidth: '90%'
   },
   description: {
     fontSize: 16,
-    maxWidth: '80%'
+    maxWidth: '80%',
+    flexShrink: 1,         // <- isso ajuda o texto a se adaptar ao espaço
+    flexWrap: 'wrap',
   },
   containerAcoes: {
     display: "flex",
@@ -119,19 +124,30 @@ const styles = StyleSheet.create({
   },
   itemRegister: {
     marginVertical: 20,
+    flexShrink: 1,         // <- isso ajuda o texto a se adaptar ao espaço
+    flexWrap: 'wrap',
+    maxWidth: '90%'
   },
   itemRegisterText: {
-    fontSize: 20
+    fontSize: 20,
+    flexShrink: 1,         // <- isso ajuda o texto a se adaptar ao espaço
+    flexWrap: 'wrap',
+    maxWidth: '90%'
   },
   itemRegisterLink: {
     color: "#0000ff",
-    textDecorationLine: "underline"
+    textDecorationLine: "underline",
+    flexShrink: 1,         // <- isso ajuda o texto a se adaptar ao espaço
+    flexWrap: 'wrap',
+    maxWidth: '90%'
   },
   itemContainer: {
     display: 'flex',
     flexDirection: 'row',
     gap: 20,
     alignItems: 'center',
-    flexWrap: "wrap"
+    flexWrap: 'wrap',
+    flexShrink: 1,         // <- permite que o texto quebre em vez de estourar
+    maxWidth: '100%',      // <- impede ultrapassar o limite da tela
   }
 });
