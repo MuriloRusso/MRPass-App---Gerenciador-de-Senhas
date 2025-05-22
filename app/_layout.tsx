@@ -1,53 +1,58 @@
-import { AuthProvider } from '@/contexts/AuthContext';
-import { Stack } from 'expo-router';
-import { StyleSheet, Text, View } from 'react-native';
 import ButtonLogout from '@/components/ButtonLogout';
 import Toast from '@/components/Toast';
+import { AuthProvider } from '@/contexts/AuthContext';
 import { GlobalProvider } from '@/contexts/GlobalContext';
+import { Stack } from 'expo-router';
+import { SafeAreaView, StatusBar, StyleSheet, Text, View } from 'react-native';
 
 export default function RootLayout() {
-
   return (
     <GlobalProvider>
       <AuthProvider>
-        <Toast/>
-        <View style={styles.container}>
-          {/* Cabeçalho que aparecerá em todas as telas */}
+        <Toast />
+        <SafeAreaView style={styles.safeArea}>
+          {/* Status bar visível e estilizada */}
+          <StatusBar backgroundColor="#FE715B" barStyle="light-content" />
+
           <View style={styles.header}>
             <Text style={styles.headerText}>MRPass</Text>
-            <ButtonLogout/>
+            <ButtonLogout />
           </View>
 
-          {/* Área de conteúdo dinâmico (as telas serão renderizadas aqui) */}
-          <Stack
-            screenOptions={{
-              headerShown: false, // Oculta o cabeçalho padrão do Stack
-              contentStyle: { backgroundColor: '#f5f5f5' },
-            }}
-          />
+          <View style={styles.container}>
+            <Stack
+              screenOptions={{
+                headerShown: false,
+                contentStyle: { backgroundColor: '#f5f5f5' },
+              }}
+            />
+          </View>
 
-          {/* Rodapé que aparecerá em todas as telas */}
           <View style={styles.footer}>
             <Text style={styles.footerText}>© 2025 Murilo Russo Desenvolvimento</Text>
           </View>
-        </View>
+        </SafeAreaView>
       </AuthProvider>
     </GlobalProvider>
-
   );
 }
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: '#FE715B', // importante para evitar fundo branco no topo
+  },
   container: {
     flex: 1,
+    backgroundColor: '#f5f5f5',
   },
   header: {
     height: 80,
     backgroundColor: '#FE715B',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: 20,
-    flexDirection: 'row'
+    paddingHorizontal: 20,
+    flexDirection: 'row',
   },
   headerText: {
     color: 'white',
