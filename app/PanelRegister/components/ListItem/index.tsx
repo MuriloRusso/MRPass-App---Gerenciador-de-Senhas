@@ -1,7 +1,9 @@
 import ButtonDelete from "@/components/ButtonDelete";
 import ButtonEdit from "@/components/ButtonEdit";
+import useToast from "@/hooks/useToast";
 import { Register } from "@/types/register";
 import Feather from '@expo/vector-icons/Feather';
+import * as Clipboard from 'expo-clipboard';
 import { Linking, StyleSheet, Text, View } from "react-native";
 import RegisterIcon from "../RegisterIcon";
 
@@ -26,8 +28,17 @@ export default function ListItem({register, modalConfirmDeleteFunction, modalCre
     
     const handleLink = (link: string) => {
       Linking.openURL(link);
-
     }
+
+    const { handleAddToast } = useToast();
+    
+    const copyClipboard = async (txt:string) => {
+      await Clipboard.setStringAsync(txt);
+        handleAddToast({
+        message: "Texto copiado para a área de transferência.",
+        type: 'info',        
+      });
+    };
 
     return (
         <View style={styles.item}>
@@ -44,7 +55,7 @@ export default function ListItem({register, modalConfirmDeleteFunction, modalCre
                         <Text style={styles.itemRegisterText}>Usuário:</Text>
                         <View style={styles.itemContainer}>
                           <Text style={styles.itemRegisterText}>{register.usuario}</Text>
-                          <Feather name="copy" size={30} color="black" />
+                          <Feather name="copy" size={30} color="black" onPress={() => copyClipboard(register.usuario)} />
                         </View>
                       </View>
 
@@ -52,15 +63,19 @@ export default function ListItem({register, modalConfirmDeleteFunction, modalCre
                         <Text style={styles.itemRegisterText}>Senha:</Text>
                         <View style={styles.itemContainer}>
                           <Text style={styles.itemRegisterText}>{register.senha}</Text>
-                          <Feather name="copy" size={30} color="black" />
+                          <Feather name="copy" size={30} color="black" onPress={() => copyClipboard(register.senha)} />
                         </View>
                       </View>
 
                       <View style={styles.itemRegister}>
                         <Text style={styles.itemRegisterText}>Link:</Text>
                         <View style={styles.itemContainer}>
-                          <Text style={{...styles.itemRegisterText, ...styles.itemRegisterLink}} onPress={() => handleLink(register.link)}>{register.link}</Text>
-                          <Feather name="copy" size={30} color="black" />
+                          <Text 
+                            style={{...styles.itemRegisterText, ...styles.itemRegisterLink}}
+                            onPress={() => handleLink(register.link)}>
+                              {register.link}
+                          </Text>
+                          <Feather name="copy" size={30} color="black" onPress={() => copyClipboard(register.link)} />
                         </View>
                       </View>
 

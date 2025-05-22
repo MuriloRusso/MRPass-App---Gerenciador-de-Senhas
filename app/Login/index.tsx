@@ -13,7 +13,6 @@ export default function Login(){
             <Text>Gerenciamento de Senhas</Text>
             <Form/>
             <Loading visible={loading}/>
-
         </View>
     )
 }
