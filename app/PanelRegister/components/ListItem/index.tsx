@@ -1,8 +1,10 @@
 import ButtonDelete from "@/components/ButtonDelete";
 import ButtonEdit from "@/components/ButtonEdit";
 import { Register } from "@/types/register";
+import Feather from '@expo/vector-icons/Feather';
 import { Linking, StyleSheet, Text, View } from "react-native";
 import RegisterIcon from "../RegisterIcon";
+
 
 type ListItemProps = {
   register: Register;
@@ -33,7 +35,6 @@ export default function ListItem({register, modalConfirmDeleteFunction, modalCre
                 <View style={{display: 'flex', gap: 10}}>
                     <View>
                       <View style={{display: "flex", flexDirection: "row", gap: 10}}>
-
                         <RegisterIcon size={35}/>
                         <Text style={styles.title}>{register.plataforma}</Text>
                       </View>
@@ -41,17 +42,26 @@ export default function ListItem({register, modalConfirmDeleteFunction, modalCre
 
                       <View style={styles.itemRegister}>
                         <Text style={styles.itemRegisterText}>Usuário:</Text>
-                        <Text style={styles.itemRegisterText}>{register.usuario}</Text>
+                        <View style={styles.itemContainer}>
+                          <Text style={styles.itemRegisterText}>{register.usuario}</Text>
+                          <Feather name="copy" size={30} color="black" />
+                        </View>
                       </View>
 
                       <View style={styles.itemRegister}>
                         <Text style={styles.itemRegisterText}>Senha:</Text>
-                        <Text style={styles.itemRegisterText}>{register.senha}</Text>
+                        <View style={styles.itemContainer}>
+                          <Text style={styles.itemRegisterText}>{register.senha}</Text>
+                          <Feather name="copy" size={30} color="black" />
+                        </View>
                       </View>
 
                       <View style={styles.itemRegister}>
                         <Text style={styles.itemRegisterText}>Link:</Text>
-                        <Text style={{...styles.itemRegisterText, ...styles.itemRegisterLink}} onPress={() => handleLink(register.link)}>{register.link}</Text>
+                        <View style={styles.itemContainer}>
+                          <Text style={{...styles.itemRegisterText, ...styles.itemRegisterLink}} onPress={() => handleLink(register.link)}>{register.link}</Text>
+                          <Feather name="copy" size={30} color="black" />
+                        </View>
                       </View>
 
                     </View>
@@ -101,5 +111,12 @@ const styles = StyleSheet.create({
   itemRegisterLink: {
     color: "#0000ff",
     textDecorationLine: "underline"
+  },
+  itemContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    gap: 20,
+    alignItems: 'center',
+    flexWrap: "wrap"
   }
 });
