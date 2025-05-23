@@ -3,6 +3,7 @@ import { GlobalContext } from '@/contexts/GlobalContext';
 import { Register } from '@/types/register';
 import { useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import ButtonBack from '../../components/ButtonBack';
 import ButtonNew from '../../components/ButtonNew';
 
 type HeaderProps = {
@@ -37,12 +38,15 @@ export default function Header({
   const { selectFolder } = useContext(GlobalContext);
 
   return (
-    <View style={styles.header}>
-      <View style={{ display: 'flex', flexDirection: 'row', gap: 5, alignItems: 'center' }}>
-        <FolderIcon size={40} />
-        <Text style={{ fontSize: 30 }}>{selectFolder?.nome}</Text>
+    <View>
+      <ButtonBack/>
+      <View style={styles.header}>
+        <View style={{ display: 'flex', flexDirection: 'row', gap: 5, alignItems: 'center' }}>
+          <FolderIcon size={40} />
+          <Text style={{ fontSize: 30 }}>{selectFolder?.nome}</Text>
+        </View>
+        <ButtonNew onClick={handleModal} />
       </View>
-      <ButtonNew onClick={handleModal} />
     </View>
   );
 }

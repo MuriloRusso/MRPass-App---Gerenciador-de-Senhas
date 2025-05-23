@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 20,
     flexDirection: 'row',
+    marginTop: 40
   },
   headerText: {
     color: 'white',
