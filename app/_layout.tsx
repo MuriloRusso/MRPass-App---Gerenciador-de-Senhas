@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 20,
     flexDirection: 'row',
-    marginTop: 40
+    // marginTop: 40
   },
   headerText: {
     color: 'white',
@@ -61,7 +61,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   footer: {
-    height: 80,
+    // height: 80,
+    height: 40,
     backgroundColor: '#FE715B',
     // justifyContent: 'center',
     alignItems: 'center',
