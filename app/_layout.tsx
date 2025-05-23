@@ -61,13 +61,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   footer: {
-    height: 50,
+    height: 80,
     backgroundColor: '#FE715B',
-    justifyContent: 'center',
+    // justifyContent: 'center',
     alignItems: 'center',
   },
   footerText: {
     color: 'white',
     fontSize: 12,
+    marginTop: 10
   },
 });

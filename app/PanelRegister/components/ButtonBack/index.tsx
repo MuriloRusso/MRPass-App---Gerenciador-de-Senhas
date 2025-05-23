@@ -7,7 +7,6 @@ export default function ButtonBack() {
     const handleBack = () => router.push('/Panel');
     return (
         <TouchableOpacity style={styles.containerButton} onPress={handleBack}>
-            {/* <Ionicons name="return-up-back" size={40} color="#777" /> */}
             <Ionicons name="chevron-back-circle-outline" size={40} color="#777" />
             <Text style={{fontSize: 30, color: "#555"}}>Voltar</Text>
         </TouchableOpacity>
