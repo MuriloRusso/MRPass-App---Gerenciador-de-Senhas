@@ -13,7 +13,6 @@ export default function RootLayout() {
         <SafeAreaView style={styles.safeArea}>
           {/* Status bar visível e estilizada */}
           <StatusBar backgroundColor="#FE715B" barStyle="light-content" />
-
           <View style={styles.header}>
             <Text style={styles.headerText}>MRPass</Text>
             <ButtonLogout />
