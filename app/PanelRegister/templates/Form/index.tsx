@@ -13,11 +13,11 @@ type FormProps = {
   handleChangeUserValue: (value: string) => void;
   handleChangePasswordValue: (value: string) => void;
   handleChangeDescriptionValue: (value: string) => void;
-  handleChangePlataformError: (error: boolean) => void;
-  handleChangeLinkError: (error: boolean) => void;
-  handleChangeUserError: (error: boolean) => void;
-  handleChangePasswordError: (error: boolean) => void;
-  handleChangeDescriptionError: (error: boolean) => void;
+  // handleChangePlataformError: (error: boolean) => void;
+  // handleChangeLinkError: (error: boolean) => void;
+  // handleChangeUserError: (error: boolean) => void;
+  // handleChangePasswordError: (error: boolean) => void;
+  // handleChangeDescriptionError: (error: boolean) => void;
 };
 
 export default function Form({
@@ -27,11 +27,11 @@ export default function Form({
   handleChangeUserValue,
   handleChangePasswordValue,
   handleChangeDescriptionValue,
-  handleChangePlataformError,
-  handleChangeLinkError,
-  handleChangeUserError,
-  handleChangePasswordError,
-  handleChangeDescriptionError,
+  // handleChangePlataformError,
+  // handleChangeLinkError,
+  // handleChangeUserError,
+  // handleChangePasswordError,
+  // handleChangeDescriptionError,
 }: FormProps) {
   return (
     <View style={styles.form}>

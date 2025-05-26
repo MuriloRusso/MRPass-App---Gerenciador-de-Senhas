@@ -1,5 +1,5 @@
 import { RegisterDataProps } from "@/types/register";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function useFields() {
   const [registerData, setRegisterData] = useState<RegisterDataProps>({
@@ -140,10 +140,16 @@ export default function useFields() {
     }));
   };
 
-  useEffect(() => {
-    console.log("registerData");
-    console.log(registerData);
-  }, [registerData]);
+  const handleChangeError = (field: string, hasError: boolean) => {
+      setRegisterData(prev => ({
+          ...prev,
+          [field]: {
+              ...prev[field as keyof RegisterDataProps],
+              error: hasError,
+          },
+      }));
+  };
+
 
   return {
     registerData,
@@ -157,5 +163,6 @@ export default function useFields() {
     handleChangePasswordError,
     handleChangeDescriptionValue,
     handleChangeDescriptionError,
+    handleChangeError
   };
 }

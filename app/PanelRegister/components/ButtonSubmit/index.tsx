@@ -8,34 +8,35 @@ type ButtonSubmitProps = {
     handleModalCreate: () => void;
     selectedItem: Register | null;
     fetchData: () => void;
+    handleChangeError: (field: keyof RegisterDataProps, hasError: boolean) => void;
 }
 
-export default function ButtonSubmit({data,  handleModalCreate, selectedItem, fetchData}:ButtonSubmitProps){
-    const {create} = useCreate(handleModalCreate, fetchData);
-    const {update} = useUpdate(handleModalCreate, fetchData);
+export default function ButtonSubmit({data,  handleModalCreate, selectedItem, fetchData, handleChangeError}:ButtonSubmitProps){
+    const {create} = useCreate(handleModalCreate, fetchData, handleChangeError);
+    const {update} = useUpdate(handleModalCreate, fetchData, handleChangeError);
 
     const handleSubmit = () => {
         if (selectedItem === null) {
-
-            console.log(data);
-            
-
-            create({
-            plataform: data.plataform.value,
-            descricao: data.description.value,
-            link: data.link.value,
-            user: data.user.value,
-            password: data.password.value,
-            });
+            create(
+                {
+                    plataform: data.plataform.value,
+                    descricao: data.description.value,
+                    link: data.link.value,
+                    user: data.user.value,
+                    password: data.password.value,
+                }
+            );
         } else {
-            update({
-            id: Number(selectedItem.id),
-            plataform: data.plataform.value,
-            descricao: data.description.value,
-            link: data.link.value,
-            user: data.user.value,
-            password: data.password.value,
-            });
+            update(
+                {
+                    id: Number(selectedItem.id),
+                    plataform: data.plataform.value,
+                    descricao: data.description.value,
+                    link: data.link.value,
+                    user: data.user.value,
+                    password: data.password.value,
+                }
+            );
         }
     };
 

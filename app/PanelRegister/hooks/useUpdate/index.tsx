@@ -1,10 +1,11 @@
 import { AuthContext } from "@/contexts/AuthContext";
 import { GlobalContext } from "@/contexts/GlobalContext";
 import useToast from "@/hooks/useToast";
+import { RegisterDataProps } from "@/types/register";
 import { useContext } from "react";
 import useFields from "../useFields";
 
-export default function useUpdate(handleModalCreate: () => void, fetchData: () => void) {
+export default function useUpdate(handleModalCreate: () => void, fetchData: () => void, handleChangeError: (field: keyof RegisterDataProps, hasError: boolean) => void) {
   const { user } = useContext(AuthContext);
   const { handleAddToast } = useToast();
   const {
@@ -35,23 +36,28 @@ export default function useUpdate(handleModalCreate: () => void, fetchData: () =
     let fieldsErros = false;
 
     if (!plataform) {
-      handleChangePlataformError(true);
+      // handleChangePlataformError(true);
+      handleChangeError('plataform', true);
       fieldsErros = true;
     }
     if (!descricao) {
-      handleChangeDescriptionError(true);
+      // handleChangeDescriptionError(true);
+      handleChangeError('description', true);
       fieldsErros = true;
     }
     if (!link) {
-      handleChangeLinkError(true);
+      // handleChangeLinkError(true);
+      handleChangeError('link', true);
       fieldsErros = true;
     }
     if (!username) {
-      handleChangeUserError(true);
+      // handleChangeUserError(true);
+      handleChangeError('user', true);
       fieldsErros = true;
     }
     if (!password) {
-      handleChangePasswordError(true);
+      // handleChangePasswordError(true);
+      handleChangeError('password', true);
       fieldsErros = true;
     }
 

@@ -34,6 +34,7 @@ export default function Panel() {
     handleChangePasswordError,
     handleChangeDescriptionValue,
     handleChangeDescriptionError,
+    handleChangeError
   } = useFields();
 
   const { loading } = useContext(GlobalContext);
@@ -97,15 +98,16 @@ export default function Panel() {
       <ModalCreate
         data={registerData}
         handleChangePlataformValue={handleChangePlataformValue}
-        handleChangePlataformError={handleChangePlataformError}
+        // handleChangePlataformError={handleChangePlataformError}
         handleChangeLinkValue={handleChangeLinkValue}
-        handleChangeLinkError={handleChangeLinkError}
+        // handleChangeLinkError={handleChangeLinkError}
         handleChangeUserValue={handleChangeUserValue}
-        handleChangeUserError={handleChangeUserError}
+        // handleChangeUserError={handleChangeUserError}
         handleChangePasswordValue={handleChangePasswordValue}
-        handleChangePasswordError={handleChangePasswordError}
+        // handleChangePasswordError={handleChangePasswordError}
         handleChangeDescriptionValue={handleChangeDescriptionValue}
-        handleChangeDescriptionError={handleChangeDescriptionError}
+        // handleChangeDescriptionError={handleChangeDescriptionError}
+        handleChangeError={handleChangeError}
         isVisible={modalCreateVisible}
         handleFunction={handleModalCreate}
         handleModalCreate={handleModalCreate}

@@ -6,6 +6,14 @@ import { Stack } from 'expo-router';
 import { SafeAreaView, StatusBar, StyleSheet, Text, View } from 'react-native';
 
 export default function RootLayout() {
+  // useEffect(() => {
+  // if (Platform.OS === 'android') {
+  //   changeNavigationBarColor('#000000', true)
+  //       .then(() => console.log('Navigation bar color changed'))
+  //       .catch(console.error);
+  //   }
+  // }, []);
+
   return (
     <GlobalProvider>
       <AuthProvider>
@@ -59,13 +67,21 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
   },
-  footer: {
+  /*footer: {
     // height: 80,
     height: 40,
     backgroundColor: '#FE715B',
     // justifyContent: 'center',
     alignItems: 'center',
+  },*/
+  footer: {
+    height: 60,
+    backgroundColor: '#FE715B',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingBottom: 10,
   },
+
   footerText: {
     color: 'white',
     fontSize: 12,

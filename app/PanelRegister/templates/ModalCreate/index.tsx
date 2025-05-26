@@ -16,11 +16,13 @@ type ModalProps = {
   handleChangeUserValue: (value: string) => void;
   handleChangePasswordValue: (value: string) => void;
   handleChangeDescriptionValue: (value: string) => void;
-  handleChangePlataformError: (error: boolean) => void;
-  handleChangeLinkError: (error: boolean) => void;
-  handleChangeUserError: (error: boolean) => void;
-  handleChangePasswordError: (error: boolean) => void;
-  handleChangeDescriptionError: (error: boolean) => void;
+  // handleChangePlataformError: (error: boolean) => void;
+  // handleChangeLinkError: (error: boolean) => void;
+  // handleChangeUserError: (error: boolean) => void;
+  // handleChangePasswordError: (error: boolean) => void;
+  // handleChangeDescriptionError: (error: boolean) => void;
+  handleChangeError: (field: keyof RegisterDataProps, hasError: boolean) => void;
+
   handleModalCreate: () => void;
   selectedItem: Register | null;
   fetchData: () => void;
@@ -35,11 +37,12 @@ const ModalCreate = ({
   handleChangeUserValue,
   handleChangePasswordValue,
   handleChangeDescriptionValue,
-  handleChangePlataformError,
-  handleChangeLinkError,
-  handleChangeUserError,
-  handleChangePasswordError,
-  handleChangeDescriptionError,
+  // handleChangePlataformError,
+  // handleChangeLinkError,
+  // handleChangeUserError,
+  // handleChangePasswordError,
+  // handleChangeDescriptionError,
+  handleChangeError,
   handleModalCreate,
   selectedItem,
   fetchData,
@@ -69,15 +72,21 @@ const ModalCreate = ({
                 handleChangeUserValue={handleChangeUserValue}
                 handleChangePasswordValue={handleChangePasswordValue}
                 handleChangeDescriptionValue={handleChangeDescriptionValue}
-                handleChangePlataformError={handleChangePlataformError}
-                handleChangeLinkError={handleChangeLinkError}
-                handleChangeUserError={handleChangeUserError}
-                handleChangePasswordError={handleChangePasswordError}
-                handleChangeDescriptionError={handleChangeDescriptionError}
+                // handleChangePlataformError={handleChangePlataformError}
+                // handleChangeLinkError={handleChangeLinkError}
+                // handleChangeUserError={handleChangeUserError}
+                // handleChangePasswordError={handleChangePasswordError}
+                // handleChangeDescriptionError={handleChangeDescriptionError}
               />
               <View style={styles.containerBtns}>
                 <ButtonSecondary text='Cancelar' onClick={handleFunction}/>
-                <ButtonSubmit data={data} handleModalCreate={handleModalCreate} selectedItem={selectedItem} fetchData={fetchData}/>
+                <ButtonSubmit
+                  data={data}
+                  handleModalCreate={handleModalCreate}
+                  selectedItem={selectedItem}
+                  fetchData={fetchData}
+                  handleChangeError={handleChangeError}
+                />
               </View>
             </View>
           </View>
