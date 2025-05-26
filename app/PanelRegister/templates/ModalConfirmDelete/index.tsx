@@ -33,7 +33,7 @@ const ModalConfirmDelete = ({
           }}>
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
-              <Text style={styles.modalText}>Tem certeza de que deseja excluir a pasta {selectedItem?.plataforma}?</Text>
+              <Text style={styles.modalText}>Tem certeza de que deseja excluir o registro {selectedItem?.plataforma}?</Text>
               <View style={styles.containerBtns}>
                 <ButtonSecondary text='Cancelar' onClick={handleClose} />
                 <ButtonDelete selectedItem={selectedItem} closeModalFunction={handleFunction} fetchData={fetchData} />
