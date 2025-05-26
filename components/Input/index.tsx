@@ -16,14 +16,13 @@ export default function Input({onChange, value, placeholder, error, errorText, k
     return (
         <View>            
             <TextInput
-                // style={{...styles.input, ...styles.inputError}}
-                // style={{...sx, ...styles.input, borderWidth: error ? 1 : 0}}
                 style={[
                     styles.input,
-                    sx, // Pode ser um objeto ou array
+                    sx,
                     { borderWidth: error ? 1 : 0 },
                 ]}
                 placeholder={placeholder}
+                placeholderTextColor="#000" // <-- aqui
                 onChangeText={onChange}
                 value={value}
                 keyboardType={keyboardType}
@@ -40,7 +39,8 @@ const styles = StyleSheet.create({
         padding: 10,
         height: 50,
         borderColor: "#F00",
-        borderRadius: 4
+        borderRadius: 4,
+        color: '#000',
     },
     textError: {
         height: 16,
