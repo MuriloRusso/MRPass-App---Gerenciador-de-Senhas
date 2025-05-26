@@ -19,12 +19,11 @@ export default function useCreate(handleModalCreate: () => void, fetchData: () =
             handleChangeError('name', true);
             fieldsErros = true;
         }
-        if(!descricao){
+        /*if(!descricao){
             // handleChangeDescriptionError(true);
             handleChangeError('description', true);
-
             fieldsErros = true;
-        }
+        }*/
         if(fieldsErros){
             handleAddToast({ type: "error", message: "Preencha o campo E-mail" });
             return

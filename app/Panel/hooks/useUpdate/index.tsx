@@ -1,10 +1,11 @@
 import { AuthContext } from "@/contexts/AuthContext";
+import { GlobalContext } from "@/contexts/GlobalContext";
 import useToast from "@/hooks/useToast";
+import { FolderDataProps } from "@/types/folder";
 import { useContext } from "react";
 import useFields from "../useFields";
-import { GlobalContext } from "@/contexts/GlobalContext";
 
-export default function useUpdate(handleModalCreate: () => void, fetchData: () => void) {
+export default function useUpdate(handleModalCreate: () => void, fetchData: () => void, handleChangeError: (field: keyof FolderDataProps, hasError: boolean) => void) {
   const { user } = useContext(AuthContext);
   const { handleAddToast } = useToast();
   const { handleChangeNameError, handleChangeDescriptionError } = useFields();
@@ -15,13 +16,14 @@ export default function useUpdate(handleModalCreate: () => void, fetchData: () =
     let fieldsErros = false;
 
     if (!nome) {
-      handleChangeNameError(true);
+      // handleChangeNameError(true);
+      handleChangeError('name', true);
       fieldsErros = true;
     }
-    if (!descricao) {
+    /*if (!descricao) {
       handleChangeDescriptionError(true);
       fieldsErros = true;
-    }
+    }*/
 
     if (!fieldsErros) {
       let formData = new FormData();
