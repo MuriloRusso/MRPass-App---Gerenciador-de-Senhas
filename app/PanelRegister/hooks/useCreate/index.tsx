@@ -3,7 +3,6 @@ import { GlobalContext } from "@/contexts/GlobalContext";
 import useToast from "@/hooks/useToast";
 import { RegisterDataProps } from "@/types/register";
 import { useContext } from "react";
-import useFields from "../useFields";
 
 type CreateProps = {
   plataform: string;
@@ -19,15 +18,6 @@ export default function useCreate(handleModalCreate: () => void, fetchData: () =
 
   const { handleAddToast } = useToast();
 
-  const {
-    handleChangePlataformError,
-    handleChangeDescriptionError,
-    handleChangeLinkError,
-    handleChangeUserError,
-    handleChangePasswordError,
-  } = useFields();
-
-
   const { handleVisibleLoading, selectFolder } = useContext(GlobalContext);
   
   const fetchCreate = async (data: CreateProps) => {
@@ -39,27 +29,22 @@ export default function useCreate(handleModalCreate: () => void, fetchData: () =
     let fieldsErrors = false;
 
     if (!data.plataform) {
-      // handleChangePlataformError(true);
       handleChangeError('plataform', true);
       fieldsErrors = true;
     }
-    if (!data.descricao) {
-      // handleChangeDescriptionError(true);
-      handleChangeError('description', true);
-      fieldsErrors = true;
-    }
-    if (!data.link) {
-      // handleChangeLinkError(true);
-      handleChangeError('link', true);
-      fieldsErrors = true;
-    }
+    // if (!data.descricao) {
+    //   handleChangeError('description', true);
+    //   fieldsErrors = true;
+    // }
+    // if (!data.link) {
+    //   handleChangeError('link', true);
+    //   fieldsErrors = true;
+    // }
     if (!data.user) {
-      // handleChangeUserError(true);
       handleChangeError('user', true);
       fieldsErrors = true;
     }
     if (!data.password) {
-      // handleChangePasswordError(true);
       handleChangeError('password', true);
       fieldsErrors = true;
     }

@@ -3,18 +3,10 @@ import { GlobalContext } from "@/contexts/GlobalContext";
 import useToast from "@/hooks/useToast";
 import { RegisterDataProps } from "@/types/register";
 import { useContext } from "react";
-import useFields from "../useFields";
 
 export default function useUpdate(handleModalCreate: () => void, fetchData: () => void, handleChangeError: (field: keyof RegisterDataProps, hasError: boolean) => void) {
   const { user } = useContext(AuthContext);
   const { handleAddToast } = useToast();
-  const {
-    handleChangePlataformError,
-    handleChangeDescriptionError,
-    handleChangeLinkError,
-    handleChangeUserError,
-    handleChangePasswordError,
-  } = useFields();
   const { handleVisibleLoading } = useContext(GlobalContext);
 
   const update = async ({
@@ -36,27 +28,22 @@ export default function useUpdate(handleModalCreate: () => void, fetchData: () =
     let fieldsErros = false;
 
     if (!plataform) {
-      // handleChangePlataformError(true);
       handleChangeError('plataform', true);
       fieldsErros = true;
     }
-    if (!descricao) {
-      // handleChangeDescriptionError(true);
-      handleChangeError('description', true);
-      fieldsErros = true;
-    }
-    if (!link) {
-      // handleChangeLinkError(true);
-      handleChangeError('link', true);
-      fieldsErros = true;
-    }
+    // if (!descricao) {
+    //   handleChangeError('description', true);
+    //   fieldsErros = true;
+    // }
+    // if (!link) {
+    //   handleChangeError('link', true);
+    //   fieldsErros = true;
+    // }
     if (!username) {
-      // handleChangeUserError(true);
       handleChangeError('user', true);
       fieldsErros = true;
     }
     if (!password) {
-      // handleChangePasswordError(true);
       handleChangeError('password', true);
       fieldsErros = true;
     }
