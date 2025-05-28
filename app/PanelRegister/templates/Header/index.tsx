@@ -3,7 +3,6 @@ import { GlobalContext } from '@/contexts/GlobalContext';
 import { Register } from '@/types/register';
 import { useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import ButtonBack from '../../components/ButtonBack';
 import ButtonNew from '../../components/ButtonNew';
 
 type HeaderProps = {
@@ -39,7 +38,7 @@ export default function Header({
 
   return (
     <View>
-      <ButtonBack/>
+      {/* <ButtonBack/> */}
       <View style={styles.header}>
         <View style={{ display: 'flex', flexDirection: 'row', gap: 5, alignItems: 'center' }}>
           <FolderIcon size={40} />

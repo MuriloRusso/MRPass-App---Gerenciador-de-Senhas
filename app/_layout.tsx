@@ -27,12 +27,22 @@ export default function RootLayout() {
           </View>
 
           <View style={styles.container}>
-            <Stack
+            {/* <Stack
               screenOptions={{
                 headerShown: false,
                 contentStyle: { backgroundColor: '#f5f5f5' },
               }}
-            />
+            /> */}
+            <Stack
+              screenOptions={{
+                headerShown: true,
+                contentStyle: { backgroundColor: '#f5f5f5' },
+              }}
+            >
+              <Stack.Screen name="index" options={{headerTitle: "", headerShown: false}} />
+              <Stack.Screen name="Panel/index" options={{headerTitle: "", headerShown: false}} />
+              <Stack.Screen name="PanelRegister/index" options={{headerTitle: "Voltar", headerShown: true}} />
+            </Stack>
           </View>
 
           <View style={styles.footer}>
