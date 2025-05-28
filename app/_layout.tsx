@@ -19,20 +19,12 @@ export default function RootLayout() {
       <AuthProvider>
         <Toast />
         <SafeAreaView style={styles.safeArea}>
-          {/* Status bar visível e estilizada */}
           <StatusBar backgroundColor="#FE715B" barStyle="light-content" />
           <View style={styles.header}>
             <Text style={styles.headerText}>MRPass</Text>
             <ButtonLogout />
           </View>
-
           <View style={styles.container}>
-            {/* <Stack
-              screenOptions={{
-                headerShown: false,
-                contentStyle: { backgroundColor: '#f5f5f5' },
-              }}
-            /> */}
             <Stack
               screenOptions={{
                 headerShown: true,
@@ -44,7 +36,6 @@ export default function RootLayout() {
               <Stack.Screen name="PanelRegister/index" options={{headerTitle: "Voltar", headerShown: true}} />
             </Stack>
           </View>
-
           <View style={styles.footer}>
             <Text style={styles.footerText}>© 2025 Murilo Russo Desenvolvimento</Text>
           </View>
@@ -77,13 +68,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
   },
-  /*footer: {
-    // height: 80,
-    height: 40,
-    backgroundColor: '#FE715B',
-    // justifyContent: 'center',
-    alignItems: 'center',
-  },*/
+
   footer: {
     height: 60,
     backgroundColor: '#FE715B',
