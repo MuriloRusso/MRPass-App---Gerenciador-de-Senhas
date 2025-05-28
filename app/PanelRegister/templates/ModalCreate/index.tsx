@@ -2,8 +2,8 @@ import ButtonSecondary from '@/components/ButtonSecondary';
 import { Register, RegisterDataProps } from '@/types/register';
 import { Modal, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import FolderIcon from '../../../../components/FolderIcon';
 import ButtonSubmit from '../../components/ButtonSubmit';
+import RegisterIcon from '../../components/RegisterIcon';
 import useFields from '../../hooks/useFields';
 import Form from '../Form';
 
@@ -16,13 +16,7 @@ type ModalProps = {
   handleChangeUserValue: (value: string) => void;
   handleChangePasswordValue: (value: string) => void;
   handleChangeDescriptionValue: (value: string) => void;
-  // handleChangePlataformError: (error: boolean) => void;
-  // handleChangeLinkError: (error: boolean) => void;
-  // handleChangeUserError: (error: boolean) => void;
-  // handleChangePasswordError: (error: boolean) => void;
-  // handleChangeDescriptionError: (error: boolean) => void;
   handleChangeError: (field: keyof RegisterDataProps, hasError: boolean) => void;
-
   handleModalCreate: () => void;
   selectedItem: Register | null;
   fetchData: () => void;
@@ -37,11 +31,6 @@ const ModalCreate = ({
   handleChangeUserValue,
   handleChangePasswordValue,
   handleChangeDescriptionValue,
-  // handleChangePlataformError,
-  // handleChangeLinkError,
-  // handleChangeUserError,
-  // handleChangePasswordError,
-  // handleChangeDescriptionError,
   handleChangeError,
   handleModalCreate,
   selectedItem,
@@ -62,8 +51,8 @@ const ModalCreate = ({
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
               <View style={styles.modalHeader}>
-                  <FolderIcon size={40}/>
-                  <Text style={{fontSize: 20}}>Criar Pasta</Text>
+                  <RegisterIcon size={40}/>
+                  <Text style={{fontSize: 20}}>{selectedItem === null ? "Criar Registro": selectedItem.plataforma}</Text>
               </View>
               <Form
                 data={data}
@@ -72,11 +61,6 @@ const ModalCreate = ({
                 handleChangeUserValue={handleChangeUserValue}
                 handleChangePasswordValue={handleChangePasswordValue}
                 handleChangeDescriptionValue={handleChangeDescriptionValue}
-                // handleChangePlataformError={handleChangePlataformError}
-                // handleChangeLinkError={handleChangeLinkError}
-                // handleChangeUserError={handleChangeUserError}
-                // handleChangePasswordError={handleChangePasswordError}
-                // handleChangeDescriptionError={handleChangeDescriptionError}
               />
               <View style={styles.containerBtns}>
                 <ButtonSecondary text='Cancelar' onClick={handleFunction}/>

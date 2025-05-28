@@ -44,7 +44,7 @@ const ModalCreate = ({
             <View style={styles.modalView}>
               <View style={styles.modalHeader}>
                   <FolderIcon size={40}/>
-                  <Text style={{fontSize: 20}}>Criar Pasta</Text>
+                  <Text style={{fontSize: 20}}>{selectedItem === null ? "Criar Pasta": selectedItem.nome}</Text>
               </View>
               <Form
                 data={data}
