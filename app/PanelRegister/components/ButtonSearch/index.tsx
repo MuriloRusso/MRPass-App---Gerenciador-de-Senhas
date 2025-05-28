@@ -1,5 +1,6 @@
 import ButtonPrimaryIcon from "@/components/ButtonPrimaryIcon";
 import { AuthContext } from "@/contexts/AuthContext";
+import { GlobalContext } from "@/contexts/GlobalContext";
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { useContext } from "react";
 
@@ -8,14 +9,13 @@ function ButtonIcon (){
 } 
 
 export default function ButtonSearch({searchText, setRows}:{searchText:string, setRows:any}){
-    // const {search} = useGetBySearch();
 
     const {user} = useContext(AuthContext);
+    const { selectFolder } = useContext(GlobalContext);
     
-
     const search = async (searchText:string) => {
         try {
-            const route = 'https://mrpass.shop/api/register/search.php?id=10&search=' + encodeURIComponent(searchText);
+            const route = `https://mrpass.shop/api/register/search.php?id='${selectFolder?.id}'&search=` + encodeURIComponent(searchText);
             const response = await fetch(route, {
             method: "GET",
             headers: {
