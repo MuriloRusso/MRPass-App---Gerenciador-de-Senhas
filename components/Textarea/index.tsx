@@ -30,6 +30,7 @@ export default function Textarea({
                     { borderWidth: error ? 1 : 0 },
                 ]}
                 placeholder={placeholder}
+                placeholderTextColor="#000"
                 onChangeText={onChange}
                 value={value}
                 keyboardType={keyboardType}
@@ -50,6 +51,8 @@ const styles = StyleSheet.create({
         height: 100, // altura aumentada para parecer um textarea
         borderColor: "#F00",
         borderRadius: 4,
+        color: '#000',
+
     },
     textError: {
         height: 16,

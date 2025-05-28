@@ -22,7 +22,7 @@ export default function Input({onChange, value, placeholder, error, errorText, k
                     { borderWidth: error ? 1 : 0 },
                 ]}
                 placeholder={placeholder}
-                placeholderTextColor="#000" // <-- aqui
+                placeholderTextColor="#000"
                 onChangeText={onChange}
                 value={value}
                 keyboardType={keyboardType}
