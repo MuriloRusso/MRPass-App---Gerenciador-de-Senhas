@@ -2,7 +2,7 @@
   "expo": {
     "name": "MRPass",
     "slug": "MRPass",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "orientation": "portrait",
     "icon": "./assets/images/mrpass-icon.png",
     "scheme": "mrpass",
@@ -18,7 +18,7 @@
       },
       "edgeToEdgeEnabled": true,
       "package": "com.murilo.russo.MRPass",
-      "varsionConde": 7
+      "varsionConde": 8
     },
     "web": {
       "bundler": "metro",
@@ -30,8 +30,8 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
-          "imageWidth": 200,
+          "image": "./assets/images/splash.png",
+          "imageWidth": 300,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
