@@ -2,9 +2,9 @@
   "expo": {
     "name": "MRPass",
     "slug": "MRPass",
-    "version": "1.0.4",
+    "version": "1.0.6",
     "orientation": "portrait",
-    "icon": "assets/images/mrpass-icon.png",
+    "icon": "./assets/images/mrpass-icon.png",
     "scheme": "mrpass",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -13,17 +13,17 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./assets/images/mrpass-icon.png",
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
       "package": "com.murilo.russo.MRPass",
-      "varsionConde": 5
+      "varsionConde": 7
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/mrpass-icon.png"
     },
     "plugins": [
       "expo-router",
