@@ -2,7 +2,7 @@
   "expo": {
     "name": "MRPass",
     "slug": "MRPass",
-    "version": "1.0.9",
+    "version": "1.2",
     "orientation": "portrait",
     "icon": "./assets/images/mrpass-icon.png",
     "scheme": "mrpass",
@@ -18,7 +18,7 @@
       },
       "edgeToEdgeEnabled": true,
       "package": "com.murilo.russo.MRPass",
-      "varsionConde": 10
+      "varsionConde": 11
     },
     "web": {
       "bundler": "metro",
