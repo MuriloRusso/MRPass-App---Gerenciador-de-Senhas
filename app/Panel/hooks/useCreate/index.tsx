@@ -1,6 +1,7 @@
 import { AuthContext } from "@/contexts/AuthContext";
 import { GlobalContext } from "@/contexts/GlobalContext";
 import useToast from "@/hooks/useToast";
+import { baseUrl } from "@/services/api";
 import { FolderDataProps } from "@/types/folder";
 import { useContext } from "react";
 import useFields from "../useFields";
@@ -35,7 +36,7 @@ export default function useCreate(handleModalCreate: () => void, fetchData: () =
             formData.append('nome', nome);
             formData.append('descricao', descricao);
             try {
-                const route = 'https://mrpass.shop/api/folders/create.php';
+                const route = `${baseUrl}/api/folders/create.php`;
                 const response = await fetch(route, {
                         method: "POST",                
                         headers: {

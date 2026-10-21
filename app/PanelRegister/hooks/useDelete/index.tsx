@@ -2,6 +2,7 @@
 import { AuthContext } from "@/contexts/AuthContext";
 import { GlobalContext } from "@/contexts/GlobalContext";
 import useToast from "@/hooks/useToast";
+import { baseUrl } from "@/services/api";
 import { useContext } from "react";
 
 export default function useDelete(closeModal: () => void, fetchData: () => void) {
@@ -12,7 +13,7 @@ export default function useDelete(closeModal: () => void, fetchData: () => void)
   const drop = async (id: number) => {
     handleVisibleLoading(true);
     try {
-      const route = "https://mrpass.shop/api/register/delete.php";
+      const route = `${baseUrl}/api/register/delete.php`;
       const response = await fetch(route, {
         method: "POST",
         headers: {

@@ -2,8 +2,8 @@ import { InputProps } from '@/types/input';
 import React, { createContext, Dispatch, ReactNode, SetStateAction, useContext, useState } from 'react';
 // import axios from 'axios';
 // import Toast from 'react-native-toast-message';
-import useLoading from '@/hooks/useLoading';
 import useToast from '@/hooks/useToast';
+import { baseUrl } from '@/services/api';
 import { useRouter } from 'expo-router';
 import { GlobalContext } from './GlobalContext';
 
@@ -144,7 +144,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     if (!fieldErros) {
       try {
-        const route = 'https://mrpass.shop/api/';
+        const route = `${baseUrl}/api/`;
         let formData = new FormData();
         formData.append('username', userData.email.value);
         formData.append('password', userData.password.value);

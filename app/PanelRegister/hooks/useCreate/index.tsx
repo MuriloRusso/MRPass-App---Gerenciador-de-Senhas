@@ -1,6 +1,7 @@
 import { AuthContext } from "@/contexts/AuthContext";
 import { GlobalContext } from "@/contexts/GlobalContext";
 import useToast from "@/hooks/useToast";
+import { baseUrl } from "@/services/api";
 import { RegisterDataProps } from "@/types/register";
 import { useContext } from "react";
 
@@ -59,7 +60,7 @@ export default function useCreate(handleModalCreate: () => void, fetchData: () =
       formData.append("password", data.password);
 
       try {
-        const route = "https://mrpass.shop/api/register/create.php";
+        const route = `${baseUrl}/api/register/create.php`;
         const response = await fetch(route, {
           method: "POST",
           headers: {

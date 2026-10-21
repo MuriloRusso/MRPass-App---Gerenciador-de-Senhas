@@ -1,7 +1,8 @@
 import { AuthContext } from "@/contexts/AuthContext";
+import { GlobalContext } from "@/contexts/GlobalContext";
+import { baseUrl } from "@/services/api";
 import { Folder } from "@/types/folder";
 import { useContext, useState } from "react";
-import { GlobalContext } from "@/contexts/GlobalContext";
 
 export default function useGetList() {
   const [folders, setFolders] = useState<Folder[]>([]);
@@ -11,7 +12,7 @@ export default function useGetList() {
   const fetchData = async () => {
     handleVisibleLoading(true);
     try {
-      const route = "https://mrpass.shop/api/folders/search.php";
+      const route = `${baseUrl}/api/folders/search.php`;
       const response = await fetch(route, {
         method: "GET",
         headers: {
