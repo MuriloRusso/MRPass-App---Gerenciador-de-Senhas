@@ -4,6 +4,7 @@ import useToast from "@/hooks/useToast";
 import { Register } from "@/types/register";
 import Feather from '@expo/vector-icons/Feather';
 import * as Clipboard from 'expo-clipboard';
+import { useState } from "react";
 import { Linking, StyleSheet, Text, View } from "react-native";
 import RegisterIcon from "../RegisterIcon";
 
@@ -40,6 +41,12 @@ export default function ListItem({register, modalConfirmDeleteFunction, modalCre
       });
     };
 
+    const [isVisible, setIsVisible] = useState(false);
+
+    const handleToggleVisible = () => {
+      setIsVisible(!isVisible);
+    }
+
     return (
         <View style={styles.item}>
             <View>
@@ -62,8 +69,11 @@ export default function ListItem({register, modalConfirmDeleteFunction, modalCre
                       <View style={styles.itemRegister}>
                         <Text style={styles.itemRegisterText}>Senha:</Text>
                         <View style={styles.itemContainer}>
-                          <Text style={styles.itemRegisterText}>{register.senha}</Text>
-                          <Feather name="copy" size={30} color="black" onPress={() => copyClipboard(register.senha)} />
+                          <Text style={styles.itemRegisterText}>{ isVisible ? register.senha : '*'.repeat(register.senha.length) }</Text>
+                          <View style={{display: 'flex', flexDirection: 'row', gap: 20}}>
+                            <Feather name={isVisible ? "eye-off" : "eye"} size={30} color="black" onPress={handleToggleVisible} />
+                            <Feather name="copy" size={30} color="black" onPress={() => copyClipboard(register.senha)} />
+                          </View>
                         </View>
                       </View>
 
@@ -149,5 +159,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     flexShrink: 1,         // <- permite que o texto quebre em vez de estourar
     maxWidth: '100%',      // <- impede ultrapassar o limite da tela
+    justifyContent: 'space-between',
+    minWidth: 300,
   }
 });
