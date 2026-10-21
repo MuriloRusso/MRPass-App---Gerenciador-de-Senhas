@@ -1,7 +1,6 @@
 import { Register } from '@/types/register';
-import React from 'react';
-import { FlatList, SafeAreaView, StyleSheet, Text } from 'react-native';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { FlatList, StyleSheet, Text } from 'react-native';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import ListItem from '../../components/ListItem';
 
 type ListProps = {

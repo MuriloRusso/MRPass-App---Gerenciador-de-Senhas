@@ -1,7 +1,7 @@
 import ButtonSecondary from '@/components/ButtonSecondary';
 import { Register, RegisterDataProps } from '@/types/register';
-import { Modal, SafeAreaView, StyleSheet, Text, View } from 'react-native';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { Modal, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import ButtonSubmit from '../../components/ButtonSubmit';
 import RegisterIcon from '../../components/RegisterIcon';
 import useFields from '../../hooks/useFields';

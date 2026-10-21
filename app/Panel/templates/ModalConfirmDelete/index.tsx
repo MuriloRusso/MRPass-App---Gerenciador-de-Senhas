@@ -1,7 +1,7 @@
 import ButtonSecondary from '@/components/ButtonSecondary';
 import { Folder } from '@/types/folder';
-import { Modal, SafeAreaView, StyleSheet, Text, View } from 'react-native';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { Modal, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import ButtonDelete from '../../components/ButtonDelete';
 
 type ModalProps = {
