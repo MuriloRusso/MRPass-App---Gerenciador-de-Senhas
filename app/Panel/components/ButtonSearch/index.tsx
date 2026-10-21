@@ -5,7 +5,7 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 import { useContext } from "react";
 
 function ButtonIcon (){
-    return <AntDesign name="search1" size={24} color="white" />
+    return <AntDesign name="search" size={24} color="white" />
 } 
 
 export default function ButtonSearch({searchText, setRows}:{searchText:string, setRows:any}){
